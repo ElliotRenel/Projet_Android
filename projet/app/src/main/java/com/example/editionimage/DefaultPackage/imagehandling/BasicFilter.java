@@ -7,14 +7,9 @@ import java.util.Random;
 
 public class BasicFilter {
 
-    /**
-     * Put an image into grey scale on given image
-     * @param bmp the bitmap image
-     */
+
     public void toGray(Bitmap bmp){
-
         //vérifier si passage en hsv serait pas plus rapide (temps de conversion vs temps de cast int/float)
-
         int w = bmp.getWidth();
         int h = bmp.getHeight();
         int size = w*h;
@@ -30,46 +25,28 @@ public class BasicFilter {
     }
 
 
-    /**
-     * Put all color S value to 0 except those in a given interval of color on given image
-     * @param bmp the bitmap image
-     */
     public void colorize(BitmapPlus bmp) {
-
         Random r = new Random();
-        int w = bmp.getWidth();
-        int h = bmp.getHeight();
+        int size = bmp.getSize();
         float rand = (float) r.nextInt(360);
+        float[][] tabs = bmp.getHSVPixels();
 
-        float[][] tabs = bmp.getHSVPixels(h, w);
-
-        for (int i = 0; i < w * h; i++) {
+        for (int i = 0; i < size; i++) {
             tabs[0][i] = rand;
         }
         bmp.setHSVPixels(tabs);
     }
 
-    /**
-     * Put all color S value to 0 except those in a given interval of color on given image
-     *
-     * @param bmp   the bitmap image
-     * @param color the color defining the interval's center (H value from 0 to 360)
-     * @param range the range defining the interval's width
-     */
+
     public void keepColor(BitmapPlus bmp, int color, int range) {
         color = (color % 360);
-        int w = bmp.getWidth();
-        int h = bmp.getHeight();
-        int size = w * h;
-
-        float[][] tabs = bmp.getHSVPixels(h, w);
-
-        float[] hsv = new float[3];
+        int size = bmp.getSize();
+        float[][] tabs = bmp.getHSVPixels();
         int cmin = (color - range + 360) % 360, cmax = (color + range) % 360;
         boolean discontinue = cmax < cmin;
 
         for (int i = 0; i < size; i++) {
-            boolean inRange = discontinue ? hsv[0] < cmax || hsv[0] > cmin : hsv[0] < cmax && hsv[0] > cmin;
+            boolean inRange = discontinue ? tabs[0][i] < cmax || tabs[0][i] > cmin : tabs[0][i] < cmax && tabs[0][i] > cmin;
             if (!inRange) {
                 tabs[0][1] = 0;
             }
@@ -80,20 +57,10 @@ public class BasicFilter {
 
     /*à  ajouter les augmentations de contrastes et diminution de contrastes*/
 
-
-    /**
-     * Apply a linear transformation of Histogram on the given image (for all type of images)
-     * @param bmp the given image
-     */
-    public static void contrastLinearColor(BitmapPlus bmp){
-        int w = bmp.getWidth();
-        int h = bmp.getHeight();
-        int size = w*h;
-
-        float[][] tabs = bmp.getHSVPixels(h, w);
-
-        int[] hist = new int[101];
-        bmp.ToHistHSV(bmp,hist);
+    public static void contrastLinear(BitmapPlus bmp){
+        int size = bmp.getSize();
+        float[][] tabs = bmp.getHSVPixels();
+        int[] hist = bmp.getHSVHist(bmp);
         int min = 0, max = 100;
         boolean b = true;
 
@@ -115,24 +82,16 @@ public class BasicFilter {
         bmp.setHSVPixels(tabs);
     }
 
-    /**
-     * Apply an equalisation of Histogram on the given image (for all type of images)
-     * @param bmp the given image
-     */
-    public static void contrastEqualColor(BitmapPlus bmp){
-        int w = bmp.getWidth();
-        int h = bmp.getHeight();
-        int size = w*h;
 
-        float[][] tabs = bmp.getHSVPixels(h, w);
+    public static void contrastEqual(BitmapPlus bmp){
+        int size = bmp.getSize();
+        float[][] tabs = bmp.getHSVPixels();
 
         /* faire une seule fonction pour ces lignes*/
 
-        int[] hist = new int[101];
-        bmp.ToHistHSV(bmp,hist);
+        int[] hist = bmp.getHSVHist(bmp);
 
         int[] C = new int[101];
-        //import
         bmp.histToCumul(hist,C);
 
         /* ----------------- */
@@ -143,7 +102,4 @@ public class BasicFilter {
         }
         bmp.setHSVPixels(tabs);
     }
-
-
-
 }
