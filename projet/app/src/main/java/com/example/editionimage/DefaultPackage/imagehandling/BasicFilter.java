@@ -6,30 +6,29 @@ import android.graphics.Color;
 import java.util.Random;
 
 public class BasicFilter {
+    BitmapPlus bmp;
 
 
-    public void toGray(Bitmap bmp){
+    public void toGray(){
         //vérifier si passage en hsv serait pas plus rapide (temps de conversion vs temps de cast int/float)
-        int w = bmp.getWidth();
-        int h = bmp.getHeight();
-        int size = w*h;
+        int size = bmp.getSize();
         int[] pixels = new int[size];
-        bmp.getPixels(pixels,0,w,0,0,w,h);
+        bmp.getPixels(pixels);
 
         for(int i=0;i<size;i++){
             int p = pixels[i];
             int val = (int)(Color.red(p)*0.3)+(int)(Color.green(p)*0.59)+(int)(Color.blue(p)*0.11);
             pixels[i] = Color.rgb(val,val,val);
         }
-        bmp.setPixels(pixels,0,w,0,0,w,h);
+        bmp.setPixels(pixels);
     }
 
 
-    public void colorize(BitmapPlus bmp) {
+    public void colorize() {
         Random r = new Random();
         int size = bmp.getSize();
         float rand = (float) r.nextInt(360);
-        float[][] tabs = bmp.getHSVPixels();
+        double[][] tabs = bmp.getHSVPixels();
 
         for (int i = 0; i < size; i++) {
             tabs[0][i] = rand;
@@ -38,10 +37,10 @@ public class BasicFilter {
     }
 
 
-    public void keepColor(BitmapPlus bmp, int color, int range) {
+    public void keepColor(int color, int range) {
         color = (color % 360);
         int size = bmp.getSize();
-        float[][] tabs = bmp.getHSVPixels();
+        double[][] tabs = bmp.getHSVPixels();
         int cmin = (color - range + 360) % 360, cmax = (color + range) % 360;
         boolean discontinue = cmax < cmin;
 
@@ -57,10 +56,10 @@ public class BasicFilter {
 
     /*à  ajouter les augmentations de contrastes et diminution de contrastes*/
 
-    public static void contrastLinear(BitmapPlus bmp){
+    public void contrastLinear(){
         int size = bmp.getSize();
-        float[][] tabs = bmp.getHSVPixels();
-        int[] hist = bmp.getHSVHist(bmp);
+        double[][] tabs = bmp.getHSVPixels();
+        int[] hist = bmp.getHSVHist();
         int min = 0, max = 100;
         boolean b = true;
 
@@ -83,18 +82,11 @@ public class BasicFilter {
     }
 
 
-    public static void contrastEqual(BitmapPlus bmp){
+    public void contrastEqual(){
         int size = bmp.getSize();
-        float[][] tabs = bmp.getHSVPixels();
+        double[][] tabs = bmp.getHSVPixels();
 
-        /* faire une seule fonction pour ces lignes*/
-
-        int[] hist = bmp.getHSVHist(bmp);
-
-        int[] C = new int[101];
-        bmp.histToCumul(hist,C);
-
-        /* ----------------- */
+        int[] C = bmp.getHSVCumul();
 
         for(int i =0; i<size; i++){
             //voir si c est possible de réduire le nombre de conversion int/float
