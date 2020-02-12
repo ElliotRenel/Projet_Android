@@ -2,6 +2,7 @@ package com.example.editionimage.DefaultPackage.imagehandling;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.widget.ImageView;
 
 public class BitmapPlus {
     private Bitmap bit_origin, bit_current;
@@ -16,6 +17,10 @@ public class BitmapPlus {
         height = bit_current.getHeight();
         width = bit_current.getWidth();
         size = height*width;
+    }
+
+    public void setAsImageView(ImageView view){
+        view.setImageBitmap(bit_current);
     }
 
     public double[][] getHSVPixels(){
