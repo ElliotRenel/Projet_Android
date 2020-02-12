@@ -24,7 +24,7 @@ public class BitmapPlus {
         int[] pixels = new int[size];
         this.bit_current.getPixels(pixels,0,width,0,0,width,height);
 
-        for(int i=0; i<size; i-=-1)
+        for(int i=0; i<size; i++)
             rgb_to_hsv(pixels[i], result, i);
 
         return result;
@@ -33,9 +33,10 @@ public class BitmapPlus {
     public void setHSVPixels(double[][] pixels){
         int[] result = new int[size];
 
-        for(int i=0; i<size; i-=-1){
+        for(int i=0; i<size; i++)
+            result[i] = hsv_to_rgb(pixels,i);
 
-        }
+        setPixels(result);
     }
 
     public void getPixels(int[] pixels){
@@ -59,9 +60,9 @@ public class BitmapPlus {
     }
 
     private void rgb_to_hsv(int pixel, double[][] hsv_pixels, int index){
-        double red_ = (float) Color.red(pixel)/(float)255;
-        double blue_ = (float)Color.green(pixel)/(float)255;
-        double green_ = (float)Color.blue(pixel)/(float)255;
+        double red_ = (double) Color.red(pixel)/(double)255;
+        double blue_ = (double)Color.green(pixel)/(double)255;
+        double green_ = (double)Color.blue(pixel)/(double)255;
 
         double cmax = Math.max(red_, blue_);
         cmax = Math.max(cmax, green_);
@@ -96,6 +97,47 @@ public class BitmapPlus {
         hsv_pixels[0][index] = h;
 
         hsv_pixels[2][index] = cmax;
+    }
+
+    private int hsv_to_rgb(double[][] hsv, int index){
+        double t = (int) (hsv[0][index]/60)%6;
+        double f = (hsv[0][index]/60)- t;
+        double l = hsv[2][index] *(1 - hsv[1][index]);
+        double m = hsv[2][index] * (1- f*hsv[1][index]);
+        double n = hsv[2][index] * (1-(1-f) * hsv[1][index]);
+
+
+        double red =0;
+        double green=0;
+        double blue=0;
+
+        if(t ==0){
+            red = hsv[2][index];
+            green = n;
+            blue = l;
+        }else if(t==1){
+            red = m;
+            green = hsv[2][index];
+            blue = l;
+        }else if(t == 2){
+            red = l;
+            green = hsv[2][index];
+            blue = n;
+        }else if(t == 3){
+            red = l;
+            green = m;
+            blue = hsv[2][index];
+        }else if(t == 4){
+            red = n;
+            green = l;
+            blue = hsv[2][index];
+        }else if(t == 5){
+            red = hsv[2][index];
+            green = l;
+            blue = m;
+        }
+        return Color.rgb((float)red,(float)green,(float)blue);
+
     }
 
     public int getSize(){
