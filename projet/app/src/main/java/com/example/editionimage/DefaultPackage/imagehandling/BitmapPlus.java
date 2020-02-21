@@ -183,13 +183,5 @@ public class BitmapPlus {
         setAsImageView();
     }
 
-    public Bitmap getBitCurrent(){
-        return bit_current;
-    }
-
-    public void setBit_current(Bitmap bmp){
-        bit_current = bmp;
-    }
-
 
 }

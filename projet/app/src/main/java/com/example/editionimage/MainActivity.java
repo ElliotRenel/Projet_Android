@@ -16,6 +16,7 @@ import android.widget.ImageView;
 
 import com.example.editionimage.DefaultPackage.imagehandling.BasicFilter;
 import com.example.editionimage.DefaultPackage.imagehandling.BitmapPlus;
+import com.github.chrisbanes.photoview.PhotoView;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -23,7 +24,7 @@ import java.io.IOException;
 public class MainActivity extends AppCompatActivity {
     private static final int PICK_IMAGE = 100;
 
-    ImageView photoView;
+    PhotoView photoView;
     Button openGallery;
     BitmapPlus usedImage;
 
