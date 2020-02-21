@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.editionimage.DefaultPackage.imagehandling.BitmapPlus;
+import com.github.chrisbanes.photoview.PhotoView;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        photoView = findViewById(R.id.main_view);
+        photoView = (PhotoView) findViewById(R.id.main_view);
         openGallery = findViewById(R.id.galleryButton);
         openCamera = findViewById(R.id.cameraButton);
 
@@ -101,6 +102,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 usedImage.contrastLinear();
+            }
+        });
+
+        buttonContrastEqual.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                usedImage.contrastEqual();
             }
         });
     }

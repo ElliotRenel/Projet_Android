@@ -4,24 +4,28 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.widget.ImageView;
 
+import com.github.chrisbanes.photoview.PhotoView;
+
 public class BitmapPlus {
     private Bitmap bit_origin, bit_current;
     private BasicFilter filters;
     private int height, width, size;
+    private PhotoView view;
 
     private final int IMAGE_SIZE = 300;
 
-    public BitmapPlus(Bitmap bit){
+    public BitmapPlus(Bitmap bit, PhotoView view){
         bit_origin = bit.copy(bit.getConfig(),false);
         bit_current = Bitmap.createScaledBitmap(bit_origin.copy(bit_origin.getConfig(),true),(bit_origin.getWidth()*IMAGE_SIZE)/bit_origin.getHeight(),IMAGE_SIZE,false);
 
-        filters = new BasicFilter();
+        filters = new BasicFilter(this);
         height = bit_current.getHeight();
         width = bit_current.getWidth();
         size = height*width;
+        this.view = view;
     }
 
-    public void setAsImageView(ImageView view){
+    public void setAsImageView(){
         view.setImageBitmap(bit_current);
     }
 
@@ -51,7 +55,7 @@ public class BitmapPlus {
     }
 
     public void setPixels(int[] pixels){
-        bit_current.getPixels(pixels,0,width,0,0,width,height);
+        bit_current.setPixels(pixels,0,width,0,0,width,height);
     }
 
     public int[] getHSVHist(){
@@ -150,6 +154,32 @@ public class BitmapPlus {
     public int getSize(){
         return size;
     }
+
+    public void reset(){
+        bit_current = Bitmap.createScaledBitmap(bit_origin.copy(bit_origin.getConfig(),true),(bit_origin.getWidth()*IMAGE_SIZE)/bit_origin.getHeight(),IMAGE_SIZE,false);
+        setAsImageView();
+    }
+    public void toGray(){
+        filters.toGray();
+        setAsImageView();
+    }
+    public void colorize(){
+        filters.colorize();
+        setAsImageView();
+    }
+    public void keepColor(){
+        filters.keepColor(150,30);
+        setAsImageView();
+    }
+    public void contrastLinear(){
+        filters.contrastLinear();
+        setAsImageView();
+    }
+    public void contrastEqual(){
+        filters.contrastEqual();
+        setAsImageView();
+    }
+
 
 
 }

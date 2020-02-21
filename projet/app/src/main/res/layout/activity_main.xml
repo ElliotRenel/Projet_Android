@@ -6,23 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ImageView
+
+    <com.github.chrisbanes.photoview.PhotoView
         android:id="@+id/main_view"
         android:layout_width="323dp"
         android:layout_height="313dp"
-        app:layout_constraintBottom_toTopOf="@+id/gallery_b"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/galleryButton" />
-
 
     <Button
         android:id="@+id/galleryButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="664dp"
         android:text="Gallery"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.659"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
