@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidGradleBuildConfiguration">
+    <option name="SYNC_PROJECT_BEFORE_BUILD" value="true" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4beb8240-de0a-4f8e-a83f-cedad4ec547c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.gradle/5.4.1/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.gradle/5.4.1/fileContent/fileContent.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.gradle/5.4.1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.gradle/5.4.1/javaCompile/jarAnalysis.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.gradle/5.4.1/javaCompile/taskHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.gradle/vcs-1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/assetWizardSettings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/caches/build_file_checksums.ser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/caches/gradle_models.ser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/dictionaries/theod.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle____local_aars____opt_users_android_Sdk_build_tools_28_0_3_renderscript_lib_androidx_rs_jar_unspecified_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__androidx_annotation_annotation_1_0_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__androidx_appcompat_appcompat_1_0_2_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__androidx_arch_core_core_common_2_0_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__androidx_arch_core_core_runtime_2_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__androidx_asynclayoutinflater_asynclayoutinflater_1_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__androidx_collection_collection_1_0_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_1_1_3_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_solver_1_1_3_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__androidx_coordinatorlayout_coordinatorlayout_1_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__androidx_core_core_1_0_1_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__androidx_cursoradapter_cursoradapter_1_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__androidx_customview_customview_1_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__androidx_documentfile_documentfile_1_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__androidx_drawerlayout_drawerlayout_1_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__androidx_fragment_fragment_1_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__androidx_interpolator_interpolator_1_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_ui_1_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_utils_1_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_common_2_0_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_2_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_core_2_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_runtime_2_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_2_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__androidx_loader_loader_1_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__androidx_localbroadcastmanager_localbroadcastmanager_1_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__androidx_print_print_1_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__androidx_slidingpanelayout_slidingpanelayout_1_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__androidx_swiperefreshlayout_swiperefreshlayout_1_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__androidx_test_espresso_espresso_core_3_1_1_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__androidx_test_espresso_espresso_idling_resource_3_1_1_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__androidx_test_monitor_1_1_1_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__androidx_test_runner_1_1_1_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_1_0_1_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_animated_1_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__androidx_versionedparcelable_versionedparcelable_1_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__androidx_viewpager_viewpager_1_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__com_google_code_findbugs_jsr305_2_0_1_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__com_squareup_javawriter_2_1_1_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__javax_inject_javax_inject_1_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__junit_junit_4_12_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__net_sf_kxml_kxml2_2_3_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__org_hamcrest_hamcrest_integration_1_3_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/libraries/Gradle__org_hamcrest_hamcrest_library_1_3_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/.settings/org.eclipse.buildship.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/Hello.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/Latex/ProfilerImg.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/Latex/README.aux" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/Latex/README.fdb_latexmk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/Latex/README.fls" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/Latex/README.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/Latex/README.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/Latex/README.synctex.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/Latex/README.tex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/Latex/Rendu_intermediaire.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/.classpath" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/.project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/.settings/org.eclipse.buildship.core.prefs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/ReadMe.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/app.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/proguard-rules.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/androidTest/java/com/example/effectsapp/ExampleInstrumentedTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/ic_launcher-web.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/java/com/example/effectsapp/Colors.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/java/com/example/effectsapp/MainActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/java/com/example/effectsapp/colors/Colorize.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/java/com/example/effectsapp/colors/KeepColor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/java/com/example/effectsapp/convolutions/Convolution.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/java/com/example/effectsapp/convolutions/ConvolutionGauss.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/java/com/example/effectsapp/convolutions/ConvolutionMoyenneur.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/java/com/example/effectsapp/grays/ToGray.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/java/com/example/effectsapp/histogramEqualizer/HistogramEqualizer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/java/com/example/effectsapp/kernel/Kernel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/java/com/example/effectsapp/kernel/styles/Gauss.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/java/com/example/effectsapp/kernel/styles/Moyenneur.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/java/com/example/effectsapp/linearDynamic/LinearDynamicContraction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/java/com/example/effectsapp/linearDynamic/LinearDynamicExtension.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/res/drawable/degrade_rouge_noir.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/res/drawable/eye.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/res/drawable/eye_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/res/drawable/hsv_circle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/res/drawable/hsv_roue.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/res/drawable/hsv_wheel.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/res/drawable/img_cours.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/res/drawable/mario.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/res/drawable/red_gradient.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/res/drawable/sun.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/res/layout/activity_main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/res/values/colors.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/res/values/strings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/res/values/styles.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/rs/colorize.rs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/rs/gray.rs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/main/rs/gray2.rs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/app/src/test/java/com/example/effectsapp/ExampleUnitTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/local.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Theo/settings.gradle" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="testRunner" value="GRADLE" />
+    <option name="delegatedBuild" value="true" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/hugo/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="78" selection-start-line="78" selection-end-line="78" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/Projet_Android.iml" />
+        <option value="$PROJECT_DIR$/.idea/misc.xml" />
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/encodings.xml" />
+        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+        <option value="$PROJECT_DIR$/.idea/codeStyles/Project.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1917" />
+    <option name="width" value="1926" />
+    <option name="height" value="1203" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Projet_Android" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Projet_Android" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Projet_Android" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Projet_Android" type="462c0819:PsiDirectoryNode" />
+              <item name="Elliot" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Projet_Android" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Projet_Android" type="462c0819:PsiDirectoryNode" />
+              <item name="Elliot" type="462c0819:PsiDirectoryNode" />
+              <item name="aux" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Projet_Android" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Projet_Android" type="462c0819:PsiDirectoryNode" />
+              <item name="hugo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Projet_Android" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Projet_Android" type="462c0819:PsiDirectoryNode" />
+              <item name="hugo" type="462c0819:PsiDirectoryNode" />
+              <item name="Commons" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Projet_Android" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Projet_Android" type="462c0819:PsiDirectoryNode" />
+              <item name="hugo" type="462c0819:PsiDirectoryNode" />
+              <item name="ImageTreatment" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Projet_Android" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Projet_Android" type="462c0819:PsiDirectoryNode" />
+              <item name="hugo" type="462c0819:PsiDirectoryNode" />
+              <item name="Main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Projet_Android" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Projet_Android" type="462c0819:PsiDirectoryNode" />
+              <item name="Theo" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="android.sdk.path" value="/opt/users/android/Sdk" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration name="&lt;template&gt;" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" default="true" selected="false">
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+    </configuration>
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4beb8240-de0a-4f8e-a83f-cedad4ec547c" name="Default Changelist" comment="" />
+      <created>1582283826937</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1582283826937</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1917" y="0" width="1926" height="1203" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" visible="true" weight="0.32999474" />
+      <window_info id="Structure" side_tool="true" />
+      <window_info id="Image Layers" />
+      <window_info id="Designer" />
+      <window_info id="Resources Explorer" />
+      <window_info id="Capture Tool" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info id="Captures" order="0" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="TODO" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Palette&#9;" />
+    </layout>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Theo/app/src/main/ic_launcher-web.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Theo/app/src/test/java/com/example/effectsapp/ExampleUnitTest.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Theo/app/src/androidTest/java/com/example/effectsapp/ExampleInstrumentedTest.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hugo/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="78" selection-start-line="78" selection-end-line="78" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
