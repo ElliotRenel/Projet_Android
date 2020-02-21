@@ -1,0 +1,341 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.8)  8 JAN 2020 22:41
+entering extended mode
+**./README.tex
+(README.tex
+LaTeX2e <2019-10-01> patch level 3
+("D:\Program Files\MiKTeX 2.9\tex/latex/base\article.cls"
+Document Class: article 2019/10/25 v1.4k Standard LaTeX document class
+("D:\Program Files\MiKTeX 2.9\tex/latex/base\size12.clo"
+File: size12.clo 2019/10/25 v1.4k Standard LaTeX file (size option)
+)
+\c@part=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+("D:\Program Files\MiKTeX 2.9\tex/latex/base\inputenc.sty"
+Package: inputenc 2018/08/11 v1.3c Input encoding file
+\inpenc@prehook=\toks14
+\inpenc@posthook=\toks15
+)
+("D:\Program Files\MiKTeX 2.9\tex/latex/base\fontenc.sty"
+Package: fontenc 2018/08/11 v2.0j Standard LaTeX package
+
+("D:\Program Files\MiKTeX 2.9\tex/latex/base\t1enc.def"
+File: t1enc.def 2018/08/11 v2.0j Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
+))
+("D:\Program Files\MiKTeX 2.9\tex/generic/babel\babel.sty"
+Package: babel 2019/12/08 3.37 The Babel package
+
+("D:\Program Files\MiKTeX 2.9\tex/generic/babel\switch.def"
+File: switch.def 2019/12/08 3.37 Babel switching mechanism
+)
+*************************************
+* Local config file bblopts.cfg used
+*
+("D:\Program Files\MiKTeX 2.9\tex/latex/arabi\bblopts.cfg"
+File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
+ babel
+)
+("D:\Program Files\MiKTeX 2.9\tex/generic/babel-french\french.ldf"
+Language: french 2019/09/07 v3.5f French support from the babel system
+
+("D:\Program Files\MiKTeX 2.9\tex/generic/babel\babel.def"
+File: babel.def 2019/12/08 3.37 Babel common definitions
+\babel@savecnt=\count88
+\U@D=\dimen103
+
+("D:\Program Files\MiKTeX 2.9\tex/generic/babel\txtbabel.def")
+\bbl@dirlevel=\count89
+)
+Package babel Info: \l@acadian = using hyphenrules for french
+(babel)             (\language22) on input line 91.
+Package babel Info: \l@canadien = using hyphenrules for french
+(babel)             (\language22) on input line 92.
+\FB@nonchar=\count90
+Package babel Info: Making : an active character on input line 419.
+Package babel Info: Making ; an active character on input line 420.
+Package babel Info: Making ! an active character on input line 421.
+Package babel Info: Making ? an active character on input line 422.
+\FBguill@level=\count91
+\FBold@everypar=\toks16
+\FB@Mht=\dimen104
+\mc@charclass=\count92
+\mc@charfam=\count93
+\mc@charslot=\count94
+\std@mcc=\count95
+\dec@mcc=\count96
+\c@FBcaption@count=\count97
+\listindentFB=\dimen105
+\descindentFB=\dimen106
+\labelindentFB=\dimen107
+\labelwidthFB=\dimen108
+\leftmarginFB=\dimen109
+\parindentFFN=\dimen110
+\FBfnindent=\dimen111
+))
+("D:\Program Files\MiKTeX 2.9\tex/latex/carlisle\scalefnt.sty")
+("D:\Program Files\MiKTeX 2.9\tex/latex/graphics\keyval.sty"
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks17
+)
+("D:\Program Files\MiKTeX 2.9\tex/latex/graphics\graphicx.sty"
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+
+("D:\Program Files\MiKTeX 2.9\tex/latex/graphics\graphics.sty"
+Package: graphics 2019/11/01 v1.3d Standard LaTeX Graphics (DPC,SPQR)
+
+("D:\Program Files\MiKTeX 2.9\tex/latex/graphics\trig.sty"
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+("D:\Program Files\MiKTeX 2.9\tex/latex/graphics-cfg\graphics.cfg"
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 105.
+
+("D:\Program Files\MiKTeX 2.9\tex/latex/graphics-def\pdftex.def"
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen112
+\Gin@req@width=\dimen113
+) (README.aux)
+\openout1 = `README.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Info: Redefining \degres on input line 7.
+LaTeX Info: Redefining \dots on input line 7.
+LaTeX Info: Redefining \up on input line 7.
+ ("D:\Program Files\MiKTeX 2.9\tex/context/base/mkii\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count98
+\scratchdimen=\dimen114
+\scratchbox=\box27
+\nofMPsegments=\count99
+\nofMParguments=\count100
+\everyMPshowfont=\toks18
+\MPscratchCnt=\count101
+\MPscratchDim=\dimen115
+\MPnumerator=\count102
+\makeMPintoPDFobject=\count103
+\everyMPtoPDFconversion=\toks19
+) ("D:\Program Files\MiKTeX 2.9\tex/latex/epstopdf-pkg\epstopdf-base.sty"
+Package: epstopdf-base 2019-12-09 v2.10 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <14.4> on input line 11.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 11.
+
+Underfull \hbox (badness 10000) in paragraph at lines 16--24
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 16--24
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 16--24
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 16--24
+
+ []
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 74.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 74.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 74.
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--92
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--92
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--92
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--92
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--92
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--92
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--92
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--92
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--92
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--92
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--92
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--92
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--92
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--92
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--92
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--92
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--92
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--92
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--92
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--92
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--92
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--92
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--92
+
+ []
+
+
+Overfull \hbox (13.79202pt too wide) in paragraph at lines 27--92
+[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--92
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--92
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--92
+
+ []
+
+[1
+
+{C:/Users/theod/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2]
+<profilerimg.png, id=11, 1262.46657pt x 628.59843pt>
+File: profilerimg.png Graphic file (type png)
+<use profilerimg.png>
+Package pdftex.def Info: profilerimg.png  used on input line 93.
+(pdftex.def)             Requested size: 390.0pt x 194.1825pt.
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 93--94
+[][] 
+ []
+
+[3 <./profilerimg.png>] (README.aux) ) 
+Here is how much of TeX's memory you used:
+ 2588 strings out of 492483
+ 34767 string characters out of 3131040
+ 115328 words of memory out of 3000000
+ 6943 multiletter control sequences out of 15000+200000
+ 9593 words of font info for 29 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 30i,6n,35p,241b,425s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\theod\AppData\Local\MiKTeX\2.9
+\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\theod\AppData\Local\
+MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\theod\AppD
+ata\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm2074.pk>
+Output written on README.pdf (3 pages, 72139 bytes).
+PDF statistics:
+ 137 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+
