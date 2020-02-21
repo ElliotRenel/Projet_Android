@@ -2,11 +2,10 @@ package com.example.editionimage;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
-<<<<<<< HEAD
-=======
 
 import android.Manifest;
->>>>>>> 0ae92a2... Hugo sait pas utiliser git (merge cam - xml)
+
+import android.Manifest;
 
 import android.Manifest;
 
@@ -129,10 +128,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
         String currentPhotoPath;
-<<<<<<< HEAD
-=======
-
->>>>>>> 0ae92a2... Hugo sait pas utiliser git (merge cam - xml)
     private File createImageFile() throws IOException {
         // Create an image file name
         String imageFileName = "JPEG_TEST";
