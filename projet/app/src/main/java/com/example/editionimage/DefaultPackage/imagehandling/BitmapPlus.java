@@ -9,9 +9,11 @@ public class BitmapPlus {
     private BasicFilter filters;
     private int height, width, size;
 
+    private final int IMAGE_SIZE = 300;
+
     public BitmapPlus(Bitmap bit){
         bit_origin = bit.copy(bit.getConfig(),false);
-        bit_current = bit_origin.copy(bit_origin.getConfig(),true);
+        bit_current = Bitmap.createScaledBitmap(bit_origin.copy(bit_origin.getConfig(),true),(bit_origin.getWidth()*IMAGE_SIZE)/bit_origin.getHeight(),IMAGE_SIZE,false);
 
         filters = new BasicFilter();
         height = bit_current.getHeight();
