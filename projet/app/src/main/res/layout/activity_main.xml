@@ -10,20 +10,78 @@
         android:id="@+id/main_view"
         android:layout_width="323dp"
         android:layout_height="313dp"
-        app:layout_constraintBottom_toTopOf="@+id/gallery_b"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/gallery_b" />
 
     <Button
         android:id="@+id/gallery_b"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginTop="8dp"
         android:text="Gallery"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="144dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <Button
+                android:id="@+id/buttonReset"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Reset" />
+
+            <Button
+                android:id="@+id/buttonToGray"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="To Gray"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/buttonColorize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Colorize"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/buttonKeepColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Keep Color"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/buttonContrastLinear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Linear Contrast" />
+
+            <Button
+                android:id="@+id/buttonContrastEqual"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Equalizer Contrast"
+                android:visibility="visible" />
+
+        </LinearLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

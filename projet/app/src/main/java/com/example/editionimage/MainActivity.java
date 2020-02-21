@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.example.editionimage.DefaultPackage.imagehandling.BasicFilter;
 import com.example.editionimage.DefaultPackage.imagehandling.BitmapPlus;
 
 import java.io.FileNotFoundException;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView photoView;
     Button openGallery;
     BitmapPlus usedImage;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,59 @@ public class MainActivity extends AppCompatActivity {
                 openGallery();
             }
         });
+
+        Button buttonToGray = findViewById(R.id.buttonToGray);
+        Button buttonColorize = findViewById(R.id.buttonColorize);
+        Button buttonKeepColor = findViewById(R.id.buttonKeepColor);
+        Button buttonContrastLinear = findViewById(R.id.buttonContrastLinear);
+        Button buttonContrastEqual = findViewById(R.id.buttonContrastEqual);
+        Button buttonReset = findViewById(R.id.buttonReset);
+
+        buttonReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                usedImage.reset();
+            }
+        });
+
+        buttonToGray.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                usedImage.toGray();
+                Log.i("Deb", "Heyooo out of gray!");
+            }
+        });
+
+
+        buttonColorize.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                usedImage.colorize();
+            }
+        });
+
+
+        buttonKeepColor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                usedImage.keepColor();
+            }
+        });
+
+        buttonContrastLinear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                usedImage.contrastLinear();
+            }
+        });
+
+        buttonContrastEqual.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                usedImage.contrastEqual();
+            }
+        });
+
     }
 
     /**
@@ -60,8 +115,8 @@ public class MainActivity extends AppCompatActivity {
 
             try {
                 // MediaStore is used to "convert" the uri to a Bitmap, which is then used to create our BitmapPlus
-                usedImage = new BitmapPlus(MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri));
-                usedImage.setAsImageView(photoView);
+                usedImage = new BitmapPlus(MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri), photoView);
+                usedImage.setAsImageView();
             }catch (IOException e){
                 Log.i("Errors", "IOException while trying to load file from gallery");
                 e.printStackTrace();

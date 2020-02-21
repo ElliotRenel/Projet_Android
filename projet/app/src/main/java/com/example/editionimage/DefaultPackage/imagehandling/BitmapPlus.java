@@ -8,20 +8,22 @@ public class BitmapPlus {
     private Bitmap bit_origin, bit_current;
     private BasicFilter filters;
     private int height, width, size;
+    private ImageView view;
 
     private final int IMAGE_SIZE = 300;
 
-    public BitmapPlus(Bitmap bit){
+    public BitmapPlus(Bitmap bit, ImageView view){
         bit_origin = bit.copy(bit.getConfig(),false);
         bit_current = Bitmap.createScaledBitmap(bit_origin.copy(bit_origin.getConfig(),true),(bit_origin.getWidth()*IMAGE_SIZE)/bit_origin.getHeight(),IMAGE_SIZE,false);
 
-        filters = new BasicFilter();
+        filters = new BasicFilter(this);
         height = bit_current.getHeight();
         width = bit_current.getWidth();
         size = height*width;
+        this.view = view;
     }
 
-    public void setAsImageView(ImageView view){
+    public void setAsImageView(){
         view.setImageBitmap(bit_current);
     }
 
@@ -51,7 +53,7 @@ public class BitmapPlus {
     }
 
     public void setPixels(int[] pixels){
-        bit_current.getPixels(pixels,0,width,0,0,width,height);
+        bit_current.setPixels(pixels,0,width,0,0,width,height);
     }
 
     public int[] getHSVHist(){
@@ -149,6 +151,44 @@ public class BitmapPlus {
 
     public int getSize(){
         return size;
+    }
+
+    public void reset(){
+        bit_current = Bitmap.createScaledBitmap(bit_origin.copy(bit_origin.getConfig(),true),(bit_origin.getWidth()*IMAGE_SIZE)/bit_origin.getHeight(),IMAGE_SIZE,false);
+        setAsImageView();
+    }
+
+    public void toGray(){
+        this.filters.toGray();
+        setAsImageView();
+    }
+
+    public void colorize(){
+        this.filters.colorize();
+        setAsImageView();
+    }
+
+    public void keepColor(){
+        filters.keepColor(150,30);
+        setAsImageView();
+    }
+
+    public void contrastLinear(){
+        filters.contrastLinear();
+        setAsImageView();
+    }
+
+    public void contrastEqual(){
+        filters.contrastEqual();
+        setAsImageView();
+    }
+
+    public Bitmap getBitCurrent(){
+        return bit_current;
+    }
+
+    public void setBit_current(Bitmap bmp){
+        bit_current = bmp;
     }
 
 

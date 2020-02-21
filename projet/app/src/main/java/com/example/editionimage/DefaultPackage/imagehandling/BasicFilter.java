@@ -8,6 +8,9 @@ import java.util.Random;
 public class BasicFilter {
     BitmapPlus bmp;
 
+    public BasicFilter(BitmapPlus bit){
+        bmp = bit;
+    }
 
     public void toGray(){
         //vérifier si passage en hsv serait pas plus rapide (temps de conversion vs temps de cast int/float)
