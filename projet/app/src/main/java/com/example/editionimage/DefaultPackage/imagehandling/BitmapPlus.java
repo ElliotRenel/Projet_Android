@@ -194,7 +194,7 @@ public class BitmapPlus {
     }
 
     public void convolution(){
-        filters.convolutionMatrice(this, new FirstKernel(FirstKernel.MatriceType.MOYENNE, 51));
+        filters.convolutionMatrice(this, new FirstKernel(FirstKernel.MatriceType.MOYENNE, 7));
         setAsImageView();
     }
 
