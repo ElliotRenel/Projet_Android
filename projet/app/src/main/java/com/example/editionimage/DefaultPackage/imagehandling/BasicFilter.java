@@ -126,14 +126,14 @@ public class BasicFilter {
         double[] hsv;
         hsv = new double[3];
         int coefTmp = m.coef;
-        int area = ((m.size - 1) / 2);
+        int range = ((m.size - 1) / 2);
         double sum = 0;
-        for (int x = 0; x < m.size; x++) {
-            for (int y = 0; y < m.size; y++) {
-                if ( ((i % w) + (x - area) < w && (i % w) + (x - area) >= 0) && ((w * (y - area)) + i > 0 && (w * (y - area)) + i < w * h)) {
-                    hsv[2] = tabs[2][i + (x - area) + (w * (y - area))];
-                    hsv[0] = tabs[0][i + (x - area) + (w * (y - area))];
-                    hsv[1] = tabs[1][i + (x - area) + (w * (y - area))];
+        for (int x = 0; x < m.size-1; x++) {
+            for (int y = 0; y < m.size-1; y++) {
+                if ( ((i % w) + (x - range) < w && (i % w) + (x - range) >= 0) && ((w * (y - range)) + i > 0 && (w * (y - range)) + i < w * h)) {
+                    hsv[2] = tabs[2][i + (x - range) + (w * (y - range))];
+                    hsv[0] = tabs[0][i + (x - range) + (w * (y - range))];
+                    hsv[1] = tabs[1][i + (x - range) + (w * (y - range))];
                     sum = sum + (hsv[2] * (m.matrice[x][y]));
                 }else{
                     if(coefTmp - m.matrice[x][y] >= 1){
