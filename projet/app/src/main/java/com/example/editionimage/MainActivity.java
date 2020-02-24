@@ -19,6 +19,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.Toast;
 
 import com.example.editionimage.DefaultPackage.imagehandling.BitmapPlus;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     PhotoView photoView;
     Button openGallery, openCamera;
     BitmapPlus usedImage;
+    int seekBarValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,19 +55,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-         openCamera.setOnClickListener(new View.OnClickListener() {
+        openCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openCamera();
             }
          });
 
+        final SeekBar seekBar = findViewById(R.id.seekBar);
+
         Button buttonToGray = findViewById(R.id.buttonToGray);
         Button buttonColorize = findViewById(R.id.buttonColorize);
         Button buttonKeepColor = findViewById(R.id.buttonKeepColor);
+        final Button buttonOk = findViewById(R.id.buttonOk);
         Button buttonContrastLinear = findViewById(R.id.buttonContrastLinear);
         Button buttonContrastEqual = findViewById(R.id.buttonContrastEqual);
         Button buttonReset = findViewById(R.id.buttonReset);
+        Button buttonConvolution = findViewById(R.id.buttonConvolution);
+
+
+
 
         buttonReset.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,7 +103,14 @@ public class MainActivity extends AppCompatActivity {
         buttonKeepColor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                usedImage.keepColor();
+                buttonOk.setVisibility(View.VISIBLE);
+                seekBar.setVisibility(View.VISIBLE);
+                buttonOk.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        usedImage.keepColor();
+                    }
+                });
             }
         });
 
@@ -109,6 +125,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 usedImage.contrastEqual();
+            }
+        });
+
+        buttonConvolution.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
             }
         });
     }

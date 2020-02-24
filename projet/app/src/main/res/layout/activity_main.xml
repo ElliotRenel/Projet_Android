@@ -28,6 +28,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -80,6 +81,12 @@
                 android:text="Equalizer Contrast"
                 android:visibility="visible" />
 
+            <Button
+                android:id="@+id/buttonConvolution"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Convolution" />
+
         </LinearLayout>
     </ScrollView>
 
@@ -94,5 +101,26 @@
         app:layout_constraintEnd_toStartOf="@+id/galleryButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="170dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginBottom="52dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonOk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="48dp"
+        android:text="@android:string/ok"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
