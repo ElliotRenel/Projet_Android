@@ -51,7 +51,7 @@ public class BasicFilter {
         for (int i = 0; i < size; i++) {
             boolean inRange = discontinue ? tabs[0][i] < cmax || tabs[0][i] > cmin : tabs[0][i] < cmax && tabs[0][i] > cmin;
             if (!inRange) {
-                tabs[0][1] = 0;
+                tabs[1][i] = 0;
             }
         }
         bmp.setHSVPixels(tabs);
@@ -63,7 +63,7 @@ public class BasicFilter {
     public void contrastLinear(){
         int size = bmp.getSize();
         double[][] tabs = bmp.getHSVPixels();
-        int[] hist = bmp.getHSVHist();
+        int[] hist = bmp.getHSVHist(tabs);
         int min = 0, max = 100;
         boolean b = true;
 
@@ -90,7 +90,7 @@ public class BasicFilter {
         int size = bmp.getSize();
         double[][] tabs = bmp.getHSVPixels();
 
-        int[] C = bmp.getHSVCumul();
+        int[] C = bmp.getHSVCumul(tabs);
 
         for(int i =0; i<size; i++){
             //voir si c est possible de réduire le nombre de conversion int/float
