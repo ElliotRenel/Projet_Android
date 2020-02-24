@@ -58,15 +58,19 @@ public class BitmapPlus {
         bit_current.setPixels(pixels,0,width,0,0,width,height);
     }
 
-    public int[] getHSVHist(){
+    public int[] getHSVHist(double[][] tabs){
         int[] hist = new int[101];
-
+        for(int i=0; i<size; i++)
+            hist[(int)(tabs[2][i]*100)]++;
         return hist;
     }
 
-    public int[] getHSVCumul(){
+    public int[] getHSVCumul(double[][] tabs){
         int[] cumul = new int[101];
-
+        int[] hist = getHSVHist(tabs);
+        for(int i=1; i<hist.length;i++){
+            cumul[i] = cumul[i-1] + hist[i];
+        }
         return cumul;
     }
 
@@ -155,6 +159,14 @@ public class BitmapPlus {
         return size;
     }
 
+    public int getHeight(){
+        return height;
+    }
+
+    public int getWidth(){
+        return width;
+    }
+
     public void reset(){
         bit_current = Bitmap.createScaledBitmap(bit_origin.copy(bit_origin.getConfig(),true),(bit_origin.getWidth()*IMAGE_SIZE)/bit_origin.getHeight(),IMAGE_SIZE,false);
         setAsImageView();
@@ -168,7 +180,7 @@ public class BitmapPlus {
         setAsImageView();
     }
     public void keepColor(){
-        filters.keepColor(150,30);
+        filters.keepColor(60,30);
         setAsImageView();
     }
     public void contrastLinear(){
