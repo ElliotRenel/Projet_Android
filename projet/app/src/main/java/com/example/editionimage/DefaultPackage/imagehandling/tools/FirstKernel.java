@@ -5,7 +5,7 @@ public class FirstKernel {
     public int coef; //coefficient multiplicateur de la matrice
     public int size;//taille de la matrice
 
-    enum MatriceType {
+    public enum MatriceType {
         IDENTITE,
         CONTOUR1,
         CONTOUR2,
@@ -16,9 +16,9 @@ public class FirstKernel {
         GAUSS5X5
     }
 
-    public FirstKernel(MatriceType mt,  int moySize){ //size utilisé uniquement pour la matrice "moyenne", voir MatriceType
-        switch(mt){
-            case IDENTITE :
+    public FirstKernel(MatriceType mt, int moySize) { //size utilisé uniquement pour la matrice "moyenne", voir MatriceType
+        switch (mt) {
+            case IDENTITE:
                 this.size = 3;
                 matrice = new int[size][size];
                 matrice[0][0] = 0;
@@ -32,7 +32,7 @@ public class FirstKernel {
                 matrice[2][2] = 0;
                 coef = 1;
                 break;
-            case CONTOUR1 :
+            case CONTOUR1:
                 this.size = 3;
                 matrice = new int[size][size];
                 matrice[0][0] = 1;
@@ -46,7 +46,7 @@ public class FirstKernel {
                 matrice[2][2] = 1;
                 coef = 1;
                 break;
-            case CONTOUR2 :
+            case CONTOUR2:
                 this.size = 3;
                 matrice = new int[size][size];
                 matrice[0][0] = 0;
@@ -91,12 +91,12 @@ public class FirstKernel {
             case MOYENNE:
                 size = moySize;
                 matrice = new int[size][size];
-                for(int i = 0; i< size; i++){
-                    for(int j = 0; j<size; j++){
+                for (int i = 0; i < size; i++) {
+                    for (int j = 0; j < size; j++) {
                         matrice[i][j] = 1;
                     }
                 }
-                coef = size*size;
+                coef = size * size;
                 break;
             case GAUSS3X3:
                 this.size = 3;
@@ -144,3 +144,4 @@ public class FirstKernel {
                 break;
         }
     }
+}

@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.widget.ImageView;
 
+import com.example.editionimage.DefaultPackage.imagehandling.tools.FirstKernel;
 import com.github.chrisbanes.photoview.PhotoView;
 
 public class BitmapPlus {
@@ -189,6 +190,11 @@ public class BitmapPlus {
     }
     public void contrastEqual(){
         filters.contrastEqual();
+        setAsImageView();
+    }
+
+    public void convolution(){
+        filters.convolutionMatrice(this, new FirstKernel(FirstKernel.MatriceType.MOYENNE, 51));
         setAsImageView();
     }
 

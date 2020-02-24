@@ -131,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
         buttonConvolution.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                usedImage.convolution();
             }
         });
     }
