@@ -145,8 +145,36 @@
                 android:id="@+id/buttonLight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Apply Lightlevel : 0"
+                android:text="Set Lightlevel"
                 android:visibility="visible" />
+
+            <ScrollView
+                android:id="@+id/light_sv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="16dp"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <SeekBar
+                        android:id="@+id/light_sb"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:max="100"
+                        android:min="-100"
+                        android:progress="0" />
+
+                    <Button
+                        android:id="@+id/applyLight_b"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Apply" />
+                </LinearLayout>
+            </ScrollView>
 
             <Button
                 android:id="@+id/buttonContrastLinear"

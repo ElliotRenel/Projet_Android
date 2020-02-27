@@ -27,9 +27,10 @@ public class MainActivity extends AppCompatActivity {
 
     PhotoView photoView;
     Button openGallery, openCamera;
-    Button buttonColorize, buttonKeepColor;
+    Button buttonColorize, buttonKeepColor, buttonLight;
     BitmapPlus usedImage;
-    int barValue_keepcolor = 180, barValue_colorize = 180, barValue_lighlevel = 0;
+    int barValue_keepcolor = 180, barValue_colorize = 180;
+    double barValue_lighlevel = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         // Colorize
         buttonColorize = findViewById(R.id.buttonColorize);
 
-        final ScrollView colorizeView = findViewById(R.id.keepColor_sv);
+        final ScrollView colorizeView = findViewById(R.id.colorize_sv);
         final Button buttonApplyColorize = findViewById(R.id.applyColorize_b);
         final SeekBar seekbar_Colorize = findViewById(R.id.colorize_sb);
         seekbar_Colorize.setOnSeekBarChangeListener(seekListenerColorize);
@@ -121,6 +122,31 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Set Lightlevel
+        buttonLight = findViewById(R.id.buttonLight);
+
+        final ScrollView lightView = findViewById(R.id.light_sv);
+        final SeekBar seekbar_light = findViewById(R.id.light_sb);
+        seekbar_light.setOnSeekBarChangeListener(seekListenerLight);
+        final Button buttonApplyLight = findViewById(R.id.applyLight_b);
+
+        buttonLight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lightView.setVisibility(View.VISIBLE);
+                buttonApplyLight.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        usedImage.modifLight(barValue_lighlevel);
+                        lightView.setVisibility(View.GONE);
+                        buttonLight.setText("Set Lightlevel");
+                    }
+                });
+            }
+        });
+
+
+
         // Linear Contrast
         Button buttonContrastLinear = findViewById(R.id.buttonContrastLinear);
         buttonContrastLinear.setOnClickListener(new View.OnClickListener() {
@@ -134,10 +160,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) { usedImage.contrastEqual(); }
         });
-
-        // Set Contrast
-        //SeekBar seekbarLight = findViewById(R.id.seekBarLight);
-        //seekbarLight.setOnSeekBarChangeListener(seekListenerLight);
 
         // Gaussian Blur
         Button buttonGaussian = findViewById(R.id.buttonGaussian);
@@ -181,6 +203,26 @@ public class MainActivity extends AppCompatActivity {
             // updated continuously as the user slides the thumb
             barValue_keepcolor = progress;
             buttonKeepColor.setText("Keep Color "+progress+"°");
+        }
+
+        @Override
+        public void onStartTrackingTouch(SeekBar seekBar) {
+            // called when the user first touches the SeekBar
+        }
+
+        @Override
+        public void onStopTrackingTouch(SeekBar seekBar) {
+            // called after the user finishes moving the SeekBar
+        }
+    };
+
+    SeekBar.OnSeekBarChangeListener seekListenerLight = new SeekBar.OnSeekBarChangeListener() {
+
+        @Override
+        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            // updated continuously as the user slides the thumb
+            barValue_lighlevel = ((double) progress)/100.0;
+            buttonLight.setText("Set Lightlevel "+((float)progress/100));
         }
 
         @Override
