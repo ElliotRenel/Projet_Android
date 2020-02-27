@@ -11,6 +11,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ScrollView;
 import android.widget.SeekBar;
 
 import com.example.editionimage.DefaultPackage.imagehandling.BitmapPlus;
@@ -26,14 +27,16 @@ public class MainActivity extends AppCompatActivity {
 
     PhotoView photoView;
     Button openGallery, openCamera;
+    Button buttonColorize, buttonKeepColor;
     BitmapPlus usedImage;
-    int seekBarValue;
+    int barValue_keepcolor = 180, barValue_colorize = 180, barValue_lighlevel = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /** Setting up the app **/
         photoView = (PhotoView) findViewById(R.id.main_view);
         openGallery = findViewById(R.id.galleryButton);
         openCamera = findViewById(R.id.cameraButton);
@@ -52,22 +55,10 @@ public class MainActivity extends AppCompatActivity {
             }
          });
 
-        final SeekBar seekBar = findViewById(R.id.seekBar);
+        /** Effects buttons **/
 
-        Button buttonToGray = findViewById(R.id.buttonToGray);
-        Button buttonColorize = findViewById(R.id.buttonColorize);
-        Button buttonKeepColor = findViewById(R.id.buttonKeepColor);
-        final Button buttonOk = findViewById(R.id.buttonOk);
-        Button buttonContrastLinear = findViewById(R.id.buttonContrastLinear);
-        Button buttonContrastEqual = findViewById(R.id.buttonContrastEqual);
+        // Reset
         Button buttonReset = findViewById(R.id.buttonReset);
-        Button buttonGaussian = findViewById(R.id.buttonGaussian);
-        Button buttonEdge = findViewById(R.id.buttonEdge);
-
-        SeekBar seekbarLight = findViewById(R.id.seekBarLight);
-        seekbarLight.setOnSeekBarChangeListener(seekListenerLight);
-
-
         buttonReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,61 +66,101 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Gray
+        Button buttonToGray = findViewById(R.id.buttonToGray);
         buttonToGray.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) { usedImage.toGray();
             }
         });
 
+        // Colorize
+        buttonColorize = findViewById(R.id.buttonColorize);
+
+        final ScrollView colorizeView = findViewById(R.id.keepColor_sv);
+        final Button buttonApplyColorize = findViewById(R.id.applyColorize_b);
+        final SeekBar seekbar_Colorize = findViewById(R.id.colorize_sb);
+        seekbar_Colorize.setOnSeekBarChangeListener(seekListenerColorize);
+
 
         buttonColorize.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                usedImage.colorize();
-            }
-        });
-
-
-        buttonKeepColor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                buttonOk.setVisibility(View.VISIBLE);
-                seekBar.setVisibility(View.VISIBLE);
-                buttonOk.setOnClickListener(new View.OnClickListener() {
+                colorizeView.setVisibility(View.VISIBLE);
+                buttonApplyColorize.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        usedImage.keepColor();
+                        usedImage.colorize(barValue_colorize);
+                        colorizeView.setVisibility(View.GONE);
+                        buttonColorize.setText("Colorize");
                     }
                 });
             }
         });
 
+        // KeepColor
+        buttonKeepColor = findViewById(R.id.buttonKeepColor);
+
+        final ScrollView keepColorView = findViewById(R.id.keepColor_sv);
+        final SeekBar seekbar_keepColor = findViewById(R.id.keepColor_sb);
+        seekbar_keepColor.setOnSeekBarChangeListener(seekListenerKeepcolor);
+        final Button buttonApplyKeepColor = findViewById(R.id.applyKeepColor_b);
+
+        buttonKeepColor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                keepColorView.setVisibility(View.VISIBLE);
+                buttonApplyKeepColor.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        usedImage.keepColor(barValue_keepcolor);
+                        keepColorView.setVisibility(View.GONE);
+                        buttonKeepColor.setText("Keep Color");
+                    }
+                });
+            }
+        });
+
+        // Linear Contrast
+        Button buttonContrastLinear = findViewById(R.id.buttonContrastLinear);
         buttonContrastLinear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) { usedImage.contrastLinear(); }
         });
 
+        // Equal Contrast
+        Button buttonContrastEqual = findViewById(R.id.buttonContrastEqual);
         buttonContrastEqual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) { usedImage.contrastEqual(); }
         });
 
+        // Set Contrast
+        //SeekBar seekbarLight = findViewById(R.id.seekBarLight);
+        //seekbarLight.setOnSeekBarChangeListener(seekListenerLight);
+
+        // Gaussian Blur
+        Button buttonGaussian = findViewById(R.id.buttonGaussian);
         buttonGaussian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) { usedImage.gaussianBlur(); }
         });
 
+        // Edge detection
+        Button buttonEdge = findViewById(R.id.buttonEdge);
         buttonEdge.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) { usedImage.simpleEdgeDetection(); }
         });
     }
 
-    SeekBar.OnSeekBarChangeListener seekListenerLight = new SeekBar.OnSeekBarChangeListener() {
+    SeekBar.OnSeekBarChangeListener seekListenerColorize = new SeekBar.OnSeekBarChangeListener() {
 
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
             // updated continuously as the user slides the thumb
+            barValue_colorize = progress;
+            buttonColorize.setText("Colorize "+progress+"°");
         }
 
         @Override
@@ -142,6 +173,28 @@ public class MainActivity extends AppCompatActivity {
             // called after the user finishes moving the SeekBar
         }
     };
+
+    SeekBar.OnSeekBarChangeListener seekListenerKeepcolor = new SeekBar.OnSeekBarChangeListener() {
+
+        @Override
+        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            // updated continuously as the user slides the thumb
+            barValue_keepcolor = progress;
+            buttonKeepColor.setText("Keep Color "+progress+"°");
+        }
+
+        @Override
+        public void onStartTrackingTouch(SeekBar seekBar) {
+            // called when the user first touches the SeekBar
+        }
+
+        @Override
+        public void onStopTrackingTouch(SeekBar seekBar) {
+            // called after the user finishes moving the SeekBar
+        }
+    };
+
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults)

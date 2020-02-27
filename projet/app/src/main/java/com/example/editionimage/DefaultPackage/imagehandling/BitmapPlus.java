@@ -2,9 +2,7 @@ package com.example.editionimage.DefaultPackage.imagehandling;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.util.Log;
 
-import com.example.editionimage.DefaultPackage.imagehandling.tools.FirstKernel;
 import com.example.editionimage.DefaultPackage.imagehandling.tools.Kernel;
 import com.github.chrisbanes.photoview.PhotoView;
 
@@ -179,12 +177,12 @@ public class BitmapPlus {
         filters.toGray();
         setAsImageView();
     }
-    public void colorize(){
-        filters.colorize();
+    public void colorize(int color){
+        filters.colorize(color);
         setAsImageView();
     }
-    public void keepColor(){
-        filters.keepColor(60,30);
+    public void keepColor(int color){
+        filters.keepColor(color,30);
         setAsImageView();
     }
     public void contrastLinear(){

@@ -35,14 +35,12 @@ public class BasicFilter {
     }
 
 
-    public void colorize() {
-        Random r = new Random();
+    public void colorize(int color) {
         int size = bmp.getSize();
-        float rand = (float) r.nextInt(360);
         double[][] tabs = bmp.getHSVPixels();
 
         for (int i = 0; i < size; i++) {
-            tabs[0][i] = rand;
+            tabs[0][i] = color;
         }
         bmp.setHSVPixels(tabs);
     }

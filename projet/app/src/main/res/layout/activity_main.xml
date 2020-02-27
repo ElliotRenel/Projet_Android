@@ -74,6 +74,33 @@
                 android:text="Colorize"
                 android:visibility="visible" />
 
+            <ScrollView
+                android:id="@+id/colorize_sv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <SeekBar
+                        android:id="@+id/colorize_sb"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:max="360"
+                        android:progress="180" />
+
+                    <Button
+                        android:id="@+id/applyColorize_b"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Apply" />
+                </LinearLayout>
+            </ScrollView>
+
             <Button
                 android:id="@+id/buttonKeepColor"
                 android:layout_width="match_parent"
@@ -81,22 +108,45 @@
                 android:text="Keep Color"
                 android:visibility="visible" />
 
+            <ScrollView
+                android:id="@+id/keepColor_sv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="16dp"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <SeekBar
+                        android:id="@+id/keepColor_sb"
+                        android:layout_width="match_parent"
+                        android:layout_height="27dp"
+                        android:layout_marginStart="0dp"
+                        android:max="360"
+                        android:progress="180"
+                        android:visibility="visible" />
+
+                    <Button
+                        android:id="@+id/applyKeepColor_b"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="0dp"
+                        android:text="Apply"
+                        android:visibility="visible" />
+
+                </LinearLayout>
+            </ScrollView>
+
             <Button
                 android:id="@+id/buttonLight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Apply Lightlevel : 0"
                 android:visibility="visible" />
-
-            <SeekBar
-                android:id="@+id/seekBarLight"
-                android:layout_width="match_parent"
-                android:layout_height="26dp"
-                android:max="100"
-                android:min="-100"
-                android:progress="0"
-                tools:layout_editor_absoluteX="124dp"
-                tools:layout_editor_absoluteY="453dp" />
 
             <Button
                 android:id="@+id/buttonContrastLinear"
@@ -122,38 +172,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Edge Detection" />
-
-        </LinearLayout>
-    </ScrollView>
-
-    <ScrollView
-        android:id="@+id/scrollColors"
-        android:layout_width="409dp"
-        android:layout_height="200dp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <SeekBar
-                android:id="@+id/seekBar"
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
-                android:layout_marginStart="0dp"
-                android:visibility="visible" />
-
-            <Button
-                android:id="@+id/buttonOk"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="0dp"
-                android:text="@android:string/ok"
-                android:visibility="visible" />
 
         </LinearLayout>
     </ScrollView>
