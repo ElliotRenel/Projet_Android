@@ -2,9 +2,10 @@ package com.example.editionimage.DefaultPackage.imagehandling;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.widget.ImageView;
+import android.util.Log;
 
 import com.example.editionimage.DefaultPackage.imagehandling.tools.FirstKernel;
+import com.example.editionimage.DefaultPackage.imagehandling.tools.Kernel;
 import com.github.chrisbanes.photoview.PhotoView;
 
 public class BitmapPlus {
@@ -13,7 +14,7 @@ public class BitmapPlus {
     private int height, width, size;
     private PhotoView view;
 
-    private final int IMAGE_SIZE = 300;
+    private final int IMAGE_SIZE = 700;
 
     public BitmapPlus(Bitmap bit, PhotoView view){
         bit_origin = bit.copy(bit.getConfig(),false);
@@ -168,6 +169,8 @@ public class BitmapPlus {
         return width;
     }
 
+    /** Button Effects **/
+
     public void reset(){
         bit_current = Bitmap.createScaledBitmap(bit_origin.copy(bit_origin.getConfig(),true),(bit_origin.getWidth()*IMAGE_SIZE)/bit_origin.getHeight(),IMAGE_SIZE,false);
         setAsImageView();
@@ -193,11 +196,35 @@ public class BitmapPlus {
         setAsImageView();
     }
 
-    public void convolution(){
-        filters.convolutionMatrice(this, new FirstKernel(FirstKernel.MatriceType.MOYENNE, 7));
+    public void modifLight(double alpha){
+        filters.modifLight(alpha);
         setAsImageView();
     }
 
+    public void gaussianBlur(){
+        int[] tmp = {
+                1, 4, 6, 4, 1,
+                4, 16 ,24, 16 ,4,
+                6, 24, 36, 24, 6,
+                4, 16, 24, 16, 4,
+                1, 4, 6, 4, 1
+        };
+        Kernel gauss = new Kernel(5 , 5,tmp);
 
+        filters.convolution(gauss);
+    }
 
+    public void simpleEdgeDetection(){
+        this.toGray();
+        int[] mask = {
+                0, 0,-1, 0, 0,
+                0,-1,-2,-1, 0,
+                -1,-2,16,-2,-1,
+                0,-1,-2,-1, 0,
+                0, 0,-1, 0, 0
+        };
+        Kernel laplace = new Kernel(5, 5,mask);
+
+        filters.convolution(laplace);
+    }
 }

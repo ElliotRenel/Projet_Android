@@ -3,14 +3,7 @@ package com.example.editionimage;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
-import android.Manifest;
-
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -18,15 +11,12 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.SeekBar;
-import android.widget.Toast;
 
 import com.example.editionimage.DefaultPackage.imagehandling.BitmapPlus;
 import com.github.chrisbanes.photoview.PhotoView;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
@@ -71,9 +61,11 @@ public class MainActivity extends AppCompatActivity {
         Button buttonContrastLinear = findViewById(R.id.buttonContrastLinear);
         Button buttonContrastEqual = findViewById(R.id.buttonContrastEqual);
         Button buttonReset = findViewById(R.id.buttonReset);
-        Button buttonConvolution = findViewById(R.id.buttonConvolution);
+        Button buttonGaussian = findViewById(R.id.buttonGaussian);
+        Button buttonEdge = findViewById(R.id.buttonEdge);
 
-
+        SeekBar seekbarLight = findViewById(R.id.seekBarLight);
+        seekbarLight.setOnSeekBarChangeListener(seekListenerLight);
 
 
         buttonReset.setOnClickListener(new View.OnClickListener() {
@@ -85,9 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
         buttonToGray.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                usedImage.toGray();
-                Log.i("Deb", "Heyooo out of gray!");
+            public void onClick(View v) { usedImage.toGray();
             }
         });
 
@@ -116,25 +106,42 @@ public class MainActivity extends AppCompatActivity {
 
         buttonContrastLinear.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                usedImage.contrastLinear();
-            }
+            public void onClick(View v) { usedImage.contrastLinear(); }
         });
 
         buttonContrastEqual.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                usedImage.contrastEqual();
-            }
+            public void onClick(View v) { usedImage.contrastEqual(); }
         });
 
-        buttonConvolution.setOnClickListener(new View.OnClickListener() {
+        buttonGaussian.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                usedImage.convolution();
-            }
+            public void onClick(View v) { usedImage.gaussianBlur(); }
+        });
+
+        buttonEdge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { usedImage.simpleEdgeDetection(); }
         });
     }
+
+    SeekBar.OnSeekBarChangeListener seekListenerLight = new SeekBar.OnSeekBarChangeListener() {
+
+        @Override
+        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            // updated continuously as the user slides the thumb
+        }
+
+        @Override
+        public void onStartTrackingTouch(SeekBar seekBar) {
+            // called when the user first touches the SeekBar
+        }
+
+        @Override
+        public void onStopTrackingTouch(SeekBar seekBar) {
+            // called after the user finishes moving the SeekBar
+        }
+    };
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults)
@@ -154,7 +161,8 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(gallery,PICK_IMAGE);
     }
 
-        String currentPhotoPath;
+    String currentPhotoPath;
+
     private File createImageFile() throws IOException {
         // Create an image file name
         String imageFileName = "JPEG_TEST";

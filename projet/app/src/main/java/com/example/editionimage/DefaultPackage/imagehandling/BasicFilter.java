@@ -2,10 +2,14 @@ package com.example.editionimage.DefaultPackage.imagehandling;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.util.Log;
 
 import com.example.editionimage.DefaultPackage.imagehandling.tools.FirstKernel;
+import com.example.editionimage.DefaultPackage.imagehandling.tools.Kernel;
 
 import java.util.Random;
+
+import static java.lang.Double.NaN;
 
 public class BasicFilter {
     BitmapPlus bmp;
@@ -14,6 +18,7 @@ public class BasicFilter {
         bmp = bit;
     }
 
+    /** Color **/
 
     public void toGray(){
         //vérifier si passage en hsv serait pas plus rapide (temps de conversion vs temps de cast int/float)
@@ -60,7 +65,7 @@ public class BasicFilter {
     }
 
 
-    /*à  ajouter les augmentations de contrastes et diminution de contrastes*/
+    /** Contrast **/
 
     public void contrastLinear(){
         int size = bmp.getSize();
@@ -101,48 +106,84 @@ public class BasicFilter {
         bmp.setHSVPixels(tabs);
     }
 
-    public void convolutionMatrice(BitmapPlus bmp, FirstKernel m) {
+    public void modifLight(double alpha){
+        double[][] hsv_pixels = bmp.getHSVPixels();
 
-        int size = bmp.getSize();
-        int h = bmp.getHeight();
-        int w = bmp.getWidth();
+        for(int i=0; i<bmp.getSize(); i++){
+            double L = hsv_pixels[2][i]*(1.0-hsv_pixels[1][i]/2.0);
 
-        double[] hsvTmp = new double[3];
-        double pixelsBuf[][];
-        pixelsBuf = new double[3][size];
+            double S_L = (L==0 || L==1)?0:((hsv_pixels[2][i]-L)/Math.min(L,1.0-L));
 
-        double[][] tabs = bmp.getHSVPixels();
+            L = L + (alpha>0?(1-L):L)*alpha;
 
-        for (int i = 0; i < size; i++) {
-            hsvTmp = convoAux(m, h, w, i, tabs);
-            pixelsBuf[0][i] = hsvTmp[0];
-            pixelsBuf[1][i] = hsvTmp[1];
-            pixelsBuf[2][i] = hsvTmp[2];
+            hsv_pixels[2][i] = L + S_L*Math.min(L,1.0-L);
+            hsv_pixels[1][i] = (hsv_pixels[2][i]==0)?0:(2*(1-L/hsv_pixels[2][i]));
         }
-        bmp.setHSVPixels(pixelsBuf);
+
+        bmp.setHSVPixels(hsv_pixels);
     }
 
-    public double[] convoAux(FirstKernel m, int h, int w, int i, double[][] tabs){
-        double[] hsv;
-        hsv = new double[3];
-        int coefTmp = m.coef;
-        int range = ((m.size - 1) / 2);
-        double sum = 0;
-        for (int x = 0; x < m.size-1; x++) {
-            for (int y = 0; y < m.size-1; y++) {
-                if ( ((i % w) + (x - range) < w && (i % w) + (x - range) >= 0) && ((w * (y - range)) + i > 0 && (w * (y - range)) + i < w * h)) {
-                    hsv[2] = tabs[2][i + (x - range) + (w * (y - range))];
-                    hsv[0] = tabs[0][i + (x - range) + (w * (y - range))];
-                    hsv[1] = tabs[1][i + (x - range) + (w * (y - range))];
-                    sum = sum + (hsv[2] * (m.matrice[x][y]));
-                }else{
-                    if(coefTmp - m.matrice[x][y] >= 1){
-                        coefTmp = coefTmp - m.matrice[x][y];
-                    }
-                }
+    /** Convolution **/
+
+    public void convolution(Kernel mask){
+        double[][] hsv_pixels = bmp.getHSVPixels();
+
+        int m_h = mask.getH()/2;
+        int m_w = mask.getW()/2;
+
+        applyMask(mask, hsv_pixels, m_w, bmp.getWidth()-m_w,m_h,bmp.getHeight()-m_h);
+
+        bmp.setHSVPixels(hsv_pixels);
+
+    }
+
+    public int separableConvolution(Kernel row, Kernel column) {
+        if (row.getH() > 1 || column.getW() > 1) return -1;
+
+        int w = bmp.getWidth();
+        int h = bmp.getHeight();
+        double[][] hsv_pixels = bmp.getHSVPixels();
+
+        int dim = row.getW() / 2;
+
+        applyMask(row,hsv_pixels,dim,w-dim,0,h);
+
+        dim = column.getH() / 2;
+
+        applyMask(column,hsv_pixels,0,w,dim,h-dim);
+
+        bmp.setHSVPixels(hsv_pixels);
+
+        return 1;
+    }
+
+    private void applyMask(Kernel mask, double[][] pixels, int x_min, int x_max, int y_min, int y_max){
+        int w = bmp.getWidth();
+        double[] pixels_copy = (pixels[2]).clone();
+
+        for(int x=x_min; x<x_max; x++){
+            for(int y=y_min; y<y_max;y++){
+                pixels[2][x + y * w] = applyMaskAux(mask, pixels_copy, x, y);
             }
         }
-        hsv[2] = sum / coefTmp;
-        return hsv;
+    }
+
+    private double applyMaskAux(Kernel mask, double[] pixels, int x, int y){
+        int w = bmp.getWidth();
+        int mask_w = mask.getW()/2, mask_h = mask.getH()/2;
+
+        double somme = 0;
+
+        for(int i=x-mask_w; i<x+mask_w+1; i++) {
+            for (int j = y - mask_h; j < y + mask_h + 1; j++) {
+                double tmp = pixels[j * w + i] * (double) mask.getValue(i - (x - mask_w), j - (y - mask_h));
+                somme += tmp;
+            }
+        }
+        if(mask.getInverse()==0){
+            return Math.sqrt(somme*somme);
+        }else {
+            return somme / mask.getInverse();
+        }
     }
 }
