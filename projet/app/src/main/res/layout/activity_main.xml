@@ -7,7 +7,6 @@
     tools:context=".MainActivity">
 
 
-
     <com.github.chrisbanes.photoview.PhotoView
         android:id="@+id/main_view"
         android:layout_width="323dp"
@@ -27,6 +26,17 @@
         app:layout_constraintHorizontal_bias="0.749"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="93dp"
+        android:layout_height="46dp"
+        android:text="Save"
+        app:layout_constraintBottom_toTopOf="@+id/scrollMain"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_view" />
 
     <Button
         android:id="@+id/cameraButton"
@@ -61,13 +71,6 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="#1C7CC9"
                 android:text="Reset" />
-
-            <Button
-                android:id="@+id/buttonSave"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#1C7CC9"
-                android:text="Save" />
 
             <Button
                 android:id="@+id/buttonToGray"
