@@ -322,6 +322,6 @@ public class BasicFilter {
                 sommeB += pixels[j * w + i] * (double) mB.getValue(i - (x - mB_w), j - (y - mB_h));
             }
         }
-        return Math.sqrt(sommeA*sommeB);
+        return Math.hypot(sommeA,sommeB);
     }
 }
