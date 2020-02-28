@@ -2,6 +2,12 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[french]{babel}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[a4paper]{geometry}
 
 \font\myfont=cmr12 at 40pt
 
@@ -125,13 +131,38 @@ Les fonctions ci-dessous sont retrouvées dans la fonction BasicFilter, et testa
 
     \item modifLight(double alpha):
     
+    Modification de la luminosité de l'image appellante.
+    La fonction ajoute/réduit jusqu'a une valeur de 80 a chaque canal rouge, vert et bleu simultanément pour faire varier la luminosité de chaque pixel.
+
+    \subsection{Convolutions}
+    %Rajouter texte? Expliquer comment on fait une convo
+
 
     \item GaussianBlur():
     
+    \item Gaussian est une application de flou gaussien avec une matrice de Gauss de dimension 5*5 comme ci-dessous.
+        \begin{equation}
+            \begin{pmatrix}
+                1 & 4 & 6 & 4& 1\\
+                4 & 16 & 24 & 16 & 4\\
+                6 & 24 & 36 & 24 & 6\\
+                4 & 16 & 24 & 16 & 4\\
+                1 & 4 & 6 & 4 & 1\\
+            \end{pmatrix}
+        \end{equation} 
 
     \item simpleEdgeDetection()(Laplace): 
-
-
+    simpleEdgeDetection est une application de la détection de bordure de Laplace avec une distribution gaussienne 
+    (ce type de détection de bordure était celui qui m'a donné les meilleurs résultats).
+    \begin{equation}
+        \begin{pmatrix}
+            0 &  0 & -1 &  0 &  0\\
+            0 & -1 & -2 & -1 &  0\\
+            -1 & -2 & 16 & -2 & -1\\
+            0 & -1 & -2 & -1 &  0\\
+            0 &  0 & -1 &  0 &  0
+        \end{pmatrix}
+    \end{equation} 
 
     \item Sobel?
     
