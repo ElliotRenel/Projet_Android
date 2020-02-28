@@ -186,6 +186,10 @@ public class BitmapPlus {
         filters.toGray();
         setAsImageView();
     }
+    public void toGrayRS(Context context){
+        filters.toGrayRS(context);
+        setAsImageView();
+    }
     public void colorize(int color){
         filters.colorize(color);
         setAsImageView();
