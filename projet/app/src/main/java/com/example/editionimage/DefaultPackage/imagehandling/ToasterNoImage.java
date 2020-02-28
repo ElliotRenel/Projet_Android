@@ -17,7 +17,7 @@ public class ToasterNoImage {
 
 
 
-    public boolean isToastShowed(BitmapPlus usedImage){
+    public boolean isToastShowed(BitmapHandler usedImage){
         if(usedImage == null){
             toast.show();
             return true;
