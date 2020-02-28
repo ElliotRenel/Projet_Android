@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.SeekBar;
+import android.widget.Toast;
 
 import com.example.editionimage.DefaultPackage.imagehandling.BitmapPlus;
 import com.example.editionimage.DefaultPackage.imagehandling.ToasterNoImage;
@@ -73,6 +74,9 @@ public class MainActivity extends AppCompatActivity {
                 Uri contentUri = Uri.fromFile(file);
                 mediaScanIntent.setData(contentUri);
                 sendBroadcast(mediaScanIntent);
+                CharSequence text = "Image saved";
+                Toast toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT);
+                toast.show();
             }
         });
 
