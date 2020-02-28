@@ -5,17 +5,10 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.renderscript.Allocation;
 import android.renderscript.RenderScript;
-import android.util.Log;
 
-import com.example.editionimage.DefaultPackage.imagehandling.tools.FirstKernel;
 import com.example.editionimage.DefaultPackage.imagehandling.tools.Kernel;
-import com.example.editionimage.MainActivity;
 import com.example.editionimage.ScriptC_gray;
 import com.example.editionimage.ScriptC_histEq;
-
-import java.util.Random;
-
-import static java.lang.Double.NaN;
 
 public class BasicFilter {
     BitmapPlus bmp;
@@ -240,6 +233,19 @@ public class BasicFilter {
 
     }
 
+    public void convolutionEdgeDetection(Kernel mA, Kernel mB){
+        if(mA.getInverse()!=0 || mB.getInverse()!=0 || mA.getH()!=mB.getH() || mA.getW()!=mB.getW())
+            return;
+        double[][] hsv_pixels = bmp.getHSVPixels();
+
+        int m_h = mA.getH()/2;
+        int m_w = mA.getW()/2;
+
+        applyMaskEdgeDetection(mA, mB, hsv_pixels, m_w, bmp.getWidth()-m_w,m_h,bmp.getHeight()-m_h);
+
+        bmp.setHSVPixels(hsv_pixels);
+    }
+
     public int separableConvolution(Kernel row, Kernel column) {
         if (row.getH() > 1 || column.getW() > 1) return -1;
 
@@ -271,6 +277,19 @@ public class BasicFilter {
         }
     }
 
+    private void applyMaskEdgeDetection(Kernel mA, Kernel mB, double[][] pixels, int x_min, int x_max, int y_min, int y_max){
+        int w = bmp.getWidth();
+        double[] pixels_copy = (pixels[2]).clone();
+
+        for(int x=x_min; x<x_max; x++){
+            for(int y=y_min; y<y_max;y++){
+                pixels[2][x + y * w] = applyMaskEdgeDetectionAux(mA, mB, pixels_copy, x, y);
+            }
+        }
+    }
+
+
+
     private double applyMaskAux(Kernel mask, double[] pixels, int x, int y){
         int w = bmp.getWidth();
         int mask_w = mask.getW()/2, mask_h = mask.getH()/2;
@@ -288,5 +307,21 @@ public class BasicFilter {
         }else {
             return somme / mask.getInverse();
         }
+    }
+
+    private double applyMaskEdgeDetectionAux(Kernel mA, Kernel mB, double[] pixels, int x, int y){
+        int w = bmp.getWidth();
+        int mA_w = mA.getW()/2, mA_h = mA.getH()/2;
+        int mB_w = mA.getW()/2, mB_h = mA.getH()/2;
+
+        double sommeA = 0, sommeB = 0;
+
+        for(int i=x-mA_w; i<x+mA_w+1; i++) {
+            for (int j = y - mA_h; j < y + mA_h + 1; j++) {
+                sommeA += pixels[j * w + i] * (double) mA.getValue(i - (x - mA_w), j - (y - mA_h));
+                sommeB += pixels[j * w + i] * (double) mB.getValue(i - (x - mB_w), j - (y - mB_h));
+            }
+        }
+        return Math.hypot(sommeA,sommeB);
     }
 }
