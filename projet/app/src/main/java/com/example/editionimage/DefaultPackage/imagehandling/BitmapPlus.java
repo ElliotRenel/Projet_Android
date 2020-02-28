@@ -1,10 +1,8 @@
 package com.example.editionimage.DefaultPackage.imagehandling;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
 
@@ -25,7 +23,8 @@ public class BitmapPlus {
 
     public BitmapPlus(Bitmap bit, PhotoView view){
         bit_origin = bit.copy(bit.getConfig(),false);
-        bit_current = Bitmap.createScaledBitmap(bit_origin.copy(bit_origin.getConfig(),true),(bit_origin.getWidth()*IMAGE_SIZE)/bit_origin.getHeight(),IMAGE_SIZE,false);
+        //bit_current = Bitmap.createScaledBitmap(bit_origin.copy(bit_origin.getConfig(),true),(bit_origin.getWidth()*IMAGE_SIZE)/bit_origin.getHeight(),IMAGE_SIZE,false);
+        bit_current = bit_origin.copy(bit_origin.getConfig(),true);
 
         filters = new BasicFilter(this);
         height = bit_current.getHeight();
@@ -208,7 +207,8 @@ public class BitmapPlus {
     /** Button Effects **/
 
     public void reset(){
-        bit_current = Bitmap.createScaledBitmap(bit_origin.copy(bit_origin.getConfig(),true),(bit_origin.getWidth()*IMAGE_SIZE)/bit_origin.getHeight(),IMAGE_SIZE,false);
+        //bit_current = Bitmap.createScaledBitmap(bit_origin.copy(bit_origin.getConfig(),true),(bit_origin.getWidth()*IMAGE_SIZE)/bit_origin.getHeight(),IMAGE_SIZE,false);
+        bit_current = bit_origin.copy(bit_origin.getConfig(),true);
         setAsImageView();
     }
     public void toGray(){
@@ -263,8 +263,7 @@ public class BitmapPlus {
         filters.convolution(gauss);
     }
 
-    public void laplacianEdgeDetection(){
-        this.toGray();
+    public void laplaceEdgeDetection(){
         int[] mask = {
                 0, 0,-1, 0, 0,
                 0,-1,-2,-1, 0,
@@ -278,7 +277,6 @@ public class BitmapPlus {
     }
 
     public void sobelEdgeDetection(){
-        this.toGray();
         int[] mask1 = {
                 1, 0, -1,
                 2, 0, -2,

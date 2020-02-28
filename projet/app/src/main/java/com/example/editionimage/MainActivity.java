@@ -249,11 +249,18 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) { if(!toastNoImage.isToastShowed(usedImage)) usedImage.gaussianBlur(); }
         });
 
-        // Edge detection
-        Button buttonEdge = findViewById(R.id.buttonEdge);
-        buttonEdge.setOnClickListener(new View.OnClickListener() {
+        // Laplace's edge detection
+        Button buttonLaplaceEdge = findViewById(R.id.buttonLaplacianEdge);
+        buttonLaplaceEdge.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { if(!toastNoImage.isToastShowed(usedImage)) usedImage.laplacianEdgeDetection(); }
+            public void onClick(View v) { if(!toastNoImage.isToastShowed(usedImage)) usedImage.laplaceEdgeDetection(); }
+        });
+
+        // Sobel edge detection
+        Button buttonSobelEdge = findViewById(R.id.buttonSobelEdge);
+        buttonSobelEdge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { if(!toastNoImage.isToastShowed(usedImage)) usedImage.sobelEdgeDetection(); }
         });
     }
 

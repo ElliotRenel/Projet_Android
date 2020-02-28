@@ -260,11 +260,18 @@
                 android:text="Gaussian Blur" />
 
             <Button
-                android:id="@+id/buttonEdge"
+                android:id="@+id/buttonLaplacianEdge"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#1C7CC9"
-                android:text="Edge Detection" />
+                android:text="Laplacian Edge Detection" />
+
+            <Button
+                android:id="@+id/buttonSobelEdge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#1C7CC9"
+                android:text="Sobel Edge Detection" />
 
         </LinearLayout>
     </ScrollView>
