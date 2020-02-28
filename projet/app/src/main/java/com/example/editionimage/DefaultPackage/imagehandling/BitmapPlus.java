@@ -263,7 +263,7 @@ public class BitmapPlus {
         filters.convolution(gauss);
     }
 
-    public void laplacianEdgeDetection(){
+    public void laplaceEdgeDetection(){
         this.toGray();
         int[] mask = {
                 0, 0,-1, 0, 0,
