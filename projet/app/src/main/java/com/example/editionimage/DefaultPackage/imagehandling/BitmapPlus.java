@@ -1,8 +1,10 @@
 package com.example.editionimage.DefaultPackage.imagehandling;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
 
@@ -36,7 +38,7 @@ public class BitmapPlus {
         view.setImageBitmap(bit_current);
     }
 
-    public void saveImage() {
+    public File saveImage() {
         Log.i("v","bit");
         String imgName = "Image-" + (new Random()).nextInt(1000)+".jpg";
         File dir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString()+"/Edition_Image");
@@ -46,7 +48,6 @@ public class BitmapPlus {
 
         if (file.exists()) file.delete();
         try {
-
             FileOutputStream out = new FileOutputStream(file);
             this.bit_current.compress(Bitmap.CompressFormat.JPEG, 90, out);
             out.flush();
@@ -55,6 +56,7 @@ public class BitmapPlus {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        return file;
     }
 
     public double[][] getHSVPixels(){
