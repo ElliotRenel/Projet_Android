@@ -263,7 +263,7 @@ public class BitmapPlus {
         filters.convolution(gauss);
     }
 
-    public void simpleEdgeDetection(){
+    public void laplacianEdgeDetection(){
         this.toGray();
         int[] mask = {
                 0, 0,-1, 0, 0,
@@ -275,5 +275,23 @@ public class BitmapPlus {
         Kernel laplace = new Kernel(5, 5,mask);
 
         filters.convolution(laplace);
+    }
+
+    public void sobelEdgeDetection(){
+        this.toGray();
+        int[] mask1 = {
+                1, 0, -1,
+                2, 0, -2,
+                1, 0, -1
+        };
+        int[] mask2 = {
+                1, 2, 1,
+                0, 0, 0,
+                -1,-2,-1
+        };
+        Kernel mA = new Kernel(3,3,mask1);
+        Kernel mB = new Kernel(3,3,mask2);
+
+        filters.convolutionEdgeDetection(mA,mB);
     }
 }

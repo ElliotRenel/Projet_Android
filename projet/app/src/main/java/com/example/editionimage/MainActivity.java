@@ -3,7 +3,6 @@ package com.example.editionimage;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,7 +13,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.SeekBar;
-import android.widget.Toast;
 
 import com.example.editionimage.DefaultPackage.imagehandling.BitmapPlus;
 import com.example.editionimage.DefaultPackage.imagehandling.ToasterNoImage;
@@ -251,7 +249,7 @@ public class MainActivity extends AppCompatActivity {
         Button buttonEdge = findViewById(R.id.buttonEdge);
         buttonEdge.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { if(!toastNoImage.isToastShowed(usedImage)) usedImage.simpleEdgeDetection(); }
+            public void onClick(View v) { if(!toastNoImage.isToastShowed(usedImage)) usedImage.laplacianEdgeDetection(); }
         });
     }
 
