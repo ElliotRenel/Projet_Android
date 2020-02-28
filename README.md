@@ -1,3 +1,10 @@
+- Projets Technologiques, Rendu intermédiaire du 28 février.
+- Groupe Elliot Renel, Théo Dupont, Hugo Bergon, Sebastian Pagès.
+- Rapport V1 dans le dossier ./Rapport/Rapport.pdf
+- Ouvrir ./projet directement dans Android Studio pour compiler l'application sur un nouvel appareil
+
+TO DELETE
+
 TO DO :
 - Merges des fonctions Java en prenant le meilleurs (Convolutions)  --> Hugo
 - Save d'image vers la gallerie  --> Elliot

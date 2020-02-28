@@ -1,0 +1,109 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+
+\font\myfont=cmr12 at 40pt
+
+\title{
+    {\myfont Rapport De Groupe Intermédiaire} \\
+    \bigskip
+    Projet Tech Android
+    }
+
+    \author{Théo Dupont, Sebastian Pagès, Hugo Bergon, Elliot Renel}
+    \date{28 Février 2020}
+
+\begin{document}
+
+\maketitle
+\bigskip
+\bigskip
+\bigskip
+
+\tableofcontents
+
+\section{Structuration du Code}
+La structure globale de notre projet.
+
+
+Notre application MainActivity.java manipule essentiellement une classe nommée BitmapPlus, qui a la particularité de posséder deux bitmaps en son sein, ainsi que la PhotoView,
+ seul place ou sera affichée la bitmap. Ainsi on manipule directement la classe BitmapPlus qui s'occupe ensuite de modifier et d'afficher la bitmap désirée en 
+ les fonctions de la classe BasicFilter appellant des fonctions getPixels, setPixels.... adaptées à la structure de BitmapPlus (et non plus une bitmap simple).
+ Ces fonctions se trouvent dans le package com.example.editionimage.imagehandling\\
+\\
+
+Nous avons également utilisé une nouvelle structure pour l'affichage de notre image. 
+Nous avons donc remplacé l'ImageView par une PhotoView, qui possède comme caractéristiques les mêmes que ImageView, 
+mais auquelles on peut rajouter la faculté de scroll et de zoom de cette image.
+%Lien? https://github.com/chrisbanes/PhotoView\\
+\\
+%Parler de kernel et Firstkernel
+
+\\
+
+
+MainActivity s'occupe également de la visibilité de certains boutons comme pour le choix de la couleur à garder, ou du degré de luminosité à modifier.\\
+\\
+Cette classe manipule donc les objets produits par le fichier xml "activity_main.xml".
+%Save?
+Celui-ci est composé d'un layout qui prend la taille de l'écran, les boutons d'accès au choix de la photo, la PhotoView, et enfin, un scrollView.
+Ce scrollView contient toutes les fonctions de modification d'image, ainsi que d'autres scrolls, définis pour des modifications avec un choix, comme KeepColor, Colorize, et setLightlevel.
+Ces seconds scrollView sont composés d'une seekBar pour le choix de la valeur a appliquer, ainsi que d'un bouton Apply pour confirmer son choix.\\
+
+Toutes ces fonctions, s'il n'y a pas d'image de chargée, réalisent une erreur, d'ou notre classe ToasterNoImage, et sa fonction isToastShowed, qui teste si l'image est accessible.
+ \\
+
+
+\section{Choix techniques}
+
+Premièrement, nous allons parler du choix de regrouper deux bitmaps en une seule dans BitmapPlus. Ceci permet de ne pas se tromper quand on appelle une fonction appellant la bitmap, et permet une bien meilleur lisibilité dans les différentes classes.
+%autre avantage?
+
+%Autre point?
+
+
+\section{Besoins fonctionnels}
+
+Les fonctions ci-dessous sont retrouvées dans la fonction BasicFilter.
+%pas oublier les fonctions en rs?
+%Montrer des exemples?
+
+\begin{itemize}
+    \item toGray():\\ 
+    Transforme l'image appellante en niveau de gris.\\
+    L'algorithme prend juste les niveaux de rouge, vert et bleu de l'image, en fait une moyenne pondérée avec les facteurs donnés en cours (0.3/0.59/0.11) 
+    et met la moyenne comme niveau de gris dans le pixel.
+
+    \item colorize(int color):\\
+    Transforme l'image appellante pour que chaque pixel aie une teinte donné en paramètre.
+    La méthode modifie simplement la teinte en passant les pixels en Hsv, puis en modifiant le paramètre h par celui donné en paramètre, pour repasser les pixels en rgb.\\ 
+
+
+    \item keepColor(int color, int range):\\
+    Transforme l'image appellante pour ne garder la couleur que de certains pixels.\\
+    La methode calcule grâce aux paramètres "color" (donné dans MainActivity par une seekBar) et "range" (ici arbitraire, avec une valeur de 30 dans BitmapPlus) un intervalle de couleurs en degrés (couleur HSV) qui sont à garder. Puis dans le parcours des pixels de l'image il 
+    met la saturation du pixel à 0 si sa couleur n'est pas dans l'intervalle.\\
+    A noter que si l'intervalle est discontinu (couleur proche de 0 ou 360), la variable booléen "inRange" est calculée différement.
+
+    \item contrastLinear():
+    \item contrastEqual():
+    \item modifLight(double alpha):
+    \item GaussianBlur():
+    \item simpleEdgeDetection()(Laplace): 
+    \item Sobel?
+
+\subsection{Chargement et sauvegarde d'image}
+
+L'application passe 
+
+
+
+\subsection{Image et manipulation}
+
+
+
+\subsection{Filtres}
+
+
+\section{Problèmes connus}

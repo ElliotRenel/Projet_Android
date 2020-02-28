@@ -181,8 +181,8 @@
                         android:id="@+id/light_sb"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:max="100"
-                        android:min="-100"
+                        android:max="80"
+                        android:min="-80"
                         android:progress="0"
                         android:progressTint="#FFFFFF"
                         android:thumbTint="#7C7C7C" />
