@@ -96,27 +96,7 @@ public class BasicFilter {
     }
 
 
-    /** Contrast **/
-
-    public void modifContrast(int contrast){
-        int size = bmp.getSize();
-        int pixels[] = new int[size];
-        bmp.getPixels(pixels);
-
-        float factor = (259.0f* ((float)contrast + 255.0f)) / (255.0f * (259.0f - (float)contrast));
-
-        for(int i=0; i<size; i++){
-            int r = Color.red(pixels[i]), g = Color.green(pixels[i]), b = Color.blue(pixels[i]), alpha = Color.alpha(pixels[i]);
-
-            r = Math.round(factor * ((float)r - 128) +128);
-            g = Math.round(factor * ((float)g - 128) +128);
-            b = Math.round(factor * ((float)b - 128) +128);
-
-            pixels[i] = Color.argb(alpha,r,g,b);
-        }
-
-        bmp.setPixels(pixels);
-    }
+    /** Contrast and Lighlevel **/
 
     public void contrastLinear(){
         int size = bmp.getSize();
@@ -200,21 +180,50 @@ public class BasicFilter {
         bmp.setBit_current(res);
     }
 
-    public void modifLight(double alpha){
-        double[][] hsv_pixels = bmp.getHSVPixels();
+    private int truncate(float x){
+        if(x>255) return 255;
+        if(x<0) return 0;
+        return Math.round(x);
+    }
 
-        for(int i=0; i<bmp.getSize(); i++){
-            double L = hsv_pixels[2][i]*(1.0-hsv_pixels[1][i]/2.0);
+    public void modifContrast(int contrast){
+        int size = bmp.getSize();
+        int pixels[] = new int[size];
+        bmp.getPixels(pixels);
 
-            double S_L = (L==0 || L==1)?0:((hsv_pixels[2][i]-L)/Math.min(L,1.0-L));
+        float factor = (259* ((float)contrast + 255)) / (255 * (259 - (float)contrast));
 
-            L = L + (alpha>0?(1-L):L)*alpha;
+        for(int i=0; i<size; i++){
+            int r = Color.red(pixels[i]), g = Color.green(pixels[i]), b = Color.blue(pixels[i]), alpha = Color.alpha(pixels[i]);
 
-            hsv_pixels[2][i] = L + S_L*Math.min(L,1.0-L);
-            hsv_pixels[1][i] = (hsv_pixels[2][i]==0)?0:(2*(1-L/hsv_pixels[2][i]));
+            r = truncate(factor * (float)(r - 128) +128);
+            g = truncate(factor * (float)(g - 128) +128);
+            b = truncate(factor * (float)(b - 128) +128);
+
+
+            pixels[i] = Color.argb(alpha,r,g,b);
         }
 
-        bmp.setHSVPixels(hsv_pixels);
+        bmp.setPixels(pixels);
+    }
+
+    public void modifLight(int lightlevel){
+        int size = bmp.getSize();
+        int pixels[] = new int[size];
+        bmp.getPixels(pixels);
+
+        for(int i=0; i<size; i++){
+            int r = Color.red(pixels[i]), g = Color.green(pixels[i]), b = Color.blue(pixels[i]), alpha = Color.alpha(pixels[i]);
+
+            r = truncate(r + lightlevel);
+            g = truncate(g + lightlevel);
+            b = truncate(b + lightlevel);
+
+
+            pixels[i] = Color.argb(alpha,r,g,b);
+        }
+
+        bmp.setPixels(pixels);
     }
 
     /** Convolution **/

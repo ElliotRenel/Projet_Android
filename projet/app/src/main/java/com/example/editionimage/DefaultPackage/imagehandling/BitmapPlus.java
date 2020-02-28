@@ -238,8 +238,13 @@ public class BitmapPlus {
         setAsImageView();
     }
 
-    public void modifLight(double alpha){
-        filters.modifLight(alpha);
+    public void modifContrast(int contrast){
+        filters.modifContrast(contrast);
+        setAsImageView();
+    }
+
+    public void modifLight(int lightvalue){
+        filters.modifLight(lightvalue);
         setAsImageView();
     }
 

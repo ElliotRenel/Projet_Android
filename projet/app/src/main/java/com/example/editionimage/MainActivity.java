@@ -33,10 +33,9 @@ public class MainActivity extends AppCompatActivity {
 
     PhotoView photoView;
     Button openGallery, openCamera;
-    Button buttonColorize, buttonKeepColor, buttonLight;
+    Button buttonColorize, buttonKeepColor, buttonContrast, buttonLight;
     BitmapPlus usedImage;
-    int barValue_keepcolor = 180, barValue_colorize = 180;
-    double barValue_lighlevel = 0;
+    int barValue_keepcolor = 180, barValue_colorize = 180 , barValue_contrast = 0, barValue_lighlevel = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
                 if(colorizeView.getVisibility()==View.GONE) {
                     colorizeView.setVisibility(View.VISIBLE);
                     seekbar_Colorize.setProgress(180);
+                    barValue_colorize = 180;
                 }else{
                     colorizeView.setVisibility(View.GONE);
                     buttonColorize.setText("Colorize");
@@ -147,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
                 if(keepColorView.getVisibility()==View.GONE) {
                     keepColorView.setVisibility(View.VISIBLE);
                     seekbar_keepColor.setProgress(180);
+                    barValue_keepcolor = 180;
                 }else{
                     keepColorView.setVisibility(View.GONE);
                     buttonKeepColor.setText("Keep Color");
@@ -154,39 +155,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-        // Set Lightlevel
-        buttonLight = findViewById(R.id.buttonLight);
-
-        final ScrollView lightView = findViewById(R.id.light_sv);
-        final SeekBar seekbar_light = findViewById(R.id.light_sb);
-        seekbar_light.setOnSeekBarChangeListener(seekListenerLight);
-        Button buttonApplyLight = findViewById(R.id.applyLight_b);
-
-        buttonApplyLight.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!toastNoImage.isToastShowed(usedImage)) usedImage.modifLight(barValue_lighlevel);
-                lightView.setVisibility(View.GONE);
-                buttonLight.setText("Set Lightlevel");
-            }
-        });
-
-        buttonLight.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(lightView.getVisibility()==View.GONE) {
-                    lightView.setVisibility(View.VISIBLE);
-                    seekbar_light.setProgress(0);
-
-                }else{
-                    lightView.setVisibility(View.GONE);
-                    buttonLight.setText("Set Lightlevel");
-                }
-
-            }
-        });
-
 
         // Linear Contrast
         Button buttonContrastLinear = findViewById(R.id.buttonContrastLinear);
@@ -200,6 +168,72 @@ public class MainActivity extends AppCompatActivity {
         buttonContrastEqual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) { if(!toastNoImage.isToastShowed(usedImage)) usedImage.contrastEqualRS(MainActivity.this); }
+        });
+
+        // Modify Contrast
+        buttonContrast = findViewById(R.id.buttonContrast);
+
+        final ScrollView contrastView = findViewById(R.id.contrast_sv);
+        final SeekBar seekbar_contrast = findViewById(R.id.contrast_sb);
+        seekbar_contrast.setOnSeekBarChangeListener(seekListenerContrast);
+        Button buttonApplyContrast = findViewById(R.id.applyContrast_b);
+
+        buttonApplyContrast.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!toastNoImage.isToastShowed(usedImage)) usedImage.modifContrast(barValue_contrast);
+                contrastView.setVisibility(View.GONE);
+                buttonContrast.setText("Modify Contrast");
+            }
+        });
+
+        buttonContrast.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(contrastView.getVisibility()==View.GONE) {
+                    contrastView.setVisibility(View.VISIBLE);
+                    seekbar_contrast.setProgress(0);
+                    barValue_contrast = 0;
+
+                }else{
+                    contrastView.setVisibility(View.GONE);
+                    buttonContrast.setText("Modify Contrast");
+                }
+
+            }
+        });
+
+        // Modify Lightlevel
+        buttonLight = findViewById(R.id.buttonLight);
+
+        final ScrollView lightView = findViewById(R.id.light_sv);
+        final SeekBar seekbar_light = findViewById(R.id.light_sb);
+        seekbar_light.setOnSeekBarChangeListener(seekListenerLight);
+        Button buttonApplyLight = findViewById(R.id.applyLight_b);
+
+        buttonApplyLight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!toastNoImage.isToastShowed(usedImage)) usedImage.modifLight(barValue_lighlevel);
+                lightView.setVisibility(View.GONE);
+                buttonLight.setText("Modify Lightlevel");
+            }
+        });
+
+        buttonLight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(lightView.getVisibility()==View.GONE) {
+                    lightView.setVisibility(View.VISIBLE);
+                    seekbar_light.setProgress(0);
+                    barValue_lighlevel = 0;
+
+                }else{
+                    lightView.setVisibility(View.GONE);
+                    buttonLight.setText("Modify Lightlevel");
+                }
+
+            }
         });
 
         // Gaussian Blur
@@ -257,13 +291,33 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    SeekBar.OnSeekBarChangeListener seekListenerContrast = new SeekBar.OnSeekBarChangeListener() {
+
+        @Override
+        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            // updated continuously as the user slides the thumb
+            barValue_contrast = progress;
+            buttonContrast.setText("Modify Contrast "+(progress>0?"+":"")+progress);
+        }
+
+        @Override
+        public void onStartTrackingTouch(SeekBar seekBar) {
+            // called when the user first touches the SeekBar
+        }
+
+        @Override
+        public void onStopTrackingTouch(SeekBar seekBar) {
+            // called after the user finishes moving the SeekBar
+        }
+    };
+
     SeekBar.OnSeekBarChangeListener seekListenerLight = new SeekBar.OnSeekBarChangeListener() {
 
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
             // updated continuously as the user slides the thumb
-            barValue_lighlevel = ((double) progress)/100.0;
-            buttonLight.setText("Set Lightlevel "+((float)progress/100));
+            barValue_lighlevel = progress;
+            buttonLight.setText("Set Lightlevel "+(progress>0?"+":"")+progress);
         }
 
         @Override
