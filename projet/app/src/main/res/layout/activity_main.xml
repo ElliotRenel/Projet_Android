@@ -7,6 +7,7 @@
     tools:context=".MainActivity">
 
 
+
     <com.github.chrisbanes.photoview.PhotoView
         android:id="@+id/main_view"
         android:layout_width="323dp"
@@ -58,12 +59,21 @@
                 android:id="@+id/buttonReset"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#1C7CC9"
                 android:text="Reset" />
+
+            <Button
+                android:id="@+id/buttonSave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#1C7CC9"
+                android:text="Save" />
 
             <Button
                 android:id="@+id/buttonToGray"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#1C7CC9"
                 android:text="To Gray"
                 android:visibility="visible" />
 
@@ -71,6 +81,7 @@
                 android:id="@+id/buttonColorize"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#1C7CC9"
                 android:text="Colorize"
                 android:visibility="visible" />
 
@@ -78,6 +89,7 @@
                 android:id="@+id/colorize_sv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 android:visibility="gone">
 
@@ -91,7 +103,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:max="360"
-                        android:progress="180" />
+                        android:progress="180"
+                        android:progressTint="#FFFFFF"
+                        android:thumbTint="#7C7C7C" />
 
                     <Button
                         android:id="@+id/applyColorize_b"
@@ -105,6 +119,7 @@
                 android:id="@+id/buttonKeepColor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#1C7CC9"
                 android:text="Keep Color"
                 android:visibility="visible" />
 
@@ -112,7 +127,7 @@
                 android:id="@+id/keepColor_sv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 android:visibility="gone">
 
@@ -124,11 +139,11 @@
                     <SeekBar
                         android:id="@+id/keepColor_sb"
                         android:layout_width="match_parent"
-                        android:layout_height="27dp"
-                        android:layout_marginStart="0dp"
+                        android:layout_height="wrap_content"
                         android:max="360"
                         android:progress="180"
-                        android:visibility="visible" />
+                        android:progressTint="#FFFFFF"
+                        android:thumbTint="#7C7C7C" />
 
                     <Button
                         android:id="@+id/applyKeepColor_b"
@@ -145,13 +160,15 @@
                 android:id="@+id/buttonLight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#1C7CC9"
                 android:text="Set Lightlevel"
                 android:visibility="visible" />
 
             <ScrollView
                 android:id="@+id/light_sv"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 android:visibility="gone">
 
@@ -166,7 +183,9 @@
                         android:layout_height="wrap_content"
                         android:max="100"
                         android:min="-100"
-                        android:progress="0" />
+                        android:progress="0"
+                        android:progressTint="#FFFFFF"
+                        android:thumbTint="#7C7C7C" />
 
                     <Button
                         android:id="@+id/applyLight_b"
@@ -180,12 +199,14 @@
                 android:id="@+id/buttonContrastLinear"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#1C7CC9"
                 android:text="Linear Contrast" />
 
             <Button
                 android:id="@+id/buttonContrastEqual"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#1C7CC9"
                 android:text="Equalizer Contrast"
                 android:visibility="visible" />
 
@@ -193,29 +214,17 @@
                 android:id="@+id/buttonGaussian"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#1C7CC9"
                 android:text="Gaussian Blur" />
 
             <Button
                 android:id="@+id/buttonEdge"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#1C7CC9"
                 android:text="Edge Detection" />
 
         </LinearLayout>
-    </ScrollView>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

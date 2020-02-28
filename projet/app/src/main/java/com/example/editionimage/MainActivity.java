@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         /** Setting up the app **/
+        usedImage = null;
         photoView = (PhotoView) findViewById(R.id.main_view);
         openGallery = findViewById(R.id.galleryButton);
         openCamera = findViewById(R.id.cameraButton);
@@ -57,6 +58,15 @@ public class MainActivity extends AppCompatActivity {
          });
 
         /** Effects buttons **/
+
+        // Save
+        Button buttonSave = findViewById(R.id.buttonSave);
+        buttonSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //usedImage.save();
+            }
+        });
 
         // Reset
         Button buttonReset = findViewById(R.id.buttonReset);
@@ -84,18 +94,26 @@ public class MainActivity extends AppCompatActivity {
         seekbar_Colorize.setOnSeekBarChangeListener(seekListenerColorize);
 
 
+        buttonApplyColorize.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                usedImage.colorize(barValue_colorize);
+                colorizeView.setVisibility(View.GONE);
+                buttonColorize.setText("Colorize");
+            }
+        });
+
         buttonColorize.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                colorizeView.setVisibility(View.VISIBLE);
-                buttonApplyColorize.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        usedImage.colorize(barValue_colorize);
-                        colorizeView.setVisibility(View.GONE);
-                        buttonColorize.setText("Colorize");
-                    }
-                });
+                if(colorizeView.getVisibility()==View.GONE) {
+                    colorizeView.setVisibility(View.VISIBLE);
+                    seekbar_Colorize.setProgress(180);
+                }else{
+                    colorizeView.setVisibility(View.GONE);
+                    buttonColorize.setText("Colorize");
+                }
+
             }
         });
 
@@ -105,20 +123,28 @@ public class MainActivity extends AppCompatActivity {
         final ScrollView keepColorView = findViewById(R.id.keepColor_sv);
         final SeekBar seekbar_keepColor = findViewById(R.id.keepColor_sb);
         seekbar_keepColor.setOnSeekBarChangeListener(seekListenerKeepcolor);
-        final Button buttonApplyKeepColor = findViewById(R.id.applyKeepColor_b);
+        Button buttonApplyKeepColor = findViewById(R.id.applyKeepColor_b);
+
+        buttonApplyKeepColor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                usedImage.keepColor(barValue_keepcolor);
+                keepColorView.setVisibility(View.GONE);
+                buttonKeepColor.setText("Keep Color");
+            }
+        });
 
         buttonKeepColor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                keepColorView.setVisibility(View.VISIBLE);
-                buttonApplyKeepColor.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        usedImage.keepColor(barValue_keepcolor);
-                        keepColorView.setVisibility(View.GONE);
-                        buttonKeepColor.setText("Keep Color");
-                    }
-                });
+                if(keepColorView.getVisibility()==View.GONE) {
+                    keepColorView.setVisibility(View.VISIBLE);
+                    seekbar_keepColor.setProgress(180);
+                }else{
+                    keepColorView.setVisibility(View.GONE);
+                    buttonKeepColor.setText("Keep Color");
+                }
+
             }
         });
 
@@ -128,23 +154,31 @@ public class MainActivity extends AppCompatActivity {
         final ScrollView lightView = findViewById(R.id.light_sv);
         final SeekBar seekbar_light = findViewById(R.id.light_sb);
         seekbar_light.setOnSeekBarChangeListener(seekListenerLight);
-        final Button buttonApplyLight = findViewById(R.id.applyLight_b);
+        Button buttonApplyLight = findViewById(R.id.applyLight_b);
+
+        buttonApplyLight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                usedImage.modifLight(barValue_lighlevel);
+                lightView.setVisibility(View.GONE);
+                buttonLight.setText("Set Lightlevel");
+            }
+        });
 
         buttonLight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                lightView.setVisibility(View.VISIBLE);
-                buttonApplyLight.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        usedImage.modifLight(barValue_lighlevel);
-                        lightView.setVisibility(View.GONE);
-                        buttonLight.setText("Set Lightlevel");
-                    }
-                });
+                if(lightView.getVisibility()==View.GONE) {
+                    lightView.setVisibility(View.VISIBLE);
+                    seekbar_light.setProgress(0);
+
+                }else{
+                    lightView.setVisibility(View.GONE);
+                    buttonLight.setText("Set Lightlevel");
+                }
+
             }
         });
-
 
 
         // Linear Contrast
