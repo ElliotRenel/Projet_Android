@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //usedImage.save();
+                usedImage.saveImage();
             }
         });
 
