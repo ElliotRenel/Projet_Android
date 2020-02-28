@@ -34,9 +34,9 @@
     \\
     \\
     \\
-    Notre application MainActivity.java manipule essentiellement une classe nommée BitmapPlus, qui a la particularité de posséder deux bitmaps en son sein, ainsi que la PhotoView,
-    seul place ou sera affichée la bitmap. Ainsi on manipule directement la classe BitmapPlus qui s'occupe ensuite de modifier et d'afficher la bitmap désirée en 
-    les fonctions de la classe BasicFilter appellant des fonctions getPixels, setPixels.... adaptées à la structure de BitmapPlus (et non plus une bitmap simple).\\
+    Notre application MainActivity.java manipule essentiellement une classe nommée BitmapHandler, qui a la particularité de posséder deux bitmaps en son sein, ainsi que la PhotoView,
+    seul place ou sera affichée la bitmap. Ainsi on manipule directement la classe BitmapHandler qui s'occupe ensuite de modifier et d'afficher la bitmap désirée en 
+    les fonctions de la classe BasicFilter appellant des fonctions getPixels, setPixels.... adaptées à la structure de BitmapHandler (et non plus une bitmap simple).\\
     Ces fonctions se trouvent dans le package com.example.editionimage.imagehandling\\
     \\
     Nous avons également utilisé une nouvelle structure pour l'affichage de notre image. \\
@@ -58,7 +58,7 @@
     \bigskip
 
 \section{Choix techniques}
-    Premièrement, nous allons parler du choix de regrouper deux bitmaps en une seule dans BitmapPlus. \\
+    Premièrement, nous allons parler du choix de regrouper deux bitmaps en une seule dans BitmapHandler. \\
     Ceci permet de ne pas se tromper quand on appelle une fonction appellant la bitmap, et permet une bien meilleur lisibilité dans les différentes classes.\\
     \\
     La classe Kernel permet de manipuler plus simplement et plus visuellement les matrices que l'on veut appliquer. Ainsi on peut facilement appliquer une matrice dans une fonction plusieurs fois si nécessaire.
@@ -103,7 +103,7 @@
         \\
         \item keepColor(int color, int range):\\
         Transforme l'image appellante pour ne garder la couleur que de certains pixels.\\
-        La methode calcule grâce aux paramètres "color" (donné dans MainActivity par une seekBar) et "range" (ici arbitraire, avec une valeur de 30 dans BitmapPlus) un intervalle de couleurs en degrés (couleur HSV) qui sont à garder. Puis dans le parcours des pixels de l'image il 
+        La methode calcule grâce aux paramètres "color" (donné dans MainActivity par une seekBar) et "range" (ici arbitraire, avec une valeur de 30 dans BitmapHandler) un intervalle de couleurs en degrés (couleur HSV) qui sont à garder. Puis dans le parcours des pixels de l'image il 
         met la saturation du pixel à 0 si sa couleur n'est pas dans l'intervalle.\\
         A noter que si l'intervalle est discontinu (couleur proche de 0 ou 360), la variable booléen "inRange" est calculée différement.\\
         \\
@@ -115,7 +115,7 @@
         déscents, puis redivisé par 100 une fois récupéré.\\
         \\
         \item contrastEqual():
-        Transformation de contraste par égalisation d'histogramme du bitmapPlus appellant.\\
+        Transformation de contraste par égalisation d'histogramme du BitmapHandler appellant.\\
         Après avoir récupéré l'histogramme de l'image (de la même manière que le contraste linéaire) et calculé l'histogramme cumulé C[],
         on calcule pour chaque pixel la valeur C[Value]*Range/Size où Value et Range ont le même rôle que dans le contraste linéaire 
         et Size est le nombre de pixels de l'image. La valeur de V pour l'histogramme est aussi multiplié par 100 
