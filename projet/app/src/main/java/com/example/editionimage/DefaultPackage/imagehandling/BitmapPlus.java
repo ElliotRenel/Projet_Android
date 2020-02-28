@@ -1,5 +1,6 @@
 package com.example.editionimage.DefaultPackage.imagehandling;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 
@@ -167,6 +168,14 @@ public class BitmapPlus {
         return width;
     }
 
+    public Bitmap getBit_current() {
+        return bit_current;
+    }
+
+    public void setBit_current( Bitmap arg ) {
+        this.bit_current=arg;
+    }
+
     /** Button Effects **/
 
     public void reset(){
@@ -191,6 +200,10 @@ public class BitmapPlus {
     }
     public void contrastEqual(){
         filters.contrastEqual();
+        setAsImageView();
+    }
+    public void contrastEqualRS(Context context){
+        filters.contrastEqualRS(context);
         setAsImageView();
     }
 

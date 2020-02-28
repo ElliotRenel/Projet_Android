@@ -1,11 +1,16 @@
 package com.example.editionimage.DefaultPackage.imagehandling;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.renderscript.Allocation;
+import android.renderscript.RenderScript;
 import android.util.Log;
 
 import com.example.editionimage.DefaultPackage.imagehandling.tools.FirstKernel;
 import com.example.editionimage.DefaultPackage.imagehandling.tools.Kernel;
+import com.example.editionimage.MainActivity;
+import com.example.editionimage.ScriptC_histEq;
 
 import java.util.Random;
 
@@ -102,6 +107,49 @@ public class BasicFilter {
             tabs[2][i] = (((float)C[(int)(tabs[2][i]*100)])*100)/(float)(size*100);
         }
         bmp.setHSVPixels(tabs);
+    }
+
+    public void contrastEqualRS(Context context) {
+        //Get image size
+        int width = bmp.getWidth();
+        int height = bmp.getHeight();
+
+        //Create new bitmap;
+        Bitmap res = bmp.getBit_current();
+        //Create renderscript
+        RenderScript rs = RenderScript.create(context);
+
+        //Create allocation from Bitmap
+        Allocation allocationA = Allocation.createFromBitmap(rs, res);
+
+        //Create allocation with same type
+        Allocation allocationB = Allocation.createTyped(rs, allocationA.getType());
+
+        //Create script from rs file.
+        ScriptC_histEq histEqScript = new ScriptC_histEq(rs);
+
+        //Set size in script
+        histEqScript.set_size(width*height);
+
+        //Call the first kernel.
+        histEqScript.forEach_root(allocationA, allocationB);
+
+        //Call the rs method to compute the remap array
+        histEqScript.invoke_createRemapArray();
+
+        //Call the second kernel
+        histEqScript.forEach_remaptoRGB(allocationB, allocationA);
+
+        //Copy script result into bitmap
+        allocationA.copyTo(res);
+
+        //Destroy everything to free memory
+        allocationA.destroy();
+        allocationB.destroy();
+        histEqScript.destroy();
+        rs.destroy();
+
+        bmp.setBit_current(res);
     }
 
     public void modifLight(double alpha){

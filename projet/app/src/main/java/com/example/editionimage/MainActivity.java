@@ -3,6 +3,7 @@ package com.example.editionimage;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -158,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
         Button buttonContrastEqual = findViewById(R.id.buttonContrastEqual);
         buttonContrastEqual.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { usedImage.contrastEqual(); }
+            public void onClick(View v) { usedImage.contrastEqualRS(MainActivity.this); }
         });
 
         // Gaussian Blur
