@@ -70,6 +70,26 @@ public class BasicFilter {
 
     /** Contrast **/
 
+    public void modifContrast(int contrast){
+        int size = bmp.getSize();
+        int pixels[] = new int[size];
+        bmp.getPixels(pixels);
+
+        float factor = (259.0f* ((float)contrast + 255.0f)) / (255.0f * (259.0f - (float)contrast));
+
+        for(int i=0; i<size; i++){
+            int r = Color.red(pixels[i]), g = Color.green(pixels[i]), b = Color.blue(pixels[i]), alpha = Color.alpha(pixels[i]);
+
+            r = Math.round(factor * ((float)r - 128) +128);
+            g = Math.round(factor * ((float)g - 128) +128);
+            b = Math.round(factor * ((float)b - 128) +128);
+
+            pixels[i] = Color.argb(alpha,r,g,b);
+        }
+
+        bmp.setPixels(pixels);
+    }
+
     public void contrastLinear(){
         int size = bmp.getSize();
         double[][] tabs = bmp.getHSVPixels();
