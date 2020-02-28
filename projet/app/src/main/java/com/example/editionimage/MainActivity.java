@@ -14,8 +14,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.SeekBar;
+import android.widget.Toast;
 
 import com.example.editionimage.DefaultPackage.imagehandling.BitmapPlus;
+import com.example.editionimage.DefaultPackage.imagehandling.ToasterNoImage;
 import com.github.chrisbanes.photoview.PhotoView;
 
 import java.io.File;
@@ -25,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
     private static final int PICK_IMAGE = 100;
     private static final int REQUEST_TAKE_PHOTO = 1888;
     private static final int MY_CAMERA_PERMISSION_CODE = 101;
+
+
+
 
     PhotoView photoView;
     Button openGallery, openCamera;
@@ -40,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
         /** Setting up the app **/
         usedImage = null;
+        final ToasterNoImage toastNoImage = new ToasterNoImage(getApplicationContext());
         photoView = (PhotoView) findViewById(R.id.main_view);
         openGallery = findViewById(R.id.galleryButton);
         openCamera = findViewById(R.id.cameraButton);
@@ -65,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //usedImage.save();
+                usedImage.saveImage();
             }
         });
 
@@ -74,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         buttonReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                usedImage.reset();
+                if(!toastNoImage.isToastShowed(usedImage)) usedImage.reset();
             }
         });
 
@@ -82,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         Button buttonToGray = findViewById(R.id.buttonToGray);
         buttonToGray.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { usedImage.toGray();
+            public void onClick(View v) {if(!toastNoImage.isToastShowed(usedImage)) usedImage.toGrayRS(MainActivity.this);
             }
         });
 
@@ -98,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         buttonApplyColorize.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                usedImage.colorize(barValue_colorize);
+                if(!toastNoImage.isToastShowed(usedImage)) usedImage.colorize(barValue_colorize);
                 colorizeView.setVisibility(View.GONE);
                 buttonColorize.setText("Colorize");
             }
@@ -129,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
         buttonApplyKeepColor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                usedImage.keepColor(barValue_keepcolor);
+                if(!toastNoImage.isToastShowed(usedImage)) usedImage.keepColor(barValue_keepcolor);
                 keepColorView.setVisibility(View.GONE);
                 buttonKeepColor.setText("Keep Color");
             }
@@ -160,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
         buttonApplyLight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                usedImage.modifLight(barValue_lighlevel);
+                if(!toastNoImage.isToastShowed(usedImage)) usedImage.modifLight(barValue_lighlevel);
                 lightView.setVisibility(View.GONE);
                 buttonLight.setText("Set Lightlevel");
             }
@@ -186,28 +192,28 @@ public class MainActivity extends AppCompatActivity {
         Button buttonContrastLinear = findViewById(R.id.buttonContrastLinear);
         buttonContrastLinear.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { usedImage.contrastLinear(); }
+            public void onClick(View v) { if(!toastNoImage.isToastShowed(usedImage)) usedImage.contrastLinear(); }
         });
 
         // Equal Contrast
         Button buttonContrastEqual = findViewById(R.id.buttonContrastEqual);
         buttonContrastEqual.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { usedImage.contrastEqualRS(MainActivity.this); }
+            public void onClick(View v) { if(!toastNoImage.isToastShowed(usedImage)) usedImage.contrastEqualRS(MainActivity.this); }
         });
 
         // Gaussian Blur
         Button buttonGaussian = findViewById(R.id.buttonGaussian);
         buttonGaussian.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { usedImage.gaussianBlur(); }
+            public void onClick(View v) { if(!toastNoImage.isToastShowed(usedImage)) usedImage.gaussianBlur(); }
         });
 
         // Edge detection
         Button buttonEdge = findViewById(R.id.buttonEdge);
         buttonEdge.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { usedImage.simpleEdgeDetection(); }
+            public void onClick(View v) { if(!toastNoImage.isToastShowed(usedImage)) usedImage.simpleEdgeDetection(); }
         });
     }
 
