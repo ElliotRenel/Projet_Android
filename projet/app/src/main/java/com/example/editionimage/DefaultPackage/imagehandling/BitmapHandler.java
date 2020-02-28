@@ -13,7 +13,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Random;
 
-public class BitmapPlus {
+public class BitmapHandler {
     private Bitmap bit_origin, bit_current;
     private BasicFilter filters;
     private int height, width, size;
@@ -21,7 +21,7 @@ public class BitmapPlus {
 
     private final int IMAGE_SIZE = 700;
 
-    public BitmapPlus(Bitmap bit, PhotoView view){
+    public BitmapHandler(Bitmap bit, PhotoView view){
         bit_origin = bit.copy(bit.getConfig(),false);
         //bit_current = Bitmap.createScaledBitmap(bit_origin.copy(bit_origin.getConfig(),true),(bit_origin.getWidth()*IMAGE_SIZE)/bit_origin.getHeight(),IMAGE_SIZE,false);
         bit_current = bit_origin.copy(bit_origin.getConfig(),true);

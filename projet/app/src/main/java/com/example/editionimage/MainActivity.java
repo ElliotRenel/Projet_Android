@@ -15,7 +15,7 @@ import android.widget.ScrollView;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
-import com.example.editionimage.DefaultPackage.imagehandling.BitmapPlus;
+import com.example.editionimage.DefaultPackage.imagehandling.BitmapHandler;
 import com.example.editionimage.DefaultPackage.imagehandling.ToasterNoImage;
 import com.github.chrisbanes.photoview.PhotoView;
 
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     PhotoView photoView;
     Button openGallery, openCamera;
     Button buttonColorize, buttonKeepColor, buttonContrast, buttonLight;
-    BitmapPlus usedImage;
+    BitmapHandler usedImage;
     int barValue_keepcolor = 180, barValue_colorize = 180 , barValue_contrast = 0, barValue_lighlevel = 0;
 
     @Override
@@ -413,7 +413,7 @@ public class MainActivity extends AppCompatActivity {
 
             try {
                     //MediaStore is used to "convert" the uri to a Bitmap, which is then used to create our BitmapPlus
-                    usedImage = new BitmapPlus(MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri), photoView);
+                    usedImage = new BitmapHandler(MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri), photoView);
                     usedImage.setAsImageView();
                 } catch (IOException e) {
                     Log.i("Errors", "IOException while trying to load file from gallery");
@@ -422,7 +422,7 @@ public class MainActivity extends AppCompatActivity {
             }
             if(requestCode == REQUEST_TAKE_PHOTO){
                 try {
-                    usedImage = new BitmapPlus(MediaStore.Images.Media.getBitmap(this.getContentResolver(), photoURI), photoView);
+                    usedImage = new BitmapHandler(MediaStore.Images.Media.getBitmap(this.getContentResolver(), photoURI), photoView);
                     usedImage.setAsImageView();
                 }catch (IOException e){
                 Log.i("Errors", "IOException while trying to load the picture taken in camera");

@@ -11,9 +11,9 @@ import com.example.editionimage.ScriptC_gray;
 import com.example.editionimage.ScriptC_histEq;
 
 public class BasicFilter {
-    BitmapPlus bmp;
+    BitmapHandler bmp;
 
-    public BasicFilter(BitmapPlus bit){
+    public BasicFilter(BitmapHandler bit){
         bmp = bit;
     }
 
