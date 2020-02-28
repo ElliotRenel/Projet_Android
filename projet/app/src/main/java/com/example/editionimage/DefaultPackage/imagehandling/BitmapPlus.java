@@ -3,9 +3,15 @@ package com.example.editionimage.DefaultPackage.imagehandling;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.os.Environment;
+import android.util.Log;
 
 import com.example.editionimage.DefaultPackage.imagehandling.tools.Kernel;
 import com.github.chrisbanes.photoview.PhotoView;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.util.Random;
 
 public class BitmapPlus {
     private Bitmap bit_origin, bit_current;
@@ -28,6 +34,27 @@ public class BitmapPlus {
 
     public void setAsImageView(){
         view.setImageBitmap(bit_current);
+    }
+
+    public void saveImage() {
+        Log.i("v","bit");
+        String imgName = "Image-" + (new Random()).nextInt(1000)+".jpg";
+        File dir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString()+"/Edition_Image");
+        dir.mkdir();
+
+        File file = new File(dir.getAbsolutePath(),imgName);
+
+        if (file.exists()) file.delete();
+        try {
+
+            FileOutputStream out = new FileOutputStream(file);
+            this.bit_current.compress(Bitmap.CompressFormat.JPEG, 90, out);
+            out.flush();
+            out.close();
+            Log.i("v","e");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     public double[][] getHSVPixels(){
