@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //usedImage.save();
+                usedImage.saveImage();
             }
         });
 
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         Button buttonToGray = findViewById(R.id.buttonToGray);
         buttonToGray.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {if(!toastNoImage.isToastShowed(usedImage)) usedImage.toGray();
+            public void onClick(View v) {if(!toastNoImage.isToastShowed(usedImage)) usedImage.toGrayRS(MainActivity.this);
             }
         });
 
