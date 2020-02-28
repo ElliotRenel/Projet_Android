@@ -61,8 +61,13 @@
     Premièrement, nous allons parler du choix de regrouper deux bitmaps en une seule dans BitmapPlus. \\
     Ceci permet de ne pas se tromper quand on appelle une fonction appellant la bitmap, et permet une bien meilleur lisibilité dans les différentes classes.\\
     \\
+    La classe Kernel permet de manipuler plus simplement et plus visuellement les matrices que l'on veut appliquer. Ainsi on peut facilement appliquer une matrice dans une fonction plusieurs fois si nécessaire.
+    \\
+    \\
+    Nous avons également utilisé des fonctions de récupération/dépot de tableaux en hsv directement, pour permettre une plus grande fluidité.
+    \\
+    Les fonctions de modification de contraste et de luminosité manipulent les canaux RGB car plus facile a optimiser et manipuler, que le hsv.
 
-    %Autre point?
 
 
 \section{Besoins fonctionnels}
@@ -121,6 +126,10 @@
         Modification de la luminosité de l'image appellante.
         La fonction ajoute/réduit jusqu'a une valeur de 80 a chaque canal rouge, vert et bleu simultanément pour faire varier la luminosité de chaque pixel.\\
         \\
+        \item modifLight(double alpha):   
+        Modification du contraste de l'image appellante.
+        Cette fonction utilise la valeur donnée pour augmenter ou réduire les canaux du pixel en conséquence, par rapport à ses canaux de base. Ainsi les canaux élevés seront augmentés alors que ceux qui sont faibles seront plus proches de 0.\\
+        \\
     \end{itemize}
 
     \subsection{Convolutions}
@@ -144,7 +153,7 @@
             \end{equation} 
         \\
         \item simpleEdgeDetection()(Laplace): 
-        simpleEdgeDetection est une application de la détection de bordure de Laplace avec une distribution gaussienne 
+        simpleEdgeDetection est une application de la détection de bordure de Laplace avec une distribution gaussienne, Laplace étant utilisé pour la détection de bords.
         \begin{equation}
             \begin{pmatrix}
                 0 &  0 & -1 &  0 &  0\\
@@ -155,7 +164,25 @@
             \end{pmatrix}
         \end{equation} 
         \\
-        \item Sobel
+        \item Sobel():
+        Sobel est un autre moyen de réaliser la détection des bords.
+        Il utilise ces deux matrices 3x3 ci-dessous, avec la première qui réalisera la détection de bord verticaux et la deuxième ceux horizontaux
+        (cela simule l'effet d'une grosse matrice d'une manière plus efficace):
+        \begin{equation}
+            \begin{pmatrix}
+                1 &  0 & -1 \\
+                2 & 0 & -2 \\
+                1 & 0 & -1 \\
+            \end{pmatrix}
+        \end{equation} 
+        \begin{equation}
+            \begin{pmatrix}
+                1 &  2 & 1 \\
+                0 & 0 & 0 \\
+                -1 & -2 & -1 \\
+            \end{pmatrix}
+        \end{equation} 
+        
     
     \end{itemize}
 

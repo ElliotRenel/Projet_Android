@@ -1,15 +1,12 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.10.10)  28 FEB 2020 22:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.1.8)  28 FEB 2020 23:57
 entering extended mode
- restricted \write18 enabled.
- file:line:error style messages enabled.
- %&-line parsing enabled.
-**/home/elliotrenel/Documents/University/Android/Projet_Android/Rapport/rapport.tex
-(/home/elliotrenel/Documents/University/Android/Projet_Android/Rapport/rapport.tex
-LaTeX2e <2018-12-01>
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2018/09/03 v1.4i Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
-File: size12.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
+**d:/Docs/L3/Projet_Android/Rapport/rapport.tex
+(d:/Docs/L3/Projet_Android/Rapport/rapport.tex
+LaTeX2e <2019-10-01> patch level 3
+("D:\Program Files\MiKTeX 2.9\tex/latex/base\article.cls"
+Document Class: article 2019/10/25 v1.4k Standard LaTeX document class
+("D:\Program Files\MiKTeX 2.9\tex/latex/base\size12.clo"
+File: size12.clo 2019/10/25 v1.4k Standard LaTeX file (size option)
 )
 \c@part=\count80
 \c@section=\count81
@@ -22,43 +19,43 @@ File: size12.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
-) (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+) ("D:\Program Files\MiKTeX 2.9\tex/latex/base\inputenc.sty"
 Package: inputenc 2018/08/11 v1.3c Input encoding file
 \inpenc@prehook=\toks14
 \inpenc@posthook=\toks15
-) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+) ("D:\Program Files\MiKTeX 2.9\tex/latex/base\fontenc.sty"
 Package: fontenc 2018/08/11 v2.0j Standard LaTeX package
- (/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def
+ ("D:\Program Files\MiKTeX 2.9\tex/latex/base\t1enc.def"
 File: t1enc.def 2018/08/11 v2.0j Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
-)) (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2018/11/13 3.27 The Babel package
- (/usr/share/texlive/texmf-dist/tex/generic/babel/switch.def
-File: switch.def 2018/11/13 3.27 Babel switching mechanism
-) (/usr/share/texlive/texmf-dist/tex/generic/babel-french/french.ldf
-Language: french 2019/01/30 v3.5d French support from the babel system
- (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
-File: babel.def 2018/11/13 3.27 Babel common definitions
+)) ("D:\Program Files\MiKTeX 2.9\tex/generic/babel\babel.sty"
+Package: babel 2019/12/08 3.37 The Babel package
+ ("D:\Program Files\MiKTeX 2.9\tex/generic/babel\switch.def"
+File: switch.def 2019/12/08 3.37 Babel switching mechanism
+)
+*************************************
+* Local config file bblopts.cfg used
+*
+("D:\Program Files\MiKTeX 2.9\tex/latex/arabi\bblopts.cfg"
+File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of babel
+) ("D:\Program Files\MiKTeX 2.9\tex/generic/babel-french\french.ldf"
+Language: french 2019/09/07 v3.5f French support from the babel system
+ ("D:\Program Files\MiKTeX 2.9\tex/generic/babel\babel.def"
+File: babel.def 2019/12/08 3.37 Babel common definitions
 \babel@savecnt=\count88
 \U@D=\dimen103
- (/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
+ ("D:\Program Files\MiKTeX 2.9\tex/generic/babel\txtbabel.def")
 \bbl@dirlevel=\count89
 )
-\l@french = a dialect from \language\l@nohyphenation 
-
-
-Package babel Warning: No hyphenation patterns were preloaded for
-(babel)                the language `French' into the format.
-(babel)                Please, configure your TeX system to add them and
-(babel)                rebuild the format. Now I will use the patterns
-(babel)                preloaded for \language=nohyphenation instead on input line 87.
-
-\l@acadian = a dialect from \language\l@french 
+Package babel Info: \l@acadian = using hyphenrules for french
+(babel)             (\language22) on input line 91.
+Package babel Info: \l@canadien = using hyphenrules for french
+(babel)             (\language22) on input line 92.
 \FB@nonchar=\count90
-Package babel Info: Making : an active character on input line 414.
-Package babel Info: Making ; an active character on input line 415.
-Package babel Info: Making ! an active character on input line 416.
-Package babel Info: Making ? an active character on input line 417.
+Package babel Info: Making : an active character on input line 419.
+Package babel Info: Making ; an active character on input line 420.
+Package babel Info: Making ! an active character on input line 421.
+Package babel Info: Making ? an active character on input line 422.
 \FBguill@level=\count91
 \FBold@everypar=\toks16
 \FB@Mht=\dimen104
@@ -75,76 +72,77 @@ Package babel Info: Making ? an active character on input line 417.
 \leftmarginFB=\dimen109
 \parindentFFN=\dimen110
 \FBfnindent=\dimen111
-)) (/usr/share/texlive/texmf-dist/tex/latex/carlisle/scalefnt.sty) (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+)) ("D:\Program Files\MiKTeX 2.9\tex/latex/carlisle\scalefnt.sty") ("D:\Program Files\MiKTeX 2.9\tex/latex/graphics\keyval.sty"
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks17
-) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+) ("D:\Program Files\MiKTeX 2.9\tex/latex/graphics\graphicx.sty"
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
- (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
- (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+ ("D:\Program Files\MiKTeX 2.9\tex/latex/graphics\graphics.sty"
+Package: graphics 2019/11/01 v1.3d Standard LaTeX Graphics (DPC,SPQR)
+ ("D:\Program Files\MiKTeX 2.9\tex/latex/graphics\trig.sty"
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
-) (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+) ("D:\Program Files\MiKTeX 2.9\tex/latex/graphics-cfg\graphics.cfg"
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 99.
- (/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+Package graphics Info: Driver file: pdftex.def on input line 105.
+ ("D:\Program Files\MiKTeX 2.9\tex/latex/graphics-def\pdftex.def"
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen112
 \Gin@req@width=\dimen113
-) (/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty
-Package: multirow 2019/01/01 v2.4 Span multiple rows of a table
+) ("D:\Program Files\MiKTeX 2.9\tex/latex/multirow\multirow.sty"
+Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
 \multirow@colwidth=\skip43
 \multirow@cntb=\count98
 \multirow@dima=\skip44
 \bigstrutjot=\dimen114
-) (/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+) ("D:\Program Files\MiKTeX 2.9\tex/latex/wrapfig\wrapfig.sty"
 \wrapoverhang=\dimen115
 \WF@size=\dimen116
 \c@WF@wrappedlines=\count99
 \WF@box=\box27
 \WF@everypar=\toks18
 Package: wrapfig 2003/01/31  v 3.6
-) (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+) ("D:\Program Files\MiKTeX 2.9\tex/latex/amsfonts\amsfonts.sty"
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \@emptytoks=\toks19
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2018/12/01 v2.17b AMS math features
+) ("D:\Program Files\MiKTeX 2.9\tex/latex/amsmath\amsmath.sty"
+Package: amsmath 2019/11/16 v2.17d AMS math features
 \@mathmargin=\skip45
 
 For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+("D:\Program Files\MiKTeX 2.9\tex/latex/amsmath\amstext.sty"
 Package: amstext 2000/06/29 v2.01 AMS text
- (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+ ("D:\Program Files\MiKTeX 2.9\tex/latex/amsmath\amsgen.sty"
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks20
 \ex@=\dimen117
-)) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+)) ("D:\Program Files\MiKTeX 2.9\tex/latex/amsmath\amsbsy.sty"
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen118
-) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+) ("D:\Program Files\MiKTeX 2.9\tex/latex/amsmath\amsopn.sty"
 Package: amsopn 2016/03/08 v2.02 operator names
 )
 \inf@bad=\count100
-LaTeX Info: Redefining \frac on input line 223.
+LaTeX Info: Redefining \frac on input line 227.
 \uproot@=\count101
 \leftroot@=\count102
-LaTeX Info: Redefining \overline on input line 385.
+LaTeX Info: Redefining \overline on input line 389.
 \classnum@=\count103
 \DOTSCASE@=\count104
-LaTeX Info: Redefining \ldots on input line 482.
-LaTeX Info: Redefining \dots on input line 485.
-LaTeX Info: Redefining \cdots on input line 606.
+LaTeX Info: Redefining \ldots on input line 486.
+LaTeX Info: Redefining \dots on input line 489.
+LaTeX Info: Redefining \cdots on input line 610.
 \Mathstrutbox@=\box28
 \strutbox@=\box29
 \big@size=\dimen119
-LaTeX Font Info:    Redeclaring font encoding OML on input line 729.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 730.
+LaTeX Font Info:    Redeclaring font encoding OML on input line 733.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 734.
 \macc@depth=\count105
 \c@MaxMatrixCols=\count106
 \dotsspace@=\muskip10
@@ -165,18 +163,15 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 730.
 \multlinegap=\skip46
 \multlinetaggap=\skip47
 \mathdisplay@stack=\toks24
-LaTeX Info: Redefining \[ on input line 2844.
-LaTeX Info: Redefining \] on input line 2845.
-) (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
-Package: geometry 2018/04/16 v5.8 Page Geometry
- (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
-) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifvtex.sty
-Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
-Package ifvtex Info: VTeX not detected.
-) (/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
-Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
-)
+LaTeX Info: Redefining \[ on input line 2858.
+LaTeX Info: Redefining \] on input line 2859.
+) ("D:\Program Files\MiKTeX 2.9\tex/latex/geometry\geometry.sty"
+Package: geometry 2020/01/02 v5.9 Page Geometry
+ ("D:\Program Files\MiKTeX 2.9\tex/generic/iftex\ifvtex.sty"
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+ ("D:\Program Files\MiKTeX 2.9\tex/generic/iftex\iftex.sty"
+Package: iftex 2019/11/07 v1.0c TeX engine tests
+))
 \Gm@cnth=\count112
 \Gm@cntv=\count113
 \c@Gm@tempcnt=\count114
@@ -189,7 +184,7 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layouthoffset=\dimen132
 \Gm@layoutvoffset=\dimen133
 \Gm@dimlist=\toks25
-) (/home/elliotrenel/Documents/University/Android/Projet_Android/Rapport/rapport.aux)
+ ("D:\Program Files\MiKTeX 2.9\tex/latex/geometry\geometry.cfg")) (d:/Docs\L3\Projet_Android\Rapport\rapport.aux)
 \openout1 = `rapport.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
@@ -207,7 +202,7 @@ LaTeX Font Info:    ... okay on input line 23.
 LaTeX Info: Redefining \degres on input line 23.
 LaTeX Info: Redefining \dots on input line 23.
 LaTeX Info: Redefining \up on input line 23.
- (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+ ("D:\Program Files\MiKTeX 2.9\tex/context/base/mkii\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count115
 \scratchdimen=\dimen134
@@ -220,39 +215,10 @@ LaTeX Info: Redefining \up on input line 23.
 \MPnumerator=\count119
 \makeMPintoPDFobject=\count120
 \everyMPtoPDFconversion=\toks27
-) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
- (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
-Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
-) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
-Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
- (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
-Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
- (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
-Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
-))) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
- (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
- (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
-Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
- (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
-Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX not detected.
-)))) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO)
-Package pdftexcmds Info: LuaTeX not detected.
-Package pdftexcmds Info: \pdf@primitive is available.
-Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
+) ("D:\Program Files\MiKTeX 2.9\tex/latex/epstopdf-pkg\epstopdf-base.sty"
+Package: epstopdf-base 2019-12-09 v2.10 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
 )
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 438.
-Package grfext Info: Graphics extension search list:
-(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 456.
- (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-))
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -288,14 +254,14 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Missing character: There is no é in font cmr12!
-LaTeX Font Info:    Try loading font information for U+msa on input line 25.
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+LaTeX Font Info:    Trying to load font information for U+msa on input line 25.
+("D:\Program Files\MiKTeX 2.9\tex/latex/amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 25.
- (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+LaTeX Font Info:    Trying to load font information for U+msb on input line 25.
+ ("D:\Program Files\MiKTeX 2.9\tex/latex/amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (/home/elliotrenel/Documents/University/Android/Projet_Android/Rapport/rapport.toc)
+) (d:/Docs\L3\Projet_Android\Rapport\rapport.toc)
 \tf@toc=\write3
 \openout3 = `rapport.toc'.
 
@@ -316,7 +282,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 33--57
 
 
 Overfull \hbox (1.96722pt too wide) in paragraph at lines 33--57
-\T1/cmr/m/n/12 Ces fonctions se trouvent dans le package com.example.editionimage.imagehandling 
+\T1/cmr/m/n/12 Ces fonc-tions se trouvent dans le pa-ckage com.example.editionimage.imagehandling 
  []
 
 
@@ -341,7 +307,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 33--57
 
 
 Overfull \hbox (0.40088pt too wide) in paragraph at lines 33--57
-\T1/cmr/m/n/12 Cette classe manipule donc les objets produits par le fichier xml activity_main.xml. 
+\T1/cmr/m/n/12 Cette classe ma-ni-pule donc les ob-jets pro-duits par le fi-chier xml ac-ti-vity_main.xml. 
  []
 
 
@@ -351,165 +317,154 @@ Underfull \hbox (badness 10000) in paragraph at lines 33--57
 
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 61--64
+{C:/Users/theod/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+Underfull \hbox (badness 10000) in paragraph at lines 61--70
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 61--64
+Underfull \hbox (badness 10000) in paragraph at lines 61--70
 
  []
 
 [2]
-Overfull \hbox (15.96945pt too wide) in paragraph at lines 73--77
-[]\T1/cmr/m/n/12 L'application charge correctement une image depuis la galerie, et permet également
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 73--77
+Underfull \hbox (badness 10000) in paragraph at lines 78--82
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 73--77
+Underfull \hbox (badness 10000) in paragraph at lines 78--82
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 79--82
+Underfull \hbox (badness 10000) in paragraph at lines 84--87
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 79--82
+Underfull \hbox (badness 10000) in paragraph at lines 84--87
 
  []
 
 
-Overfull \hbox (0.30222pt too wide) in paragraph at lines 84--86
-[]\T1/cmr/m/n/12 Les fonctions ci-dessous sont retrouvées dans la fonction BasicFilter, et testables
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 84--86
+Underfull \hbox (badness 10000) in paragraph at lines 89--91
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 84--86
+Underfull \hbox (badness 10000) in paragraph at lines 89--91
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 88--95
+Underfull \hbox (badness 10000) in paragraph at lines 93--100
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 88--95
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 95--99
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 95--99
+Underfull \hbox (badness 10000) in paragraph at lines 93--100
 
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 99--105
+Underfull \hbox (badness 10000) in paragraph at lines 100--104
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 99--105
+Underfull \hbox (badness 10000) in paragraph at lines 100--104
 
  []
 
 
-Overfull \hbox (4.96643pt too wide) in paragraph at lines 105--112
-\T1/cmr/m/n/12 HSV), on trouve les indices minimal et maximal non nuls dans l'histogramme,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 105--112
+Underfull \hbox (badness 10000) in paragraph at lines 104--110
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 105--112
+Underfull \hbox (badness 10000) in paragraph at lines 104--110
 
  []
 
 
-Overfull \hbox (3.50821pt too wide) in paragraph at lines 112--120
-[]\T1/cmr/m/n/12 contrastEqual() : Transformation de contraste par égalisation d'histogramme
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 112--120
+Underfull \hbox (badness 10000) in paragraph at lines 110--117
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 112--120
+Underfull \hbox (badness 10000) in paragraph at lines 110--117
+
+ []
+
+
+Overfull \hbox (3.50821pt too wide) in paragraph at lines 117--125
+[]\T1/cmr/m/n/12 contrastEqual() : Trans-for-ma-tion de contraste par éga-li-sa-tion d'his-to-gramme
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 117--125
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 117--125
 
  []
 
 [4]
-Overfull \hbox (14.3375pt too wide) in paragraph at lines 120--124
-[]\T1/cmr/m/n/12 modifLight(double alpha) : Modification de la luminosité de l'image appellante.
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 120--124
+Underfull \hbox (badness 10000) in paragraph at lines 125--129
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 120--124
+Underfull \hbox (badness 10000) in paragraph at lines 125--129
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 144--146
+Underfull \hbox (badness 10000) in paragraph at lines 129--133
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 156--158
+Underfull \hbox (badness 10000) in paragraph at lines 129--133
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 165--166
+Underfull \hbox (badness 10000) in paragraph at lines 153--155
+
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 165--167
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--167
+Underfull \hbox (badness 10000) in paragraph at lines 192--193
 
  []
 
-[5] [6] (/home/elliotrenel/Documents/University/Android/Projet_Android/Rapport/rapport.aux) ) 
+
+Underfull \hbox (badness 10000) in paragraph at lines 193--194
+
+ []
+
+[6] (d:/Docs\L3\Projet_Android\Rapport\rapport.aux) ) 
 Here is how much of TeX's memory you used:
- 4239 strings out of 494561
- 58606 string characters out of 6177387
- 139410 words of memory out of 5000000
- 7823 multiletter control sequences out of 15000+600000
- 16582 words of font info for 51 fonts, out of 8000000 for 9000
- 14 hyphenation exceptions out of 8191
- 41i,7n,31p,377b,423s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm2074.pfb>
-Output written on /home/elliotrenel/Documents/University/Android/Projet_Android/Rapport/rapport.pdf (6 pages, 128652 bytes).
+ 3968 strings out of 492483
+ 52642 string characters out of 3131040
+ 140562 words of memory out of 3000000
+ 8264 multiletter control sequences out of 15000+200000
+ 16582 words of font info for 51 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 30i,7n,35p,341b,425s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\theod\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\theod\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\theod\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\theod\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\theod\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1440.pk> <C:\Users\theod\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm2074.pk><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on d:/Docs\L3\Projet_Android\Rapport\rapport.pdf (6 pages, 113843 bytes).
 PDF statistics:
- 60 PDF objects out of 1000 (max. 8388607)
- 42 compressed objects within 1 object stream
+ 262 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
