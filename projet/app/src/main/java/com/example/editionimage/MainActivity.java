@@ -4,12 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.SeekBar;
@@ -30,11 +33,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    PhotoView photoView;
-    Button openGallery, openCamera;
-    Button buttonColorize, buttonKeepColor, buttonContrast, buttonLight;
+    Button openGallery, openCamera,buttonSave;
+    Button buttonColorize, buttonKeepColor, buttonShift, buttonContrast, buttonLight;
     BitmapHandler usedImage;
-    int barValue_keepcolor = 180, barValue_colorize = 180 , barValue_contrast = 0, barValue_lighlevel = 0;
+    int barValue_keepcolor = 180, barValue_colorize = 180 ,barValue_shift = 0, barValue_contrast = 0, barValue_lighlevel = 0;
+    int pictureHeight, pictureWidth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         /** Effects buttons **/
 
         // Save
-        Button buttonSave = findViewById(R.id.buttonSave);
+        buttonSave = findViewById(R.id.buttonSave);
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -157,6 +160,39 @@ public class MainActivity extends AppCompatActivity {
                 }else{
                     keepColorView.setVisibility(View.GONE);
                     buttonKeepColor.setText("Keep Color");
+                }
+
+            }
+        });
+
+        // Shift
+        buttonShift = findViewById(R.id.buttonShift);
+
+        final ScrollView shiftView = findViewById(R.id.Shift_sv);
+        final Button buttonApplyShift = findViewById(R.id.applyShift_b);
+        final SeekBar seekbar_shift = findViewById(R.id.Shift_sb);
+        seekbar_shift.setOnSeekBarChangeListener(seekListenerShift);
+
+
+        buttonApplyShift.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!toastNoImage.isToastShowed(usedImage)) usedImage.shift(barValue_shift);
+                shiftView.setVisibility(View.GONE);
+                buttonShift.setText("Shift");
+            }
+        });
+
+        buttonShift.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(shiftView.getVisibility()==View.GONE) {
+                    shiftView.setVisibility(View.VISIBLE);
+                    seekbar_shift.setProgress(0);
+                    barValue_shift = 0;
+                }else{
+                    shiftView.setVisibility(View.GONE);
+                    buttonShift.setText("Shift");
                 }
 
             }
@@ -318,6 +354,26 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    SeekBar.OnSeekBarChangeListener seekListenerShift = new SeekBar.OnSeekBarChangeListener() {
+
+        @Override
+        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            // updated continuously as the user slides the thumb
+            barValue_shift = progress;
+            buttonShift.setText("Shift "+progress+"°");
+        }
+
+        @Override
+        public void onStartTrackingTouch(SeekBar seekBar) {
+            // called when the user first touches the SeekBar
+        }
+
+        @Override
+        public void onStopTrackingTouch(SeekBar seekBar) {
+            // called after the user finishes moving the SeekBar
+        }
+    };
+
     SeekBar.OnSeekBarChangeListener seekListenerContrast = new SeekBar.OnSeekBarChangeListener() {
 
         @Override
@@ -359,6 +415,45 @@ public class MainActivity extends AppCompatActivity {
     };
 
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        if(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE){
+            findViewById(R.id.scrollMain).setVisibility(View.GONE);
+            openCamera.setVisibility(View.GONE);
+            openGallery.setVisibility(View.GONE);
+            buttonSave.setVisibility(View.GONE);
+
+            Point phoneSize = new Point();
+            getWindowManager().getDefaultDisplay().getSize(phoneSize);
+            ViewGroup.LayoutParams params = photoView.getLayoutParams();
+            pictureHeight = params.height;
+            pictureWidth = params.width;
+            float ratioPhone = (float)phoneSize.x / (float)phoneSize.y;
+            float ratioPicture = (float)pictureWidth/(float)pictureHeight;
+            Log.i("PhoneSize","w : "+pictureWidth+", h : "+pictureHeight);
+            if(ratioPhone<=ratioPicture){
+                params.width = (int)(phoneSize.x*0.8);
+                params.height = (int)(params.width/ratioPhone);
+            }else{
+                params.height = (int)(phoneSize.y*0.8);
+                params.width = (int)(params.height * ratioPhone);
+            }
+
+            photoView.setLayoutParams(params);
+        }else if(newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+            findViewById(R.id.scrollMain).setVisibility(View.VISIBLE);
+            openCamera.setVisibility(View.VISIBLE);
+            openGallery.setVisibility(View.VISIBLE);
+            buttonSave.setVisibility(View.VISIBLE);
+
+            ViewGroup.LayoutParams params = photoView.getLayoutParams();
+            params.width = pictureWidth;
+            params.height = pictureHeight;
+            photoView.setLayoutParams(params);
+        }
+    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults)
