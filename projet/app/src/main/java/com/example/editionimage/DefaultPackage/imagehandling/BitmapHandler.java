@@ -231,6 +231,12 @@ public class BitmapHandler {
         filters.keepColor(color,30);
         setAsImageView();
     }
+
+    public void shift(int shift){
+        filters.shift(shift);
+        setAsImageView();
+    }
+
     public void contrastLinear(){
         filters.contrastLinear();
         setAsImageView();

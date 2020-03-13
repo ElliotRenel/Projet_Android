@@ -33,11 +33,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    PhotoView photoView;
     Button openGallery, openCamera,buttonSave;
-    Button buttonColorize, buttonKeepColor, buttonContrast, buttonLight;
+    Button buttonColorize, buttonKeepColor, buttonShift, buttonContrast, buttonLight;
     BitmapHandler usedImage;
-    int barValue_keepcolor = 180, barValue_colorize = 180 , barValue_contrast = 0, barValue_lighlevel = 0;
+    int barValue_keepcolor = 180, barValue_colorize = 180 ,barValue_shift = 0, barValue_contrast = 0, barValue_lighlevel = 0;
     int pictureHeight, pictureWidth;
 
     @Override
@@ -161,6 +160,39 @@ public class MainActivity extends AppCompatActivity {
                 }else{
                     keepColorView.setVisibility(View.GONE);
                     buttonKeepColor.setText("Keep Color");
+                }
+
+            }
+        });
+
+        // Shift
+        buttonShift = findViewById(R.id.buttonShift);
+
+        final ScrollView shiftView = findViewById(R.id.Shift_sv);
+        final Button buttonApplyShift = findViewById(R.id.applyShift_b);
+        final SeekBar seekbar_shift = findViewById(R.id.Shift_sb);
+        seekbar_shift.setOnSeekBarChangeListener(seekListenerShift);
+
+
+        buttonApplyShift.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!toastNoImage.isToastShowed(usedImage)) usedImage.shift(barValue_shift);
+                shiftView.setVisibility(View.GONE);
+                buttonShift.setText("Shift");
+            }
+        });
+
+        buttonShift.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(shiftView.getVisibility()==View.GONE) {
+                    shiftView.setVisibility(View.VISIBLE);
+                    seekbar_shift.setProgress(0);
+                    barValue_shift = 0;
+                }else{
+                    shiftView.setVisibility(View.GONE);
+                    buttonShift.setText("Shift");
                 }
 
             }
@@ -302,6 +334,26 @@ public class MainActivity extends AppCompatActivity {
             // updated continuously as the user slides the thumb
             barValue_keepcolor = progress;
             buttonKeepColor.setText("Keep Color "+progress+"°");
+        }
+
+        @Override
+        public void onStartTrackingTouch(SeekBar seekBar) {
+            // called when the user first touches the SeekBar
+        }
+
+        @Override
+        public void onStopTrackingTouch(SeekBar seekBar) {
+            // called after the user finishes moving the SeekBar
+        }
+    };
+
+    SeekBar.OnSeekBarChangeListener seekListenerShift = new SeekBar.OnSeekBarChangeListener() {
+
+        @Override
+        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            // updated continuously as the user slides the thumb
+            barValue_shift = progress;
+            buttonShift.setText("Shift "+progress+"°");
         }
 
         @Override

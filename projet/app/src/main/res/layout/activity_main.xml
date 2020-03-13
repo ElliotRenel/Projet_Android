@@ -161,6 +161,42 @@
             </ScrollView>
 
             <Button
+                android:id="@+id/buttonShift"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#1C7CC9"
+                android:text="Shift" />
+
+            <ScrollView
+                android:id="@+id/Shift_sv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <SeekBar
+                        android:id="@+id/Shift_sb"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:max="360"
+                        android:progress="0"
+                        android:progressTint="#FFFFFF"
+                        android:thumbTint="#7C7C7C" />
+
+                    <Button
+                        android:id="@+id/applyShift_b"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#1C7CC9"
+                        android:text="Apply" />
+                </LinearLayout>
+            </ScrollView>
+
+            <Button
                 android:id="@+id/buttonContrastLinear"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
