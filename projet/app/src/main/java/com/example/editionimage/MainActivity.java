@@ -373,7 +373,7 @@ public class MainActivity extends AppCompatActivity {
             pictureWidth = params.width;
             float ratioPhone = (float)phoneSize.x / (float)phoneSize.y;
             float ratioPicture = (float)pictureWidth/(float)pictureHeight;
-            Log.i("PhoneSize","w : "+pictureWidth+", h : "+pictureHeight);
+
             if(ratioPhone<=ratioPicture){
                 params.width = (int)(phoneSize.x*0.8);
                 params.height = (int)(params.width/ratioPhone);
