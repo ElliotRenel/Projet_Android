@@ -273,6 +273,13 @@
                 android:backgroundTint="#1C7CC9"
                 android:text="Sobel Edge Detection" />
 
+            <Button
+                android:id="@+id/buttonCrayonEffect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#1C7CC9"
+                android:text="Crayon Effect" />
+
         </LinearLayout>
     </ScrollView>
 

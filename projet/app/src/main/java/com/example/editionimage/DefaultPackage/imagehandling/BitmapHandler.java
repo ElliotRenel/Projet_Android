@@ -219,6 +219,10 @@ public class BitmapHandler {
         filters.toGrayRS(context);
         setAsImageView();
     }
+    public void invertRS(Context context){
+        filters.invertRS(context);
+        setAsImageView();
+    }
     public void colorize(int color){
         filters.colorize(color);
         setAsImageView();
@@ -291,5 +295,11 @@ public class BitmapHandler {
         Kernel mB = new Kernel(3,3,mask2);
 
         filters.convolutionEdgeDetection(mA,mB);
+    }
+
+    public void crayonEffect(Context context){
+        laplaceEdgeDetection();
+        invertRS(context);
+        setAsImageView();
     }
 }
