@@ -116,6 +116,16 @@ public class BasicFilter {
         bmp.setHSVPixels(tabs);
     }
 
+    public void shift(int shift){
+        int size = bmp.getSize();
+        double[][] tabs = bmp.getHSVPixels();
+
+        for (int i = 0; i < size; i++) {
+            tabs[0][i] = (tabs[0][i] + shift)%360 ;
+        }
+        bmp.setHSVPixels(tabs);
+    }
+
 
     /** Contrast and Lighlevel **/
 
