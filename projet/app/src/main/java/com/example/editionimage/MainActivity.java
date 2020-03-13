@@ -4,12 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.SeekBar;
@@ -31,10 +34,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     PhotoView photoView;
-    Button openGallery, openCamera;
+    Button openGallery, openCamera,buttonSave;
     Button buttonColorize, buttonKeepColor, buttonContrast, buttonLight;
     BitmapHandler usedImage;
     int barValue_keepcolor = 180, barValue_colorize = 180 , barValue_contrast = 0, barValue_lighlevel = 0;
+    int pictureHeight, pictureWidth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         /** Effects buttons **/
 
         // Save
-        Button buttonSave = findViewById(R.id.buttonSave);
+        buttonSave = findViewById(R.id.buttonSave);
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -352,6 +356,45 @@ public class MainActivity extends AppCompatActivity {
     };
 
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        if(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE){
+            findViewById(R.id.scrollMain).setVisibility(View.GONE);
+            openCamera.setVisibility(View.GONE);
+            openGallery.setVisibility(View.GONE);
+            buttonSave.setVisibility(View.GONE);
+
+            Point phoneSize = new Point();
+            getWindowManager().getDefaultDisplay().getSize(phoneSize);
+            ViewGroup.LayoutParams params = photoView.getLayoutParams();
+            pictureHeight = params.height;
+            pictureWidth = params.width;
+            float ratioPhone = (float)phoneSize.x / (float)phoneSize.y;
+            float ratioPicture = (float)pictureWidth/(float)pictureHeight;
+            Log.i("PhoneSize","w : "+pictureWidth+", h : "+pictureHeight);
+            if(ratioPhone<=ratioPicture){
+                params.width = (int)(phoneSize.x*0.8);
+                params.height = (int)(params.width/ratioPhone);
+            }else{
+                params.height = (int)(phoneSize.y*0.8);
+                params.width = (int)(params.height * ratioPhone);
+            }
+
+            photoView.setLayoutParams(params);
+        }else if(newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+            findViewById(R.id.scrollMain).setVisibility(View.VISIBLE);
+            openCamera.setVisibility(View.VISIBLE);
+            openGallery.setVisibility(View.VISIBLE);
+            buttonSave.setVisibility(View.VISIBLE);
+
+            ViewGroup.LayoutParams params = photoView.getLayoutParams();
+            params.width = pictureWidth;
+            params.height = pictureHeight;
+            photoView.setLayoutParams(params);
+        }
+    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults)
