@@ -8,8 +8,10 @@
 
 TO ADD:
 - Renderscript
-- Eviter crash lors du tournage de l'écran (onConfigurationChanged) + One button to rule them all
+- One button to rule them all
 - Effet shift (décalage des h)
 - Merge entre deux bitmaps handler?
 - Option undo redo, pile d'effets
 - Javadoc
+- Rotation image seule (sans écran, avec un bouton)
+- bug: la photo prise est parfois inclinée (elliot oui, theo non)
