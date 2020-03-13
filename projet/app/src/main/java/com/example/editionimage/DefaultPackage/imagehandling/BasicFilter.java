@@ -9,6 +9,7 @@ import android.renderscript.RenderScript;
 import com.example.editionimage.DefaultPackage.imagehandling.tools.Kernel;
 import com.example.editionimage.ScriptC_gray;
 import com.example.editionimage.ScriptC_histEq;
+import com.example.editionimage.ScriptC_invert;
 
 public class BasicFilter {
     BitmapHandler bmp;
@@ -58,6 +59,33 @@ public class BasicFilter {
         // 8) Detruire le context , les Allocation (s) et le script
         input . destroy () ; output . destroy () ;
         grayScript . destroy () ; rs . destroy () ;
+    }
+
+    public void invertRS (Context context) {
+
+        // 1) Creer un contexte RenderScript
+        RenderScript rs = RenderScript.create(context) ;
+        // 2) Creer des Allocations pour passer les donnees
+        Allocation input = Allocation. createFromBitmap (rs, bmp.getBit_current() ) ;
+        Allocation output = Allocation . createTyped ( rs , input.getType () ) ;
+
+        // 3) Creer le script
+        ScriptC_invert invertScript = new ScriptC_invert(rs);
+        // 4) Copier les donnees dans les Allocations
+        // ...
+
+        // 5) Initialiser les variables globales potentielles
+        // ...
+
+        // 6) Lancer le noyau
+        invertScript . forEach_invert(input,output);
+
+        // 7) Recuperer les donnees des Allocation (s)
+        output . copyTo ( bmp.getBit_current()  ) ;
+
+        // 8) Detruire le context , les Allocation (s) et le script
+        input . destroy () ; output . destroy () ;
+        invertScript . destroy () ; rs . destroy () ;
     }
 
 

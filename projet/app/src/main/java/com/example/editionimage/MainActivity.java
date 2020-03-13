@@ -169,6 +169,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) { if(!toastNoImage.isToastShowed(usedImage)) usedImage.contrastLinear(); }
         });
 
+        // Crayon Effect
+        Button buttonCrayonEffect = findViewById(R.id.buttonCrayonEffect);
+        buttonCrayonEffect .setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { if(!toastNoImage.isToastShowed(usedImage)) usedImage.crayonEffect(MainActivity.this); }
+        });
+
         // Equal Contrast
         Button buttonContrastEqual = findViewById(R.id.buttonContrastEqual);
         buttonContrastEqual.setOnClickListener(new View.OnClickListener() {
