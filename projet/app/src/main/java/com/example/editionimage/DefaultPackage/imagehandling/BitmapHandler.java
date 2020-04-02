@@ -54,12 +54,11 @@ public class BitmapHandler {
 
         /** Creating the final Image File */
         String imgName = "Image-" + (new Random()).nextInt(1000)+".jpg";
-        File parentDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString());
-        File dir = new File(parentDir,"/Edition_Image");
-        if(!dir.mkdirs()){
-            return null;
-        }
-        File file = new File(dir.getAbsolutePath(),imgName);
+        File parentDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString()+"/Edition_Image");
+
+        File file = new File(parentDir,imgName);
+
+        file.mkdir();
 
         if (file.exists()) file.delete();
         try {
