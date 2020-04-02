@@ -317,6 +317,13 @@
                 android:backgroundTint="#1C7CC9"
                 android:text="Crayon Effect" />
 
+            <Button
+                android:id="@+id/buttonCartoonEffect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#1C7CC9"
+                android:text="Cartoon Effect" />
+
         </LinearLayout>
     </ScrollView>
 

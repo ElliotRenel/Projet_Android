@@ -306,6 +306,48 @@ public class BitmapHandler {
     public void crayonEffect(Context context){
         laplaceEdgeDetection();
         invertRS(context);
+        toGrayRS(context);
         setAsImageView();
     }
+
+    public void incrustation(BitmapHandler bmp){
+        int pixelsBackground[] = new int[size];
+        int pixelsTopLayer[] = new int[size];
+
+        this.getPixels(pixelsBackground);
+        bmp.getPixels(pixelsTopLayer);
+
+        for(int i=0; i<size; i++){
+            if (Color.red(pixelsTopLayer[i])<150) {
+                pixelsBackground[i] = pixelsTopLayer[i];
+            }
+        }
+        this.setPixels(pixelsBackground);
+
+    }
+
+    //épaissit les contours noirs d'une image en noir et blanc
+    public void thicken(int intensity){
+        int pixels[] = new int[size];
+        this.getPixels(pixels);
+
+        for(int i=1; i<size-1; i++){
+            //si pixel est foncé
+            if (Color.red(pixels[i])<150) {
+                pixels[i] = Color.argb(255,0,0,0);
+                //ajouter les pixels autours
+            }
+        }
+    }
+
+    public void cartoonEffect(Context context){
+        BitmapHandler border = new BitmapHandler(this.bit_current,this.view);
+        border.toGrayRS(context);
+        border.crayonEffect(context);
+
+        incrustation(border);
+
+        setAsImageView();
+    }
+
 }
