@@ -45,10 +45,13 @@ public class BitmapHandler {
         view.setImageBitmap(bit_current);
     }
 
+    private void giveFinalPreview(){
+        view.setImageBitmap(bit_final);
+    }
+
     public File saveImage() {
         /** Applying effects to the original image */
-        Bitmap tmp = bit_current;
-        this.setBit_current(bit_origin.copy(bit_origin.getConfig(),true));
+        bit_final = bit_origin.copy(bit_origin.getConfig(),true);
         Effect current_effect;
         while(!effectQueue.isEmpty()) {
             Log.i("Effect","Effect was applied");
@@ -67,7 +70,7 @@ public class BitmapHandler {
         if (file.exists()) file.delete();
         try {
             FileOutputStream out = new FileOutputStream(file);
-            this.bit_current.compress(Bitmap.CompressFormat.JPEG, 90, out);
+            this.bit_final.compress(Bitmap.CompressFormat.JPEG, 90, out);
             out.flush();
             out.close();
         } catch (Exception ex) {
@@ -75,9 +78,8 @@ public class BitmapHandler {
             return null;
         }
 
-        /** Restoring bit_current */
-        setAsImageView();
-        this.setBit_current(tmp);
+        /** Giving preview of final image */
+        giveFinalPreview();
 
         return file;
     }
