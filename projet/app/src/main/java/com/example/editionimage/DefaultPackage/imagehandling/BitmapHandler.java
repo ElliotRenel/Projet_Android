@@ -18,9 +18,9 @@ import java.util.Random;
 import java.util.function.Function;
 
 public class BitmapHandler {
-    private Bitmap bit_origin, bit_current;
+    private Bitmap bit_origin, bit_current, bit_final;
     private BasicFilter filters;
-    private int height, width, size;
+    private int height, width, size, height_final, width_final, size_final;
     private PhotoView view;
     Queue<Effect> effectQueue;
 
@@ -29,11 +29,15 @@ public class BitmapHandler {
     public BitmapHandler(Bitmap bit, PhotoView view){
         bit_origin = bit.copy(bit.getConfig(),false);
         bit_current = Bitmap.createScaledBitmap(bit_origin.copy(bit_origin.getConfig(),true),(bit_origin.getWidth()*IMAGE_SIZE)/bit_origin.getHeight(),IMAGE_SIZE,false);
+        bit_final = bit_origin.copy(bit_origin.getConfig(),true);
         effectQueue = new LinkedList<>();
         filters = new BasicFilter(this);
         height = bit_current.getHeight();
         width = bit_current.getWidth();
         size = height*width;
+        height_final = bit_final.getHeight();
+        width_final = bit_final.getWidth();
+        size_final = height_final*width_final;
         this.view = view;
     }
 
@@ -72,51 +76,58 @@ public class BitmapHandler {
         }
 
         /** Restoring bit_current */
-        //this.setBit_current(tmp);
         setAsImageView();
+        this.setBit_current(tmp);
 
         return file;
     }
 
-    public double[][] getHSVPixels(){
-        double[][] result = new double[3][size];
+    public double[][] getHSVPixels(boolean saving){
+        double[][] result = new double[3][saving?size_final:size];
 
-        int[] pixels = new int[size];
-        this.bit_current.getPixels(pixels,0,width,0,0,width,height);
+        int[] pixels = new int[saving?size_final:size];
 
-        for(int i=0; i<size; i++)
+        getPixels(pixels,saving);
+
+        for(int i=0; i<(saving?size_final:size); i++)
             rgb_to_hsv(pixels[i], result, i);
 
         return result;
     }
 
-    public void setHSVPixels(double[][] pixels){
-        int[] result = new int[size];
+    public void setHSVPixels(double[][] pixels, boolean saving){
+        int[] result = new int[saving?size_final:size];
 
-        for(int i=0; i<size; i++)
+        for(int i=0; i<(saving?size_final:size); i++)
             result[i] = hsv_to_rgb(pixels,i);
 
-        setPixels(result);
+        setPixels(result, saving);
     }
 
-    public void getPixels(int[] pixels){
-        bit_current.getPixels(pixels,0,width,0,0,width,height);
+    public void getPixels(int[] pixels, boolean saving){
+        if(saving)
+            this.bit_final.getPixels(pixels,0,width_final,0,0,width_final,height_final);
+        else
+            this.bit_current.getPixels(pixels,0,width,0,0,width,height);
     }
 
-    public void setPixels(int[] pixels){
-        bit_current.setPixels(pixels,0,width,0,0,width,height);
+    public void setPixels(int[] pixels, boolean saving){
+        if(saving)
+            bit_final.setPixels(pixels,0,width_final,0,0,width_final,height_final);
+        else
+            bit_current.setPixels(pixels,0,width,0,0,width,height);
     }
 
-    public int[] getHSVHist(double[][] tabs){
+    public int[] getHSVHist(double[][] tabs,boolean saving){
         int[] hist = new int[101];
-        for(int i=0; i<size; i++)
+        for(int i=0; i<(saving?size_final:size); i++)
             hist[(int)(tabs[2][i]*100)]++;
         return hist;
     }
 
-    public int[] getHSVCumul(double[][] tabs){
+    public int[] getHSVCumul(double[][] tabs,boolean saving){
         int[] cumul = new int[101];
-        int[] hist = getHSVHist(tabs);
+        int[] hist = getHSVHist(tabs,saving);
         for(int i=1; i<hist.length;i++){
             cumul[i] = cumul[i-1] + hist[i];
         }
@@ -204,16 +215,16 @@ public class BitmapHandler {
 
     }
 
-    public int getSize(){
-        return size;
+    public int getSize(boolean saving){
+        return saving?size_final:size;
     }
 
-    public int getHeight(){
-        return height;
+    public int getHeight(boolean saving){
+        return saving?height_final:height;
     }
 
-    public int getWidth(){
-        return width;
+    public int getWidth(boolean saving){
+        return saving?width_final:width;
     }
 
     public Bitmap getBit_current() {
@@ -224,27 +235,35 @@ public class BitmapHandler {
         this.bit_current=arg;
     }
 
-    private void incrustation(BitmapHandler bmp){
-        int pixelsBackground[] = new int[size];
-        int pixelsTopLayer[] = new int[size];
+    public Bitmap getBit_final(){
+        return bit_final;
+    }
 
-        this.getPixels(pixelsBackground);
-        bmp.getPixels(pixelsTopLayer);
+    public void setBit_final( Bitmap arg ) {
+        this.bit_final=arg;
+    }
 
-        for(int i=0; i<size; i++){
+    private void incrustation(BitmapHandler bmp, boolean saving){
+        int pixelsBackground[] = new int[saving?size_final:size];
+        int pixelsTopLayer[] = new int[saving?size_final:size];
+
+        this.getPixels(pixelsBackground,saving);
+        bmp.getPixels(pixelsTopLayer,saving);
+
+        for(int i=0; i<(saving?size_final:size); i++){
             if (Color.red(pixelsTopLayer[i])<150) {
                 pixelsBackground[i] = pixelsTopLayer[i];
             }
         }
-        this.setPixels(pixelsBackground);
+        this.setPixels(pixelsBackground,saving);
     }
 
     //épaissit les contours noirs d'une image en noir et blanc
-    private void thicken(int intensity){
-        int pixels[] = new int[size];
-        this.getPixels(pixels);
+    private void thicken(int intensity,boolean saving){
+        int pixels[] = new int[(saving?size_final:size)];
+        this.getPixels(pixels,saving);
 
-        for(int i=1; i<size-1; i++){
+        for(int i=1; i<(saving?size_final:size)-1; i++){
             //si pixel est foncé
             if (Color.red(pixels[i])<150) {
                 pixels[i] = Color.argb(255,0,0,0);
@@ -262,11 +281,11 @@ public class BitmapHandler {
     }
 
     public void toGray(){
-        filters.toGray();
+        filters.toGray(false);
         effectQueue.add(new Effect(new Function<Void, Void>() {
             @Override
             public Void apply(Void aVoid) {
-                filters.toGray();
+                filters.toGray(true);
                 return null;
             }
         }));
@@ -274,11 +293,11 @@ public class BitmapHandler {
     }
 
     public void toGrayRS(final Context context){
-        filters.toGrayRS(context);
+        filters.toGrayRS(context,false);
         effectQueue.add(new Effect(new Function<Void, Void>() {
             @Override
             public Void apply(Void aVoid) {
-                filters.toGrayRS(context);
+                filters.toGrayRS(context,true);
                 return null;
             }
         }));
@@ -286,11 +305,11 @@ public class BitmapHandler {
     }
 
     public void invertRS(final Context context){
-        filters.invertRS(context);
+        filters.invertRS(context,false);
         effectQueue.add(new Effect(new Function<Void, Void>() {
             @Override
             public Void apply(Void aVoid) {
-                filters.invertRS(context);
+                filters.invertRS(context,true);
                 return null;
             }
         }));
@@ -298,11 +317,11 @@ public class BitmapHandler {
     }
 
     public void colorize(final int color){
-        filters.colorize(color);
+        filters.colorize(color,false);
         effectQueue.add(new Effect(new Function<Void, Void>() {
             @Override
             public Void apply(Void aVoid) {
-                filters.colorize(color);
+                filters.colorize(color,true);
                 return null;
             }
         }));
@@ -310,11 +329,11 @@ public class BitmapHandler {
     }
 
     public void keepColor(final int color){
-        filters.keepColor(color,30);
+        filters.keepColor(color,30,false);
         effectQueue.add(new Effect(new Function<Void, Void>() {
             @Override
             public Void apply(Void aVoid) {
-                filters.keepColor(color,30);
+                filters.keepColor(color,30,true);
                 return null;
             }
         }));
@@ -322,11 +341,11 @@ public class BitmapHandler {
     }
 
     public void shift(final int shift){
-        filters.shift(shift);
+        filters.shift(shift,false);
         effectQueue.add(new Effect(new Function<Void, Void>() {
             @Override
             public Void apply(Void aVoid) {
-                filters.shift(shift);
+                filters.shift(shift,true);
                 return null;
             }
         }));
@@ -334,11 +353,11 @@ public class BitmapHandler {
     }
 
     public void contrastLinear(){
-        filters.contrastLinear();
+        filters.contrastLinear(false);
         effectQueue.add(new Effect(new Function<Void, Void>() {
             @Override
             public Void apply(Void aVoid) {
-                filters.contrastLinear();
+                filters.contrastLinear(true);
                 return null;
             }
         }));
@@ -346,11 +365,11 @@ public class BitmapHandler {
     }
 
     public void contrastEqual(){
-        filters.contrastEqual();
+        filters.contrastEqual(false);
         effectQueue.add(new Effect(new Function<Void, Void>() {
             @Override
             public Void apply(Void aVoid) {
-                filters.contrastEqual();
+                filters.contrastEqual(true);
                 return null;
             }
         }));
@@ -358,11 +377,11 @@ public class BitmapHandler {
     }
 
     public void contrastEqualRS(final Context context){
-        filters.contrastEqualRS(context);
+        filters.contrastEqualRS(context,false);
         effectQueue.add(new Effect(new Function<Void, Void>() {
             @Override
             public Void apply(Void aVoid) {
-                filters.contrastEqualRS(context);
+                filters.contrastEqualRS(context,true);
                 return null;
             }
         }));
@@ -370,11 +389,11 @@ public class BitmapHandler {
     }
 
     public void modifContrast(final int contrast){
-        filters.modifContrast(contrast);
+        filters.modifContrast(contrast,false);
         effectQueue.add(new Effect(new Function<Void, Void>() {
             @Override
             public Void apply(Void aVoid) {
-                filters.modifContrast(contrast);
+                filters.modifContrast(contrast,true);
                 return null;
             }
         }));
@@ -382,11 +401,11 @@ public class BitmapHandler {
     }
 
     public void modifLight(final int lightvalue){
-        filters.modifLight(lightvalue);
+        filters.modifLight(lightvalue,false);
         effectQueue.add(new Effect(new Function<Void, Void>() {
             @Override
             public Void apply(Void aVoid) {
-                filters.modifLight(lightvalue);
+                filters.modifLight(lightvalue,true);
                 return null;
             }
         }));
@@ -403,11 +422,11 @@ public class BitmapHandler {
         };
         final Kernel gauss = new Kernel(5 , 5,tmp);
 
-        filters.convolution(gauss);
+        filters.convolution(gauss,false);
         effectQueue.add(new Effect(new Function<Void, Void>() {
             @Override
             public Void apply(Void aVoid) {
-                filters.convolution(gauss);
+                filters.convolution(gauss,true);
                 return null;
             }
         }));
@@ -425,12 +444,12 @@ public class BitmapHandler {
         };
         final Kernel laplace = new Kernel(5, 5,mask);
 
-        filters.convolution(laplace);
+        filters.convolution(laplace,false);
 
         effectQueue.add(new Effect(new Function<Void, Void>() {
             @Override
             public Void apply(Void aVoid) {
-                filters.convolution(laplace);
+                filters.convolution(laplace,true);
                 return null;
             }
         }));
@@ -452,11 +471,11 @@ public class BitmapHandler {
         final Kernel mA = new Kernel(3,3,mask1);
         final Kernel mB = new Kernel(3,3,mask2);
 
-        filters.convolutionEdgeDetection(mA,mB);
+        filters.convolutionEdgeDetection(mA,mB,false);
         effectQueue.add(new Effect(new Function<Void, Void>() {
             @Override
             public Void apply(Void aVoid) {
-                filters.convolutionEdgeDetection(mA,mB);
+                filters.convolutionEdgeDetection(mA,mB,true);
                 return null;
             }
         }));
@@ -475,7 +494,7 @@ public class BitmapHandler {
         border.toGrayRS(context);
         border.crayonEffect(context);
 
-        incrustation(border);
+        incrustation(border,false);
 
         setAsImageView();
     }
