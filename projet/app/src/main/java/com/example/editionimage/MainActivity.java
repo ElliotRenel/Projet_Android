@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         /** Setting up the app **/
         usedImage = null;
         final ToasterNoImage toastNoImage = new ToasterNoImage(getApplicationContext());
-        photoView = (PhotoView) findViewById(R.id.main_view);
+        photoView = findViewById(R.id.main_view);
         openGallery = findViewById(R.id.galleryButton);
         openCamera = findViewById(R.id.cameraButton);
 
@@ -84,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
                     toast.show();
                 }else {
                     Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-                    ;
                     Uri contentUri = Uri.fromFile(file);
                     mediaScanIntent.setData(contentUri);
                     sendBroadcast(mediaScanIntent);

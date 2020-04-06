@@ -11,16 +11,16 @@ import com.example.editionimage.ScriptC_gray;
 import com.example.editionimage.ScriptC_histEq;
 import com.example.editionimage.ScriptC_invert;
 
-public class BasicFilter {
-    BitmapHandler bmp;
+class BasicFilter {
+    private BitmapHandler bmp;
 
-    public BasicFilter(BitmapHandler bit){
+    BasicFilter(BitmapHandler bit){
         bmp = bit;
     }
 
     /** Color **/
 
-    public void toGray(boolean saving){
+    void toGray(boolean saving){
         //vérifier si passage en hsv serait pas plus rapide (temps de conversion vs temps de cast int/float)
         int size = bmp.getSize(saving);
         int[] pixels = new int[size];
@@ -34,7 +34,7 @@ public class BasicFilter {
         bmp.setPixels(pixels,saving);
     }
 
-    public void toGrayRS (Context context, boolean saving) {
+    void toGrayRS (Context context, boolean saving) {
 
         // 1) Creer un contexte RenderScript
         RenderScript rs = RenderScript.create(context) ;
@@ -68,7 +68,7 @@ public class BasicFilter {
         grayScript . destroy () ; rs . destroy () ;
     }
 
-    public void invertRS (Context context, boolean saving) {
+    void invertRS (Context context, boolean saving) {
 
         // 1) Creer un contexte RenderScript
         RenderScript rs = RenderScript.create(context) ;
@@ -102,8 +102,7 @@ public class BasicFilter {
         invertScript . destroy () ; rs . destroy () ;
     }
 
-
-    public void colorize(int color, boolean saving) {
+    void colorize(int color, boolean saving) {
         int size = bmp.getSize(saving);
         double[][] tabs = bmp.getHSVPixels(saving);
 
@@ -113,8 +112,7 @@ public class BasicFilter {
         bmp.setHSVPixels(tabs,saving);
     }
 
-
-    public void keepColor(int color, int range, boolean saving) {
+    void keepColor(int color, int range, boolean saving) {
         color = (color % 360);
         int size = bmp.getSize(saving);
         double[][] tabs = bmp.getHSVPixels(saving);
@@ -130,7 +128,7 @@ public class BasicFilter {
         bmp.setHSVPixels(tabs,saving);
     }
 
-    public void shift(int shift, boolean saving){
+    void shift(int shift, boolean saving){
         int size = bmp.getSize(saving);
         double[][] tabs = bmp.getHSVPixels(saving);
 
@@ -143,7 +141,7 @@ public class BasicFilter {
 
     /** Contrast and Lighlevel **/
 
-    public void contrastLinear(boolean saving){
+    void contrastLinear(boolean saving){
         int size = bmp.getSize(saving);
         double[][] tabs = bmp.getHSVPixels(saving);
         int[] hist = bmp.getHSVHist(tabs,saving);
@@ -163,13 +161,13 @@ public class BasicFilter {
         }
 
         for(int i=0; i<size; i++){
-            tabs[2][i] = ((100/(max-min))*(tabs[2][i]*100)-min)/100;
+            tabs[2][i] = ((100.0/(float)(max-min))*(tabs[2][i]*100)-min)/100;
         }
         bmp.setHSVPixels(tabs,saving);
     }
 
 
-    public void contrastEqual(boolean saving){
+    void contrastEqual(boolean saving){
         int size = bmp.getSize(saving);
         double[][] tabs = bmp.getHSVPixels(saving);
 
@@ -182,7 +180,7 @@ public class BasicFilter {
         bmp.setHSVPixels(tabs,saving);
     }
 
-    public void contrastEqualRS(Context context,boolean saving) {
+    void contrastEqualRS(Context context,boolean saving) {
         //Create new bitmap;
         Bitmap res = saving?bmp.getBit_final():bmp.getBit_current();
 
@@ -235,9 +233,9 @@ public class BasicFilter {
         return Math.round(x);
     }
 
-    public void modifContrast(int contrast,boolean saving){
+    void modifContrast(int contrast,boolean saving){
         int size = bmp.getSize(saving);
-        int pixels[] = new int[size];
+        int[] pixels = new int[size];
         bmp.getPixels(pixels,saving);
 
         float factor = (259* ((float)contrast + 255)) / (255 * (259 - (float)contrast));
@@ -256,9 +254,9 @@ public class BasicFilter {
         bmp.setPixels(pixels,saving);
     }
 
-    public void modifLight(int lightlevel,boolean saving){
+    void modifLight(int lightlevel,boolean saving){
         int size = bmp.getSize(saving);
-        int pixels[] = new int[size];
+        int [] pixels = new int[size];
         bmp.getPixels(pixels,saving);
 
         for(int i=0; i<size; i++){
@@ -277,7 +275,7 @@ public class BasicFilter {
 
     /** Convolution **/
 
-    public void convolution(Kernel mask,boolean saving){
+    void convolution(Kernel mask,boolean saving){
         double[][] hsv_pixels = bmp.getHSVPixels(saving);
 
         int m_h = mask.getH()/2;
@@ -289,7 +287,7 @@ public class BasicFilter {
 
     }
 
-    public void convolutionEdgeDetection(Kernel mA, Kernel mB, boolean saving){
+    void convolutionEdgeDetection(Kernel mA, Kernel mB, boolean saving){
         if(mA.getInverse()!=0 || mB.getInverse()!=0 || mA.getH()!=mB.getH() || mA.getW()!=mB.getW())
             return;
         double[][] hsv_pixels = bmp.getHSVPixels(saving);
@@ -302,7 +300,7 @@ public class BasicFilter {
         bmp.setHSVPixels(hsv_pixels,saving);
     }
 
-    public int separableConvolution(Kernel row, Kernel column,boolean saving) {
+    int separableConvolution(Kernel row, Kernel column,boolean saving) {
         if (row.getH() > 1 || column.getW() > 1) return -1;
 
         int w = bmp.getWidth(saving);

@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.os.Environment;
 import android.util.Log;
 
-import com.example.editionimage.DefaultPackage.imagehandling.effectclass.Effect;
 import com.example.editionimage.DefaultPackage.imagehandling.tools.Kernel;
 import com.github.chrisbanes.photoview.PhotoView;
 
@@ -22,7 +21,7 @@ public class BitmapHandler {
     private BasicFilter filters;
     private int height, width, size, height_final, width_final, size_final;
     private PhotoView view;
-    Queue<Effect> effectQueue;
+    private Queue<Effect> effectQueue;
 
     private final int IMAGE_SIZE = 700;
 
@@ -84,7 +83,7 @@ public class BitmapHandler {
         return file;
     }
 
-    public double[][] getHSVPixels(boolean saving){
+    double[][] getHSVPixels(boolean saving){
         double[][] result = new double[3][saving?size_final:size];
 
         int[] pixels = new int[saving?size_final:size];
@@ -97,7 +96,7 @@ public class BitmapHandler {
         return result;
     }
 
-    public void setHSVPixels(double[][] pixels, boolean saving){
+    void setHSVPixels(double[][] pixels, boolean saving){
         int[] result = new int[saving?size_final:size];
 
         for(int i=0; i<(saving?size_final:size); i++)
@@ -106,28 +105,28 @@ public class BitmapHandler {
         setPixels(result, saving);
     }
 
-    public void getPixels(int[] pixels, boolean saving){
+    void getPixels(int[] pixels, boolean saving){
         if(saving)
             this.bit_final.getPixels(pixels,0,width_final,0,0,width_final,height_final);
         else
             this.bit_current.getPixels(pixels,0,width,0,0,width,height);
     }
 
-    public void setPixels(int[] pixels, boolean saving){
+    void setPixels(int[] pixels, boolean saving){
         if(saving)
             bit_final.setPixels(pixels,0,width_final,0,0,width_final,height_final);
         else
             bit_current.setPixels(pixels,0,width,0,0,width,height);
     }
 
-    public int[] getHSVHist(double[][] tabs,boolean saving){
+    int[] getHSVHist(double[][] tabs,boolean saving){
         int[] hist = new int[101];
         for(int i=0; i<(saving?size_final:size); i++)
             hist[(int)(tabs[2][i]*100)]++;
         return hist;
     }
 
-    public int[] getHSVCumul(double[][] tabs,boolean saving){
+    int[] getHSVCumul(double[][] tabs,boolean saving){
         int[] cumul = new int[101];
         int[] hist = getHSVHist(tabs,saving);
         for(int i=1; i<hist.length;i++){
@@ -217,37 +216,37 @@ public class BitmapHandler {
 
     }
 
-    public int getSize(boolean saving){
+    int getSize(boolean saving){
         return saving?size_final:size;
     }
 
-    public int getHeight(boolean saving){
+    int getHeight(boolean saving){
         return saving?height_final:height;
     }
 
-    public int getWidth(boolean saving){
+    int getWidth(boolean saving){
         return saving?width_final:width;
     }
 
-    public Bitmap getBit_current() {
+    Bitmap getBit_current() {
         return bit_current;
     }
 
-    public void setBit_current( Bitmap arg ) {
+    void setBit_current( Bitmap arg ) {
         this.bit_current=arg;
     }
 
-    public Bitmap getBit_final(){
+    Bitmap getBit_final(){
         return bit_final;
     }
 
-    public void setBit_final( Bitmap arg ) {
+    void setBit_final( Bitmap arg ) {
         this.bit_final=arg;
     }
 
     private void incrustation(BitmapHandler bmp, boolean saving){
-        int pixelsBackground[] = new int[saving?size_final:size];
-        int pixelsTopLayer[] = new int[saving?size_final:size];
+        int [] pixelsBackground = new int[saving?size_final:size];
+        int [] pixelsTopLayer = new int[saving?size_final:size];
 
         this.getPixels(pixelsBackground,saving);
         bmp.getPixels(pixelsTopLayer,saving);
@@ -262,7 +261,7 @@ public class BitmapHandler {
 
     //épaissit les contours noirs d'une image en noir et blanc
     private void thicken(int intensity,boolean saving){
-        int pixels[] = new int[(saving?size_final:size)];
+        int [] pixels = new int[(saving?size_final:size)];
         this.getPixels(pixels,saving);
 
         for(int i=1; i<(saving?size_final:size)-1; i++){
@@ -306,7 +305,7 @@ public class BitmapHandler {
         setAsImageView();
     }
 
-    public void invertRS(final Context context){
+    private void invertRS(final Context context){
         filters.invertRS(context,false);
         effectQueue.add(new Effect(new Function<Void, Void>() {
             @Override

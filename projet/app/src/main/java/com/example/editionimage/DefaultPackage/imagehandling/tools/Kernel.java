@@ -1,26 +1,15 @@
 package com.example.editionimage.DefaultPackage.imagehandling.tools;
 
 public class Kernel {
-    protected int w,h;
-    protected int[][] values;
-    protected double inverse;
+    private int w,h;
+    private int[][] values;
+    private double inverse;
 
-    protected Kernel(int w, int h){
+    private Kernel(int w, int h){
         this.w = w;
         this.h = h;
         values = new int[w][h];
         this.inverse = 0;
-    }
-
-    public Kernel(int w, int h, int value){
-        this(w,h);
-
-        for(int i=0; i<w; i++){
-            for(int j=0; j<h; j++){
-                this.setValue(i,j,value);
-            }
-        }
-        this.inverse = value*w*h;
     }
 
     public Kernel(int w, int h, int[] values){
