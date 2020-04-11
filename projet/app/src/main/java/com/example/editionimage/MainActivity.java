@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     Button openGallery, openCamera,buttonSave;
     Button buttonColorize, buttonKeepColor, buttonShift, buttonContrast, buttonLight;
     BitmapHandler usedImage;
-    int barValue_keepcolor = 180, barValue_colorize = 180 ,barValue_shift = 0, barValue_contrast = 0, barValue_lighlevel = 0;
+    int barValue_keepcolor = 180, barValue_colorize = 180 ,barValue_shift = 180, barValue_contrast = 0, barValue_lighlevel = 0;
     int pictureHeight, pictureWidth;
 
     @Override

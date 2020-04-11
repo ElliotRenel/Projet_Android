@@ -183,7 +183,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:max="360"
-                        android:progress="0"
+                        android:progress="180"
                         android:progressTint="#FFFFFF"
                         android:thumbTint="#7C7C7C" />
 
