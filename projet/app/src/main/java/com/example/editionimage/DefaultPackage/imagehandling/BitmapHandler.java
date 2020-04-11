@@ -55,7 +55,7 @@ public class BitmapHandler {
         while(!effectQueue.isEmpty()) {
             Log.i("Effect","Effect was applied");
             current_effect = effectQueue.remove();
-            current_effect.applyModifier();
+            current_effect.applyFinalModifier();
         }
 
         /** Creating the final Image File */
@@ -105,6 +105,34 @@ public class BitmapHandler {
         setPixels(result, saving);
     }
 
+    double[] getVPixels(boolean saving){
+        double[] result = new double[saving?size_final:size];
+
+        int[] pixels = new int[saving?size_final:size];
+
+        getPixels(pixels,saving);
+
+        for(int i=0; i<(saving?size_final:size); i++)
+            result[i] = rgb_to_v(pixels[i]);
+
+        return result;
+
+    }
+
+    void setVPixels(double[] pixels, boolean saving){
+        int[] result = new int[saving?size_final:size];
+
+        int[] old_pixels = new int[saving?size_final:size];
+
+        getPixels(old_pixels,saving);
+
+        for(int i=0; i<(saving?size_final:size); i++)
+            result[i] = v_to_rgb(pixels[i],old_pixels[i]);
+
+        setPixels(result, saving);
+
+    }
+
     void getPixels(int[] pixels, boolean saving){
         if(saving)
             this.bit_final.getPixels(pixels,0,width_final,0,0,width_final,height_final);
@@ -119,14 +147,14 @@ public class BitmapHandler {
             bit_current.setPixels(pixels,0,width,0,0,width,height);
     }
 
-    int[] getHSVHist(double[][] tabs,boolean saving){
+    int[] getHSVHist(double[] tabs,boolean saving){
         int[] hist = new int[101];
         for(int i=0; i<(saving?size_final:size); i++)
-            hist[(int)(tabs[2][i]*100)]++;
+            hist[(int)(tabs[i]*100)]++;
         return hist;
     }
 
-    int[] getHSVCumul(double[][] tabs,boolean saving){
+    int[] getHSVCumul(double[] tabs,boolean saving){
         int[] cumul = new int[101];
         int[] hist = getHSVHist(tabs,saving);
         for(int i=1; i<hist.length;i++){
@@ -216,6 +244,24 @@ public class BitmapHandler {
 
     }
 
+    private double rgb_to_v(int pixel){
+        double red_ = (double) Color.red(pixel)/(double)255;
+        double blue_ = (double)Color.green(pixel)/(double)255;
+        double green_ = (double)Color.blue(pixel)/(double)255;
+
+        double V = Math.max(red_, blue_);
+        V = Math.max(V, green_);
+
+        return V;
+    }
+
+    private int v_to_rgb(double v_pixel, int old_pixel){
+        double[][] old = new double[3][1];
+        rgb_to_hsv(old_pixel,old,0);
+        old[2][0] = v_pixel;
+        return hsv_to_rgb(old,0);
+    }
+
     int getSize(boolean saving){
         return saving?size_final:size;
     }
@@ -283,133 +329,222 @@ public class BitmapHandler {
 
     public void toGray(){
         filters.toGray(false);
-        effectQueue.add(new Effect(new Function<Void, Void>() {
-            @Override
-            public Void apply(Void aVoid) {
-                filters.toGray(true);
-                return null;
-            }
-        }));
+        effectQueue.add(new Effect(
+                new Function<Void, Void>() {
+                    @Override
+                    public Void apply(Void aVoid) {
+                        filters.toGray(true);
+                        return null;
+                    }
+                },
+                new Function<Void, Void>() {
+                    @Override
+                    public Void apply(Void aVoid) {
+                        filters.toGray(false);
+                        return null;
+                    }
+                }));
         setAsImageView();
     }
 
     public void toGrayRS(final Context context){
         filters.toGrayRS(context,false);
-        effectQueue.add(new Effect(new Function<Void, Void>() {
-            @Override
-            public Void apply(Void aVoid) {
-                filters.toGrayRS(context,true);
-                return null;
-            }
-        }));
+        effectQueue.add(new Effect(
+                new Function<Void, Void>() {
+                    @Override
+                    public Void apply(Void aVoid) {
+                        filters.toGrayRS (context,true);
+                        return null;
+                    }
+                },
+                new Function<Void, Void>() {
+                    @Override
+                    public Void apply(Void aVoid) {
+                        filters.toGrayRS(context,false);
+                        return null;
+                    }
+                }));
         setAsImageView();
     }
 
     private void invertRS(final Context context){
         filters.invertRS(context,false);
-        effectQueue.add(new Effect(new Function<Void, Void>() {
-            @Override
-            public Void apply(Void aVoid) {
-                filters.invertRS(context,true);
-                return null;
-            }
-        }));
+        effectQueue.add(new Effect(
+                new Function<Void, Void>() {
+                    @Override
+                    public Void apply(Void aVoid) {
+                        filters.invertRS(context,true);
+                        return null;
+                    }
+                },
+                new Function<Void, Void>() {
+                    @Override
+                    public Void apply(Void aVoid) {
+                        filters.invertRS(context,false);
+                        return null;
+                    }
+                }));
         setAsImageView();
     }
 
     public void colorize(final int color){
         filters.colorize(color,false);
-        effectQueue.add(new Effect(new Function<Void, Void>() {
-            @Override
-            public Void apply(Void aVoid) {
-                filters.colorize(color,true);
-                return null;
-            }
-        }));
+        effectQueue.add(new Effect(
+                new Function<Void, Void>() {
+                    @Override
+                    public Void apply(Void aVoid) {
+                        filters.colorize(color,true);
+                        return null;
+                    }
+                },
+                new Function<Void, Void>() {
+                    @Override
+                    public Void apply(Void aVoid) {
+                        filters.colorize(color,false);
+                        return null;
+                    }
+                }));
         setAsImageView();
     }
 
     public void keepColor(final int color){
-        filters.keepColor(color,30,false);
-        effectQueue.add(new Effect(new Function<Void, Void>() {
-            @Override
-            public Void apply(Void aVoid) {
-                filters.keepColor(color,30,true);
-                return null;
-            }
-        }));
+        final int range = 30;
+        filters.keepColor(color,range,false);
+        effectQueue.add(new Effect(
+                new Function<Void, Void>() {
+                    @Override
+                    public Void apply(Void aVoid) {
+                        filters.keepColor(color,range,true);
+                        return null;
+                    }
+                },
+                new Function<Void, Void>() {
+                    @Override
+                    public Void apply(Void aVoid) {
+                        filters.keepColor(color,range,false);
+                        return null;
+                    }
+                }));
         setAsImageView();
     }
 
     public void shift(final int shift){
         filters.shift(shift,false);
-        effectQueue.add(new Effect(new Function<Void, Void>() {
-            @Override
-            public Void apply(Void aVoid) {
-                filters.shift(shift,true);
-                return null;
-            }
-        }));
+        effectQueue.add(new Effect(
+                new Function<Void, Void>() {
+                    @Override
+                    public Void apply(Void aVoid) {
+                        filters.shift(shift,true);
+                        return null;
+                    }
+                },
+                new Function<Void, Void>() {
+                    @Override
+                    public Void apply(Void aVoid) {
+                        filters.shift(shift,false);
+                        return null;
+                    }
+                }));
         setAsImageView();
     }
 
     public void contrastLinear(){
         filters.contrastLinear(false);
-        effectQueue.add(new Effect(new Function<Void, Void>() {
-            @Override
-            public Void apply(Void aVoid) {
-                filters.contrastLinear(true);
-                return null;
-            }
-        }));
+        effectQueue.add(new Effect(
+                new Function<Void, Void>() {
+                    @Override
+                    public Void apply(Void aVoid) {
+                        filters.contrastLinear(true);
+                        return null;
+                    }
+                },
+                new Function<Void, Void>() {
+                    @Override
+                    public Void apply(Void aVoid) {
+                        filters.contrastLinear(false);
+                        return null;
+                    }
+                }));
         setAsImageView();
     }
 
     public void contrastEqual(){
         filters.contrastEqual(false);
-        effectQueue.add(new Effect(new Function<Void, Void>() {
-            @Override
-            public Void apply(Void aVoid) {
-                filters.contrastEqual(true);
-                return null;
-            }
-        }));
+        effectQueue.add(new Effect(
+                new Function<Void, Void>() {
+                    @Override
+                    public Void apply(Void aVoid) {
+                        filters.contrastEqual(true);
+                        return null;
+                    }
+                },
+                new Function<Void, Void>() {
+                    @Override
+                    public Void apply(Void aVoid) {
+                        filters.contrastEqual(false);
+                        return null;
+                    }
+                }));
         setAsImageView();
     }
 
     public void contrastEqualRS(final Context context){
         filters.contrastEqualRS(context,false);
-        effectQueue.add(new Effect(new Function<Void, Void>() {
-            @Override
-            public Void apply(Void aVoid) {
-                filters.contrastEqualRS(context,true);
-                return null;
-            }
-        }));
+        effectQueue.add(new Effect(
+                new Function<Void, Void>() {
+                    @Override
+                    public Void apply(Void aVoid) {
+                        filters.contrastEqualRS(context,true);
+                        return null;
+                    }
+                },
+                new Function<Void, Void>() {
+                    @Override
+                    public Void apply(Void aVoid) {
+                        filters.contrastEqualRS(context,false);
+                        return null;
+                    }
+                }));
         setAsImageView();
     }
 
     public void modifContrast(final int contrast){
         filters.modifContrast(contrast,false);
-        effectQueue.add(new Effect(new Function<Void, Void>() {
-            @Override
-            public Void apply(Void aVoid) {
-                filters.modifContrast(contrast,true);
-                return null;
-            }
-        }));
+        effectQueue.add(new Effect(
+                new Function<Void, Void>() {
+                    @Override
+                    public Void apply(Void aVoid) {
+                        filters.modifContrast(contrast,true);
+                        return null;
+                    }
+                },
+                new Function<Void, Void>() {
+                    @Override
+                    public Void apply(Void aVoid) {
+                        filters.modifContrast(contrast,false);
+                        return null;
+                    }
+                }));
         setAsImageView();
     }
 
     public void modifLight(final int lightvalue){
         filters.modifLight(lightvalue,false);
-        effectQueue.add(new Effect(new Function<Void, Void>() {
-            @Override
-            public Void apply(Void aVoid) {
-                filters.modifLight(lightvalue,true);
-                return null;
-            }
-        }));
+        effectQueue.add(new Effect(
+                new Function<Void, Void>() {
+                    @Override
+                    public Void apply(Void aVoid) {
+                        filters.modifLight(lightvalue,true);
+                        return null;
+                    }
+                },
+                new Function<Void, Void>() {
+                    @Override
+                    public Void apply(Void aVoid) {
+                        filters.modifLight(lightvalue,false);
+                        return null;
+                    }
+                }));
         setAsImageView();
     }
 
@@ -424,13 +559,21 @@ public class BitmapHandler {
         final Kernel gauss = new Kernel(5 , 5,tmp);
 
         filters.convolution(gauss,false);
-        effectQueue.add(new Effect(new Function<Void, Void>() {
-            @Override
-            public Void apply(Void aVoid) {
-                filters.convolution(gauss,true);
-                return null;
-            }
-        }));
+        effectQueue.add(new Effect(
+                new Function<Void, Void>() {
+                    @Override
+                    public Void apply(Void aVoid) {
+                        filters.convolution(gauss,true);
+                        return null;
+                    }
+                },
+                new Function<Void, Void>() {
+                    @Override
+                    public Void apply(Void aVoid) {
+                        filters.convolution(gauss,false);
+                        return null;
+                    }
+                }));
 
         setAsImageView();
     }
@@ -447,13 +590,21 @@ public class BitmapHandler {
 
         filters.convolution(laplace,false);
 
-        effectQueue.add(new Effect(new Function<Void, Void>() {
-            @Override
-            public Void apply(Void aVoid) {
-                filters.convolution(laplace,true);
-                return null;
-            }
-        }));
+        effectQueue.add(new Effect(
+                new Function<Void, Void>() {
+                    @Override
+                    public Void apply(Void aVoid) {
+                        filters.convolution(laplace,true);
+                        return null;
+                    }
+                },
+                new Function<Void, Void>() {
+                    @Override
+                    public Void apply(Void aVoid) {
+                        filters.convolution(laplace,false);
+                        return null;
+                    }
+                }));
 
         setAsImageView();
     }
@@ -473,13 +624,21 @@ public class BitmapHandler {
         final Kernel mB = new Kernel(3,3,mask2);
 
         filters.convolutionEdgeDetection(mA,mB,false);
-        effectQueue.add(new Effect(new Function<Void, Void>() {
-            @Override
-            public Void apply(Void aVoid) {
-                filters.convolutionEdgeDetection(mA,mB,true);
-                return null;
-            }
-        }));
+        effectQueue.add(new Effect(
+                new Function<Void, Void>() {
+                    @Override
+                    public Void apply(Void aVoid) {
+                        filters.convolutionEdgeDetection(mA,mB,true);
+                        return null;
+                    }
+                },
+                new Function<Void, Void>() {
+                    @Override
+                    public Void apply(Void aVoid) {
+                        filters.convolutionEdgeDetection(mA,mB,false);
+                        return null;
+                    }
+                }));
         setAsImageView();
     }
 

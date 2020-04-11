@@ -143,7 +143,7 @@ class BasicFilter {
 
     void contrastLinear(boolean saving){
         int size = bmp.getSize(saving);
-        double[][] tabs = bmp.getHSVPixels(saving);
+        double[] tabs = bmp.getVPixels(saving);
         int[] hist = bmp.getHSVHist(tabs,saving);
         int min = 0, max = 100;
         boolean b = true;
@@ -161,23 +161,23 @@ class BasicFilter {
         }
 
         for(int i=0; i<size; i++){
-            tabs[2][i] = ((100.0/(float)(max-min))*(tabs[2][i]*100)-min)/100;
+            tabs[i] = ((100.0/(float)(max-min))*(tabs[i]*100)-min)/100;
         }
-        bmp.setHSVPixels(tabs,saving);
+        bmp.setVPixels(tabs,saving);
     }
 
 
     void contrastEqual(boolean saving){
         int size = bmp.getSize(saving);
-        double[][] tabs = bmp.getHSVPixels(saving);
+        double[] tabs = bmp.getVPixels(saving);
 
         int[] C = bmp.getHSVCumul(tabs,saving);
 
         for(int i =0; i<size; i++){
             //voir si c est possible de réduire le nombre de conversion int/float
-            tabs[2][i] = (((float)C[(int)(tabs[2][i]*100)])*100)/(float)(size*100);
+            tabs[i] = (((float)C[(int)(tabs[i]*100)])*100)/(float)(size*100);
         }
-        bmp.setHSVPixels(tabs,saving);
+        bmp.setVPixels(tabs,saving);
     }
 
     void contrastEqualRS(Context context,boolean saving) {
@@ -276,28 +276,28 @@ class BasicFilter {
     /** Convolution **/
 
     void convolution(Kernel mask,boolean saving){
-        double[][] hsv_pixels = bmp.getHSVPixels(saving);
+        double[] hsv_pixels = bmp.getVPixels(saving);
 
         int m_h = mask.getH()/2;
         int m_w = mask.getW()/2;
 
         applyMask(mask, hsv_pixels, m_w, bmp.getWidth(saving)-m_w,m_h,bmp.getHeight(saving)-m_h,saving);
 
-        bmp.setHSVPixels(hsv_pixels,saving);
+        bmp.setVPixels(hsv_pixels,saving);
 
     }
 
     void convolutionEdgeDetection(Kernel mA, Kernel mB, boolean saving){
         if(mA.getInverse()!=0 || mB.getInverse()!=0 || mA.getH()!=mB.getH() || mA.getW()!=mB.getW())
             return;
-        double[][] hsv_pixels = bmp.getHSVPixels(saving);
+        double[] hsv_pixels = bmp.getVPixels(saving);
 
         int m_h = mA.getH()/2;
         int m_w = mA.getW()/2;
 
         applyMaskEdgeDetection(mA, mB, hsv_pixels, m_w, bmp.getWidth(saving)-m_w,m_h,bmp.getHeight(saving)-m_h,saving);
 
-        bmp.setHSVPixels(hsv_pixels,saving);
+        bmp.setVPixels(hsv_pixels,saving);
     }
 
     int separableConvolution(Kernel row, Kernel column,boolean saving) {
@@ -305,7 +305,7 @@ class BasicFilter {
 
         int w = bmp.getWidth(saving);
         int h = bmp.getHeight(saving);
-        double[][] hsv_pixels = bmp.getHSVPixels(saving);
+        double[] hsv_pixels = bmp.getVPixels(saving);
 
         int dim = row.getW() / 2;
 
@@ -315,34 +315,32 @@ class BasicFilter {
 
         applyMask(column,hsv_pixels,0,w,dim,h-dim,saving);
 
-        bmp.setHSVPixels(hsv_pixels,saving);
+        bmp.setVPixels(hsv_pixels,saving);
 
         return 1;
     }
 
-    private void applyMask(Kernel mask, double[][] pixels, int x_min, int x_max, int y_min, int y_max,boolean saving){
+    private void applyMask(Kernel mask, double[] pixels, int x_min, int x_max, int y_min, int y_max,boolean saving){
         int w = bmp.getWidth(saving);
-        double[] pixels_copy = (pixels[2]).clone();
+        double[] pixels_copy = (pixels).clone();
 
         for(int x=x_min; x<x_max; x++){
             for(int y=y_min; y<y_max;y++){
-                pixels[2][x + y * w] = applyMaskAux(mask, pixels_copy, x, y,saving);
+                pixels[x + y * w] = applyMaskAux(mask, pixels_copy, x, y,saving);
             }
         }
     }
 
-    private void applyMaskEdgeDetection(Kernel mA, Kernel mB, double[][] pixels, int x_min, int x_max, int y_min, int y_max,boolean saving){
+    private void applyMaskEdgeDetection(Kernel mA, Kernel mB, double[] pixels, int x_min, int x_max, int y_min, int y_max,boolean saving){
         int w = bmp.getWidth(saving);
-        double[] pixels_copy = (pixels[2]).clone();
+        double[] pixels_copy = (pixels).clone();
 
         for(int x=x_min; x<x_max; x++){
             for(int y=y_min; y<y_max;y++){
-                pixels[2][x + y * w] = applyMaskEdgeDetectionAux(mA, mB, pixels_copy, x, y,saving);
+                pixels[x + y * w] = applyMaskEdgeDetectionAux(mA, mB, pixels_copy, x, y,saving);
             }
         }
     }
-
-
 
     private double applyMaskAux(Kernel mask, double[] pixels, int x, int y,boolean saving){
         int w = bmp.getWidth(saving);

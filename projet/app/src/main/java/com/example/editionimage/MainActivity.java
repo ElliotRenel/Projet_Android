@@ -73,14 +73,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                CharSequence text = "Saving Image";
-                Toast toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT);
-                toast.show();
-
                 File file = usedImage.saveImage();
                 if(file == null){
-                    text = "A problem occured, image could not be saved";
-                    toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT);
+                    CharSequence text = "A problem occured, image could not be saved";
+                    Toast toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT);
                     toast.show();
                 }else {
                     Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
@@ -88,8 +84,8 @@ public class MainActivity extends AppCompatActivity {
                     mediaScanIntent.setData(contentUri);
                     sendBroadcast(mediaScanIntent);
 
-                    text = "Image saved";
-                    toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT);
+                    CharSequence text = "Image saved";
+                    Toast toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_SHORT);
                     toast.show();
                 }
             }
