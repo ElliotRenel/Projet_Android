@@ -91,6 +91,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Undo
+        Button buttonUndo = findViewById(R.id.buttonUndo);
+        buttonUndo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!toastNoImage.isToastShowed(usedImage))
+                    usedImage.undo();
+            }
+        });
+
         // Reset
         Button buttonReset = findViewById(R.id.buttonReset);
         buttonReset.setOnClickListener(new View.OnClickListener() {

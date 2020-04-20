@@ -11,6 +11,7 @@ import com.github.chrisbanes.photoview.PhotoView;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
@@ -21,7 +22,7 @@ public class BitmapHandler {
     private BasicFilter filters;
     private int height, width, size, height_final, width_final, size_final;
     private PhotoView view;
-    private Queue<Effect> effectQueue;
+    private ArrayList<Effect> effectQueue;
 
     private final int IMAGE_SIZE = 700;
 
@@ -29,7 +30,7 @@ public class BitmapHandler {
         bit_origin = bit.copy(bit.getConfig(),false);
         bit_current = Bitmap.createScaledBitmap(bit_origin.copy(bit_origin.getConfig(),true),(bit_origin.getWidth()*IMAGE_SIZE)/bit_origin.getHeight(),IMAGE_SIZE,false);
         bit_final = bit_origin.copy(bit_origin.getConfig(),true);
-        effectQueue = new LinkedList<>();
+        effectQueue = new ArrayList<>();
         filters = new BasicFilter(this);
         height = bit_current.getHeight();
         width = bit_current.getWidth();
@@ -54,7 +55,8 @@ public class BitmapHandler {
         Effect current_effect;
         while(!effectQueue.isEmpty()) {
             Log.i("Effect","Effect was applied");
-            current_effect = effectQueue.remove();
+            current_effect = effectQueue.get(0);
+            effectQueue.remove(0);
             current_effect.applyFinalModifier();
         }
 
@@ -81,6 +83,22 @@ public class BitmapHandler {
         giveFinalPreview();
 
         return file;
+    }
+
+    public void reset(){
+        bit_current = Bitmap.createScaledBitmap(bit_origin.copy(bit_origin.getConfig(),true),(bit_origin.getWidth()*IMAGE_SIZE)/bit_origin.getHeight(),IMAGE_SIZE,false);
+        effectQueue.clear();
+        setAsImageView();
+    }
+
+    public void undo(){
+        if(!effectQueue.isEmpty()){
+            effectQueue.remove(effectQueue.size()-1);
+            bit_current = Bitmap.createScaledBitmap(bit_origin.copy(bit_origin.getConfig(),true),(bit_origin.getWidth()*IMAGE_SIZE)/bit_origin.getHeight(),IMAGE_SIZE,false);
+            for(Effect e : effectQueue)
+                e.applyModifier();
+            setAsImageView();
+        }
     }
 
     double[][] getHSVPixels(boolean saving){
@@ -320,12 +338,6 @@ public class BitmapHandler {
     }
 
     /** Button Effects **/
-
-    public void reset(){
-        bit_current = Bitmap.createScaledBitmap(bit_origin.copy(bit_origin.getConfig(),true),(bit_origin.getWidth()*IMAGE_SIZE)/bit_origin.getHeight(),IMAGE_SIZE,false);
-        effectQueue.clear();
-        setAsImageView();
-    }
 
     public void toGray(){
         filters.toGray(false);
