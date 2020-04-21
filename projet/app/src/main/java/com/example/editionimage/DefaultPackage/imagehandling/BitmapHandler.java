@@ -17,6 +17,14 @@ import java.util.Queue;
 import java.util.Random;
 import java.util.function.Function;
 
+/**
+ * Bitmap Handler is the class used to stock base image and current image (modified), and to apply to the current image the effects given by the user.
+ *
+ * TODO
+ *
+ *
+ * @author theod
+ */
 public class BitmapHandler {
     private Bitmap bit_origin, bit_current, bit_final;
     private BasicFilter filters;
@@ -26,6 +34,13 @@ public class BitmapHandler {
 
     private final int IMAGE_SIZE = 700;
 
+
+    /**
+     * Class BitmapHandler is used to put effect on bitmaps, and to save the current bitmap displayed with bit_final.
+     *
+     * @param bit Is the original bitmap, extracted from the picture imported or taken. (it will always be stocked in bit_origin in first place)
+     * @param view Is the view where the current bitmap should be displayed, since it will be the same for all the duration of the application. (bit_current is displayed)
+     */
     public BitmapHandler(Bitmap bit, PhotoView view){
         bit_origin = bit.copy(bit.getConfig(),false);
         bit_current = Bitmap.createScaledBitmap(bit_origin.copy(bit_origin.getConfig(),true),(bit_origin.getWidth()*IMAGE_SIZE)/bit_origin.getHeight(),IMAGE_SIZE,false);
@@ -41,16 +56,26 @@ public class BitmapHandler {
         this.view = view;
     }
 
+    /**
+     * setAsImageView displays bit_current on the view given by parameters
+     */
     public void setAsImageView(){
         view.setImageBitmap(bit_current);
     }
 
+    /**
+     * TODO
+     */
     private void giveFinalPreview(){
         view.setImageBitmap(bit_final);
     }
 
+    /**
+     * TODO
+     * @return
+     */
     public File saveImage() {
-        /** Applying effects to the original image */
+        /* Applying effects to the original image */
         bit_final = bit_origin.copy(bit_origin.getConfig(),true);
         Effect current_effect;
         while(!effectQueue.isEmpty()) {
@@ -60,7 +85,7 @@ public class BitmapHandler {
             current_effect.applyFinalModifier();
         }
 
-        /** Creating the final Image File */
+        /* Creating the final Image File */
         String imgName = "Image-" + (new Random()).nextInt(1000)+".jpg";
         File parentDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString()+"/Edition_Image");
 
@@ -79,18 +104,24 @@ public class BitmapHandler {
             return null;
         }
 
-        /** Giving preview of final image */
+        /* Giving preview of final image */
         giveFinalPreview();
 
         return file;
     }
 
+    /**
+     * reset clears all effects applied on bit_current by resetting it to bit_origin.
+     */
     public void reset(){
         bit_current = Bitmap.createScaledBitmap(bit_origin.copy(bit_origin.getConfig(),true),(bit_origin.getWidth()*IMAGE_SIZE)/bit_origin.getHeight(),IMAGE_SIZE,false);
         effectQueue.clear();
         setAsImageView();
     }
 
+    /**
+     * undo undoes the last effect applied, if there is one.
+     */
     public void undo(){
         if(!effectQueue.isEmpty()){
             effectQueue.remove(effectQueue.size()-1);
@@ -101,6 +132,11 @@ public class BitmapHandler {
         }
     }
 
+    /**
+     * TODO
+     * @param saving
+     * @return
+     */
     double[][] getHSVPixels(boolean saving){
         double[][] result = new double[3][saving?size_final:size];
 
@@ -114,6 +150,11 @@ public class BitmapHandler {
         return result;
     }
 
+    /**
+     * TODO
+     * @param pixels
+     * @param saving
+     */
     void setHSVPixels(double[][] pixels, boolean saving){
         int[] result = new int[saving?size_final:size];
 
@@ -123,6 +164,11 @@ public class BitmapHandler {
         setPixels(result, saving);
     }
 
+    /**
+     * TODO
+     * @param saving
+     * @return
+     */
     double[] getVPixels(boolean saving){
         double[] result = new double[saving?size_final:size];
 
@@ -337,7 +383,7 @@ public class BitmapHandler {
         }
     }
 
-    /** Button Effects **/
+    /* Button Effects */
 
     public void toGray(){
         filters.toGray(false);

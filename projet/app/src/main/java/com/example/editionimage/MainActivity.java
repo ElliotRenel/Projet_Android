@@ -25,6 +25,14 @@ import com.github.chrisbanes.photoview.PhotoView;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * MainActivity manages starting and stopping of the application in general, and provides the link between modifying functions, and their respective button or other tools on the graphic side.
+ *
+ * It allows the existence of functions like onCreate that will be called on specific moments of the application.
+ * It also creates variables that will be used in the whole application, like buttons, bitmaps, or parameters for functions.
+ *
+ * @author theod
+ */
 public class MainActivity extends AppCompatActivity {
     private static final int PICK_IMAGE = 100;
     private static final int REQUEST_TAKE_PHOTO = 1888;
@@ -40,6 +48,14 @@ public class MainActivity extends AppCompatActivity {
     int pictureHeight, pictureWidth;
 
     @Override
+    /**
+     * onCreate set up the app to be functional at the creation of the application.
+     *
+     * It will create links between the layout and java functions.
+     * We can for example attribute to a Button variable an action defined. It can be a simple action  or multiple ones (for example, show another button)
+     * @see buttonToGray
+     * @see buttonColorize
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);

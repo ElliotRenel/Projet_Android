@@ -11,6 +11,9 @@ import com.example.editionimage.ScriptC_gray;
 import com.example.editionimage.ScriptC_histEq;
 import com.example.editionimage.ScriptC_invert;
 
+/**
+ * BasicFilter regroups every transformation applicable to an image on the application.
+ */
 class BasicFilter {
     private BitmapHandler bmp;
 
@@ -20,6 +23,10 @@ class BasicFilter {
 
     /** Color **/
 
+    /**
+     * toGray transforms a colored bitmap to a grey channel.
+     * @param saving
+     */
     void toGray(boolean saving){
         //vérifier si passage en hsv serait pas plus rapide (temps de conversion vs temps de cast int/float)
         int size = bmp.getSize(saving);
@@ -34,6 +41,11 @@ class BasicFilter {
         bmp.setPixels(pixels,saving);
     }
 
+    /**
+     * toGrayRS uses renderscript to do the same thing as toGray
+     * @param context
+     * @param saving
+     */
     void toGrayRS (Context context, boolean saving) {
 
         // 1) Creer un contexte RenderScript
@@ -68,6 +80,12 @@ class BasicFilter {
         grayScript . destroy () ; rs . destroy () ;
     }
 
+
+    /**
+     * TODO
+     * @param context
+     * @param saving
+     */
     void invertRS (Context context, boolean saving) {
 
         // 1) Creer un contexte RenderScript
@@ -102,6 +120,11 @@ class BasicFilter {
         invertScript . destroy () ; rs . destroy () ;
     }
 
+    /**
+     * colorize changes the hue of every pixel and is replaced by color.
+     * @param color the new hue to apply.
+     * @param saving
+     */
     void colorize(int color, boolean saving) {
         int size = bmp.getSize(saving);
         double[][] tabs = bmp.getHSVPixels(saving);
@@ -112,6 +135,15 @@ class BasicFilter {
         bmp.setHSVPixels(tabs,saving);
     }
 
+    /**
+     * keepColor, transforms every pixel not in the range of the hue color into a grey channel.
+     * @param color the base hue to keep
+     * @param range the distance accepted to keep elements
+     * @param saving
+     *
+     * For the hue to be preserved, a pixel needs to have a hue at a distance of range maximum from color modulo 360.
+     * Example: color = 30, range = 40. 359 and 45 are kept intact, but 250 and 71 are turned into grey.
+     */
     void keepColor(int color, int range, boolean saving) {
         color = (color % 360);
         int size = bmp.getSize(saving);
@@ -128,6 +160,14 @@ class BasicFilter {
         bmp.setHSVPixels(tabs,saving);
     }
 
+    /**
+     * shift modifies every pixel's hues by shift modulo 360.
+     * @param shift the hue to add for modifications
+     * @param saving
+     *
+     * Formula gives newhue = oldhue + shift
+     *
+     */
     void shift(int shift, boolean saving){
         int size = bmp.getSize(saving);
         double[][] tabs = bmp.getHSVPixels(saving);
@@ -139,8 +179,13 @@ class BasicFilter {
     }
 
 
-    /** Contrast and Lighlevel **/
+    /** Contrast and Lightlevel */
 
+    /**
+     * TODO
+     *
+     * @param saving
+     */
     void contrastLinear(boolean saving){
         int size = bmp.getSize(saving);
         double[] tabs = bmp.getVPixels(saving);
@@ -167,6 +212,10 @@ class BasicFilter {
     }
 
 
+    /**
+     * TODO
+     * @param saving
+     */
     void contrastEqual(boolean saving){
         int size = bmp.getSize(saving);
         double[] tabs = bmp.getVPixels(saving);
@@ -180,7 +229,12 @@ class BasicFilter {
         bmp.setVPixels(tabs,saving);
     }
 
-    void contrastEqualRS(Context context,boolean saving) {
+    /**
+     * contrastEqualRS does the same principle as contrastEqual, with a renderscript version.
+     * @param context
+     * @param saving
+     */
+    void contrastEqualRS(Context context, boolean saving) {
         //Create new bitmap;
         Bitmap res = saving?bmp.getBit_final():bmp.getBit_current();
 
@@ -227,12 +281,23 @@ class BasicFilter {
             bmp.setBit_current(res);
     }
 
+    /**
+     * truncate function allows to make an int that we will be able to use for modifications.
+     * @param x the float to make to int
+     * @return the int from x
+     */
     private int truncate(float x){
         if(x>255) return 255;
         if(x<0) return 0;
         return Math.round(x);
     }
 
+    /**
+     * modifContrast allows to modify the contrast of the image.
+     * @param contrast the variation to apply
+     * @param saving
+     *
+     */
     void modifContrast(int contrast,boolean saving){
         int size = bmp.getSize(saving);
         int[] pixels = new int[size];
@@ -254,6 +319,11 @@ class BasicFilter {
         bmp.setPixels(pixels,saving);
     }
 
+    /**
+     * modifLight function allows to modify the lightness of an image by lightLevel.
+     * @param lightlevel the level of light to add to each pixel.
+     * @param saving
+     */
     void modifLight(int lightlevel,boolean saving){
         int size = bmp.getSize(saving);
         int [] pixels = new int[size];
@@ -275,6 +345,13 @@ class BasicFilter {
 
     /** Convolution **/
 
+    /**
+     * convolution modifies an image with the mask.
+     * @param mask the kernel given, used to modify the image.
+     * @param saving
+     *
+     * The convolution method uses a mask, that we will use on every pixel to modify this one. Every pixel will be modified differently with it's neighbours.
+     */
     void convolution(Kernel mask,boolean saving){
         double[] hsv_pixels = bmp.getVPixels(saving);
 
@@ -287,6 +364,12 @@ class BasicFilter {
 
     }
 
+    /**
+     * TODO
+     * @param mA
+     * @param mB
+     * @param saving
+     */
     void convolutionEdgeDetection(Kernel mA, Kernel mB, boolean saving){
         if(mA.getInverse()!=0 || mB.getInverse()!=0 || mA.getH()!=mB.getH() || mA.getW()!=mB.getW())
             return;
@@ -300,6 +383,13 @@ class BasicFilter {
         bmp.setVPixels(hsv_pixels,saving);
     }
 
+    /**
+     * TODO
+     * @param row
+     * @param column
+     * @param saving
+     * @return
+     */
     int separableConvolution(Kernel row, Kernel column,boolean saving) {
         if (row.getH() > 1 || column.getW() > 1) return -1;
 
@@ -320,6 +410,22 @@ class BasicFilter {
         return 1;
     }
 
+    /**
+     *
+     * applyMask deals with the use of the mask in the convolution method.
+     *
+     * @param mask used to modify the pixel
+     * @param pixels an array of pixels
+     * @param x_min
+     * @param x_max
+     * @param y_min
+     * @param y_max
+     * @param saving
+     *
+     * applyMask will modify every pixel by picking the neighbours of each pixel and apply the value of the mask for each neighbour.
+     * TODO?
+     *
+     */
     private void applyMask(Kernel mask, double[] pixels, int x_min, int x_max, int y_min, int y_max,boolean saving){
         int w = bmp.getWidth(saving);
         double[] pixels_copy = (pixels).clone();
@@ -331,6 +437,17 @@ class BasicFilter {
         }
     }
 
+    /**
+     * TODO
+     * @param mA
+     * @param mB
+     * @param pixels
+     * @param x_min
+     * @param x_max
+     * @param y_min
+     * @param y_max
+     * @param saving
+     */
     private void applyMaskEdgeDetection(Kernel mA, Kernel mB, double[] pixels, int x_min, int x_max, int y_min, int y_max,boolean saving){
         int w = bmp.getWidth(saving);
         double[] pixels_copy = (pixels).clone();
@@ -342,6 +459,15 @@ class BasicFilter {
         }
     }
 
+    /**
+     * TODO
+     * @param mask
+     * @param pixels
+     * @param x
+     * @param y
+     * @param saving
+     * @return
+     */
     private double applyMaskAux(Kernel mask, double[] pixels, int x, int y,boolean saving){
         int w = bmp.getWidth(saving);
         int mask_w = mask.getW()/2, mask_h = mask.getH()/2;
@@ -361,6 +487,16 @@ class BasicFilter {
         }
     }
 
+    /**
+     * TODO
+     * @param mA
+     * @param mB
+     * @param pixels
+     * @param x
+     * @param y
+     * @param saving
+     * @return
+     */
     private double applyMaskEdgeDetectionAux(Kernel mA, Kernel mB, double[] pixels, int x, int y,boolean saving){
         int w = bmp.getWidth(saving);
         int mA_w = mA.getW()/2, mA_h = mA.getH()/2;
