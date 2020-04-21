@@ -17,6 +17,8 @@ import java.util.Queue;
 import java.util.Random;
 import java.util.function.Function;
 
+import static java.lang.Math.round;
+
 /**
  * Bitmap Handler is the class used to stock base image and current image (modified), and to apply to the current image the effects given by the user.
  *
@@ -372,15 +374,36 @@ public class BitmapHandler {
     //épaissit les contours noirs d'une image en noir et blanc
     private void thicken(int intensity,boolean saving){
         int [] pixels = new int[(saving?size_final:size)];
+        int [] result = new int[(saving?size_final:size)];
         this.getPixels(pixels,saving);
+        this.getPixels(result,saving);
 
-        for(int i=1; i<(saving?size_final:size)-1; i++){
+        for(int i=this.width; i<(saving?size_final:size)-this.width; i++){
             //si pixel est foncé
-            if (Color.red(pixels[i])<150) {
-                pixels[i] = Color.argb(255,0,0,0);
-                //ajouter les pixels autours
+            if (Color.red(pixels[i])<200) {
+                result[i] = Color.argb(255,0,0,0);
+                result[i+1] = Color.argb(255,0,0,0);
+                result[i-1] = Color.argb(255,0,0,0);
+                result[i+this.width] = Color.argb(255,0,0,0);
+                result[i-this.width] = Color.argb(255,0,0,0);
+
             }
         }
+        this.setPixels(result,saving);
+    }
+
+    private void discretiseColor(boolean saving){
+        int [] pixels = new int[(saving?size_final:size)];
+        this.getPixels(pixels,saving);
+
+        for(int i=this.width; i<(saving?size_final:size)-this.width; i++){
+
+            pixels[i] = Color.argb(255,
+                    round((Color.red(pixels[i]))/30)*30,
+                    round((Color.green(pixels[i]))/30)*30,
+                    round((Color.blue(pixels[i]))/30)*30);
+        }
+        this.setPixels(pixels,saving);
     }
 
     /* Button Effects */
@@ -711,7 +734,8 @@ public class BitmapHandler {
         BitmapHandler border = new BitmapHandler(this.bit_current,this.view);
         border.toGrayRS(context);
         border.crayonEffect(context);
-
+        border.thicken(1,false);
+        this.discretiseColor(false);
         incrustation(border,false);
 
         setAsImageView();
