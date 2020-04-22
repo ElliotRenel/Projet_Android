@@ -1,0 +1,857 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.10.10)  22 APR 2020 22:50
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**/home/elliotrenel/Documents/University/Android/Projet_Android/Rapport/rapport.tex
+(/home/elliotrenel/Documents/University/Android/Projet_Android/Rapport/rapport.tex
+LaTeX2e <2018-12-01>
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2018/09/03 v1.4i Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
+)
+\c@part=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+) (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2018/08/11 v1.3c Input encoding file
+\inpenc@prehook=\toks14
+\inpenc@posthook=\toks15
+) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2018/08/11 v2.0j Standard LaTeX package
+ (/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def
+File: t1enc.def 2018/08/11 v2.0j Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
+)) (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2018/11/13 3.27 The Babel package
+ (/usr/share/texlive/texmf-dist/tex/generic/babel/switch.def
+File: switch.def 2018/11/13 3.27 Babel switching mechanism
+) (/usr/share/texlive/texmf-dist/tex/generic/babel-french/french.ldf
+Language: french 2019/01/30 v3.5d French support from the babel system
+ (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2018/11/13 3.27 Babel common definitions
+\babel@savecnt=\count88
+\U@D=\dimen103
+ (/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
+\bbl@dirlevel=\count89
+)
+\l@french = a dialect from \language\l@nohyphenation 
+
+
+Package babel Warning: No hyphenation patterns were preloaded for
+(babel)                the language `French' into the format.
+(babel)                Please, configure your TeX system to add them and
+(babel)                rebuild the format. Now I will use the patterns
+(babel)                preloaded for \language=nohyphenation instead on input line 87.
+
+\l@acadian = a dialect from \language\l@french 
+\FB@nonchar=\count90
+Package babel Info: Making : an active character on input line 414.
+Package babel Info: Making ; an active character on input line 415.
+Package babel Info: Making ! an active character on input line 416.
+Package babel Info: Making ? an active character on input line 417.
+\FBguill@level=\count91
+\FBold@everypar=\toks16
+\FB@Mht=\dimen104
+\mc@charclass=\count92
+\mc@charfam=\count93
+\mc@charslot=\count94
+\std@mcc=\count95
+\dec@mcc=\count96
+\c@FBcaption@count=\count97
+\listindentFB=\dimen105
+\descindentFB=\dimen106
+\labelindentFB=\dimen107
+\labelwidthFB=\dimen108
+\leftmarginFB=\dimen109
+\parindentFFN=\dimen110
+\FBfnindent=\dimen111
+)) (/usr/share/texlive/texmf-dist/tex/latex/carlisle/scalefnt.sty) (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks17
+) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+) (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen112
+\Gin@req@width=\dimen113
+) (/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2019/01/01 v2.4 Span multiple rows of a table
+\multirow@colwidth=\skip43
+\multirow@cntb=\count98
+\multirow@dima=\skip44
+\bigstrutjot=\dimen114
+) (/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen115
+\WF@size=\dimen116
+\c@WF@wrappedlines=\count99
+\WF@box=\box27
+\WF@everypar=\toks18
+Package: wrapfig 2003/01/31  v 3.6
+) (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks19
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2018/12/01 v2.17b AMS math features
+\@mathmargin=\skip45
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+ (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks20
+\ex@=\dimen117
+)) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen118
+) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count100
+LaTeX Info: Redefining \frac on input line 223.
+\uproot@=\count101
+\leftroot@=\count102
+LaTeX Info: Redefining \overline on input line 385.
+\classnum@=\count103
+\DOTSCASE@=\count104
+LaTeX Info: Redefining \ldots on input line 482.
+LaTeX Info: Redefining \dots on input line 485.
+LaTeX Info: Redefining \cdots on input line 606.
+\Mathstrutbox@=\box28
+\strutbox@=\box29
+\big@size=\dimen119
+LaTeX Font Info:    Redeclaring font encoding OML on input line 729.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 730.
+\macc@depth=\count105
+\c@MaxMatrixCols=\count106
+\dotsspace@=\muskip10
+\c@parentequation=\count107
+\dspbrk@lvl=\count108
+\tag@help=\toks21
+\row@=\count109
+\column@=\count110
+\maxfields@=\count111
+\andhelp@=\toks22
+\eqnshift@=\dimen120
+\alignsep@=\dimen121
+\tagshift@=\dimen122
+\tagwidth@=\dimen123
+\totwidth@=\dimen124
+\lineht@=\dimen125
+\@envbody=\toks23
+\multlinegap=\skip46
+\multlinetaggap=\skip47
+\mathdisplay@stack=\toks24
+LaTeX Info: Redefining \[ on input line 2844.
+LaTeX Info: Redefining \] on input line 2845.
+) (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2018/04/16 v5.8 Page Geometry
+ (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
+) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+) (/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count112
+\Gm@cntv=\count113
+\c@Gm@tempcnt=\count114
+\Gm@bindingoffset=\dimen126
+\Gm@wd@mp=\dimen127
+\Gm@odd@mp=\dimen128
+\Gm@even@mp=\dimen129
+\Gm@layoutwidth=\dimen130
+\Gm@layoutheight=\dimen131
+\Gm@layouthoffset=\dimen132
+\Gm@layoutvoffset=\dimen133
+\Gm@dimlist=\toks25
+) (/home/elliotrenel/Documents/University/Android/Projet_Android/Rapport/rapport.aux)
+\openout1 = `rapport.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Info: Redefining \degres on input line 27.
+LaTeX Info: Redefining \dots on input line 27.
+LaTeX Info: Redefining \up on input line 27.
+ (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count115
+\scratchdimen=\dimen134
+\scratchbox=\box30
+\nofMPsegments=\count116
+\nofMParguments=\count117
+\everyMPshowfont=\toks26
+\MPscratchCnt=\count118
+\MPscratchDim=\dimen135
+\MPnumerator=\count119
+\makeMPintoPDFobject=\count120
+\everyMPtoPDFconversion=\toks27
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+ (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+ (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+ (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+))) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+ (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+ (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+ (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)))) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 438.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+ (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+))
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(89.62709pt, 418.25368pt, 89.6271pt)
+* v-part:(T,H,B)=(101.40665pt, 591.5302pt, 152.11pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=418.25368pt
+* \textheight=591.5302pt
+* \oddsidemargin=17.3571pt
+* \evensidemargin=17.3571pt
+* \topmargin=-7.86334pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=44.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Missing character: There is no é in font cmr12!
+LaTeX Font Info:    Try loading font information for U+msa on input line 29.
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 29.
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) (/home/elliotrenel/Documents/University/Android/Projet_Android/Rapport/rapport.toc)
+\tf@toc=\write3
+\openout3 = `rapport.toc'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--61
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--61
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--61
+
+ []
+
+
+Overfull \hbox (1.96722pt too wide) in paragraph at lines 37--61
+\T1/cmr/m/n/12 Ces fonctions se trouvent dans le package com.example.editionimage.imagehandling 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--61
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--61
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--61
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--61
+
+ []
+
+
+Overfull \hbox (0.40088pt too wide) in paragraph at lines 37--61
+\T1/cmr/m/n/12 Cette classe manipule donc les objets produits par le fichier xml activity_main.xml. 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--61
+
+ []
+
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Underfull \hbox (badness 10000) in paragraph at lines 65--75
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 65--75
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 65--75
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 65--75
+
+ []
+
+[2]
+Overfull \hbox (15.96945pt too wide) in paragraph at lines 83--87
+[]\T1/cmr/m/n/12 L'application charge correctement une image depuis la galerie, et permet également
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 83--87
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 83--87
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 89--92
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 89--92
+
+ []
+
+
+Overfull \hbox (0.30222pt too wide) in paragraph at lines 94--96
+[]\T1/cmr/m/n/12 Les fonctions ci-dessous sont retrouvées dans la fonction BasicFilter, et testables
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 94--96
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 94--96
+
+ []
+
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 98--105
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 98--105
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 105--109
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 105--109
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--115
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--115
+
+ []
+
+
+Overfull \hbox (4.96643pt too wide) in paragraph at lines 115--122
+\T1/cmr/m/n/12 HSV), on trouve les indices minimal et maximal non nuls dans l'histogramme,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 115--122
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 115--122
+
+ []
+
+[4]
+Overfull \hbox (3.50821pt too wide) in paragraph at lines 122--130
+[]\T1/cmr/m/n/12 contrastEqual() : Transformation de contraste par égalisation d'histogramme
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 122--130
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 122--130
+
+ []
+
+
+Overfull \hbox (14.3375pt too wide) in paragraph at lines 130--134
+[]\T1/cmr/m/n/12 modifLight(double alpha) : Modification de la luminosité de l'image appellante.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 130--134
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 130--134
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 134--138
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 134--138
+
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 158--160
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 170--172
+
+ []
+
+<./images/dog_original.png, id=25, 205.76875pt x 276.03125pt>
+File: ./images/dog_original.png Graphic file (type png)
+<use ./images/dog_original.png>
+Package pdftex.def Info: ./images/dog_original.png  used on input line 201.
+(pdftex.def)             Requested size: 205.76823pt x 276.03056pt.
+[6]
+<./images/dog_crayon.png, id=32, 205.76875pt x 275.0275pt>
+File: ./images/dog_crayon.png Graphic file (type png)
+<use ./images/dog_crayon.png>
+Package pdftex.def Info: ./images/dog_crayon.png  used on input line 203.
+(pdftex.def)             Requested size: 205.76823pt x 275.02682pt.
+<./images/dog_cartoon.png, id=33, 205.76875pt x 275.0275pt>
+File: ./images/dog_cartoon.png Graphic file (type png)
+<use ./images/dog_cartoon.png>
+Package pdftex.def Info: ./images/dog_cartoon.png  used on input line 208.
+(pdftex.def)             Requested size: 205.76823pt x 275.02682pt.
+ [7 <./images/dog_original.png> <./images/dog_crayon.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 221--222
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 222--223
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 229--236
+
+ []
+
+[8 <./images/dog_cartoon.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 238--239
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 240--241
+
+ []
+
+<./images/1-togray.png, id=44, 1277.52281pt x 648.17157pt>
+File: ./images/1-togray.png Graphic file (type png)
+<use ./images/1-togray.png>
+Package pdftex.def Info: ./images/1-togray.png  used on input line 245.
+(pdftex.def)             Requested size: 1277.5197pt x 648.16998pt.
+
+Overfull \hbox (876.89084pt too wide) in paragraph at lines 245--248
+[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 245--248
+
+ []
+
+[9]
+Overfull \vbox (56.63979pt too high) has occurred while \output is active []
+
+ [10 <./images/1-togray.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 250--251
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 252--254
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 255--256
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 258--259
+
+ []
+
+<./images/1-shift.png, id=51, 1266.98344pt x 675.27281pt>
+File: ./images/1-shift.png Graphic file (type png)
+<use ./images/1-shift.png>
+Package pdftex.def Info: ./images/1-shift.png  used on input line 263.
+(pdftex.def)             Requested size: 1266.98036pt x 675.27116pt.
+
+Overfull \hbox (866.3515pt too wide) in paragraph at lines 263--265
+[][]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 263--265
+
+ []
+
+[11]
+Overfull \vbox (83.74097pt too high) has occurred while \output is active []
+
+ [12 <./images/1-shift.png>]
+<./images/linelong1.png, id=58, 1265.47781pt x 673.76718pt>
+File: ./images/linelong1.png Graphic file (type png)
+<use ./images/linelong1.png>
+Package pdftex.def Info: ./images/linelong1.png  used on input line 268.
+(pdftex.def)             Requested size: 1265.47473pt x 673.76553pt.
+<./images/linelong2.png, id=59, 608.2725pt x 666.99188pt>
+File: ./images/linelong2.png Graphic file (type png)
+<use ./images/linelong2.png>
+Package pdftex.def Info: ./images/linelong2.png  used on input line 269.
+(pdftex.def)             Requested size: 608.27103pt x 666.99025pt.
+
+Overfull \hbox (864.84587pt too wide) in paragraph at lines 268--270
+[][]
+ []
+
+
+Overfull \hbox (190.01735pt too wide) in paragraph at lines 268--270
+[] 
+ []
+
+[13]
+Overfull \vbox (82.23534pt too high) has occurred while \output is active []
+
+ [14 <./images/linelong1.png>]
+Overfull \vbox (75.46005pt too high) has occurred while \output is active []
+
+ [15 <./images/linelong2.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 271--274
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 276--277
+
+ []
+
+<./images/egalisateur.png, id=70, 654.19406pt x 685.05937pt>
+File: ./images/egalisateur.png Graphic file (type png)
+<use ./images/egalisateur.png>
+Package pdftex.def Info: ./images/egalisateur.png  used on input line 282.
+(pdftex.def)             Requested size: 654.19246pt x 685.0577pt.
+
+Overfull \hbox (253.5636pt too wide) in paragraph at lines 282--286
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 282--286
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 282--286
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 282--286
+
+ []
+
+[16]
+Overfull \vbox (93.5275pt too high) has occurred while \output is active []
+
+ [17 <./images/egalisateur.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 288--290
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 292--293
+
+ []
+
+<./images/modifycontrast.png, id=77, 1266.23062pt x 673.76718pt>
+File: ./images/modifycontrast.png Graphic file (type png)
+<use ./images/modifycontrast.png>
+Package pdftex.def Info: ./images/modifycontrast.png  used on input line 296.
+(pdftex.def)             Requested size: 1266.22754pt x 673.76553pt.
+
+Overfull \hbox (865.59868pt too wide) in paragraph at lines 296--297
+[][] 
+ []
+
+[18]
+Overfull \vbox (82.23534pt too high) has occurred while \output is active []
+
+ [19 <./images/modifycontrast.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 300--301
+
+ []
+
+<./images/modifylight.png, id=85, 1259.4553pt x 673.01437pt>
+File: ./images/modifylight.png Graphic file (type png)
+<use ./images/modifylight.png>
+Package pdftex.def Info: ./images/modifylight.png  used on input line 304.
+(pdftex.def)             Requested size: 1259.45224pt x 673.01273pt.
+
+Overfull \hbox (858.82338pt too wide) in paragraph at lines 304--305
+[][] 
+ []
+
+[20]
+Overfull \vbox (81.48253pt too high) has occurred while \output is active []
+
+ [21 <./images/modifylight.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 309--310
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 312--313
+
+ []
+
+
+Overfull \hbox (1.81017pt too wide) in paragraph at lines 315--316
+[]\T1/cmr/m/n/12 Sobel edge detection : mémoire moyenne utilisées 39,6mB, temps moyen 40,637s. 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 315--316
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 318--319
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 321--322
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 327--328
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 330--331
+
+ []
+
+
+Overfull \hbox (9.63742pt too wide) in paragraph at lines 332--333
+[]\T1/cmr/m/n/12 Image ^^S camera ^^T : mémoire moyenne utilisées 168mB, temps moyen 1min39,114s. 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 332--333
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 334--336
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 338--339
+
+ []
+
+<./images/petite-linear.png, id=92, 1257.94969pt x 670.75594pt>
+File: ./images/petite-linear.png Graphic file (type png)
+<use ./images/petite-linear.png>
+Package pdftex.def Info: ./images/petite-linear.png  used on input line 340.
+(pdftex.def)             Requested size: 1257.94662pt x 670.75429pt.
+
+Overfull \hbox (857.31776pt too wide) in paragraph at lines 340--341
+[][] 
+ []
+
+[22]
+Overfull \vbox (79.22409pt too high) has occurred while \output is active []
+
+ [23 <./images/petite-linear.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 343--345
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 347--348
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 349--350
+
+ []
+
+<./images/camera-serie.png, id=99, 1070.49937pt x 671.50874pt>
+File: ./images/camera-serie.png Graphic file (type png)
+<use ./images/camera-serie.png>
+Package pdftex.def Info: ./images/camera-serie.png  used on input line 352.
+(pdftex.def)             Requested size: 1070.49677pt x 671.50711pt.
+
+Overfull \hbox (669.8679pt too wide) in paragraph at lines 352--353
+[][] 
+ []
+
+[24]
+Overfull \vbox (79.97691pt too high) has occurred while \output is active []
+
+ [25 <./images/camera-serie.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 354--356
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 358--359
+
+ []
+
+<./images/petite-serie.png, id=107, 1054.6903pt x 673.01437pt>
+File: ./images/petite-serie.png Graphic file (type png)
+<use ./images/petite-serie.png>
+Package pdftex.def Info: ./images/petite-serie.png  used on input line 361.
+(pdftex.def)             Requested size: 1054.68773pt x 673.01273pt.
+
+Overfull \hbox (654.05887pt too wide) in paragraph at lines 361--362
+[][] 
+ []
+
+[26]
+Overfull \vbox (81.48253pt too high) has occurred while \output is active []
+
+ [27 <./images/petite-serie.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 363--365
+
+ []
+
+[28] (/home/elliotrenel/Documents/University/Android/Projet_Android/Rapport/rapport.aux) ) 
+Here is how much of TeX's memory you used:
+ 4306 strings out of 494561
+ 60289 string characters out of 6177387
+ 139425 words of memory out of 5000000
+ 7875 multiletter control sequences out of 15000+600000
+ 16582 words of font info for 51 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 41i,7n,31p,961b,423s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm2074.pfb>
+Output written on /home/elliotrenel/Documents/University/Android/Projet_Android/Rapport/rapport.pdf (28 pages, 836249 bytes).
+PDF statistics:
+ 148 PDF objects out of 1000 (max. 8388607)
+ 92 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 66 words of extra memory for PDF output out of 10000 (max. 10000000)
+
