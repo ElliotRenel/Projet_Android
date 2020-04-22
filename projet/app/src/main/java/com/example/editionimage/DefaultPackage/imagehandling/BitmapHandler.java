@@ -887,9 +887,9 @@ public class BitmapHandler {
         BitmapHandler border = new BitmapHandler(this.bit_current,this.view);
         border.toGrayRS(context);
         border.crayonEffect(context);
-        border.thicken(true);
+        border.thicken(false);
         this.discretizeColor(false);
-        incrustation(border,false);
+        this.incrustation(border,false);
 
         setAsImageView();
     }
