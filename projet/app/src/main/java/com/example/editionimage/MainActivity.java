@@ -31,7 +31,6 @@ import java.io.IOException;
  * It allows the existence of functions like onCreate that will be called on specific moments of the application.
  * It also creates variables that will be used in the whole application, like buttons, bitmaps, or parameters for functions.
  *
- * @author theod
  */
 public class MainActivity extends AppCompatActivity {
     private static final int PICK_IMAGE = 100;
@@ -48,19 +47,11 @@ public class MainActivity extends AppCompatActivity {
     int pictureHeight, pictureWidth;
 
     @Override
-    /**
-     * onCreate set up the app to be functional at the creation of the application.
-     *
-     * It will create links between the layout and java functions.
-     * We can for example attribute to a Button variable an action defined. It can be a simple action  or multiple ones (for example, show another button)
-     * @see buttonToGray
-     * @see buttonColorize
-     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /** Setting up the app **/
+        // Setting up the app
         usedImage = null;
         final ToasterNoImage toastNoImage = new ToasterNoImage(getApplicationContext());
         photoView = findViewById(R.id.main_view);
@@ -81,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
             }
          });
 
-        /** Effects buttons **/
+        // Effects buttons
 
         // Save
         buttonSave = findViewById(R.id.buttonSave);

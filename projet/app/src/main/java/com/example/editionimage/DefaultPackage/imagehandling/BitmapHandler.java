@@ -75,6 +75,7 @@ public class BitmapHandler {
      *
      * @return the image file created
      */
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     public File saveImage() {
         /* Applying effects to the original image */
         bit_final = bit_origin.copy(bit_origin.getConfig(),true);
@@ -92,7 +93,7 @@ public class BitmapHandler {
 
         File file = new File(parentDir,imgName);
 
-        file.mkdir();
+        file.mkdirs();
 
         if (file.exists()) file.delete();
         try {
@@ -492,9 +493,9 @@ public class BitmapHandler {
         for(int i=this.width; i<(saving?size_final:size)-this.width; i++){
 
             pixels[i] = Color.argb(255,
-                    round((Color.red(pixels[i]))/30)*30,
-                    round((Color.green(pixels[i]))/30)*30,
-                    round((Color.blue(pixels[i]))/30)*30);
+                    round((Color.red(pixels[i]))/30.0)*30,
+                    round((Color.green(pixels[i]))/30.0)*30,
+                    round((Color.blue(pixels[i]))/30.0)*30);
         }
         this.setPixels(pixels,saving);
     }
@@ -504,6 +505,7 @@ public class BitmapHandler {
     /**
      * Apply the {@link com.example.editionimage.DefaultPackage.imagehandling.BasicFilter#toGray(boolean) toGray} filter to the image and add the effect to {@link com.example.editionimage.DefaultPackage.imagehandling.BitmapHandler#effectArray effectArray}
      */
+    @SuppressWarnings("unused")
     public void toGray(){
         filters.toGray(false);
         effectArray.add(new Effect(
@@ -671,6 +673,7 @@ public class BitmapHandler {
     /**
      * Apply the {@link com.example.editionimage.DefaultPackage.imagehandling.BasicFilter#contrastEqual(boolean) contrastEqual} filter to the image and add the effect to {@link com.example.editionimage.DefaultPackage.imagehandling.BitmapHandler#effectArray effectArray}
      */
+    @SuppressWarnings("unused")
     public void contrastEqual(){
         filters.contrastEqual(false);
         effectArray.add(new Effect(
@@ -878,13 +881,13 @@ public class BitmapHandler {
 
     /**
      * Apply a cartoon effect to the image using several different filters
-     * @param context
+     * @param context the application context
      */
     public void cartoonEffect(Context context){
         BitmapHandler border = new BitmapHandler(this.bit_current,this.view);
         border.toGrayRS(context);
         border.crayonEffect(context);
-        border.thicken(1,false);
+        border.thicken(1,true);
         this.discretizeColor(false);
         incrustation(border,false);
 

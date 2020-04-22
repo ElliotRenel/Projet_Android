@@ -21,7 +21,7 @@ class BasicFilter {
         bmp = bit;
     }
 
-    /** Color **/
+    // Color Filters
 
     /**
      * Transforms a colored bitmap to a grey channel.
@@ -177,7 +177,7 @@ class BasicFilter {
     }
 
 
-    /** Contrast and Lightlevel */
+    // Contrast and Lightlevel Filters
 
     /**
      * Linear transformation of the image's histogram using the formula "new_pixel = ((100/delta_hist)*old_pixel-min_hist)"
@@ -346,7 +346,7 @@ class BasicFilter {
         bmp.setPixels(pixels,saving);
     }
 
-    /** Convolution **/
+    // Convolution methods
 
     /**
      * Apply a mask using the convolution algorithm
@@ -393,8 +393,9 @@ class BasicFilter {
      * @param row the vector kernel of type row
      * @param column the vector kernel of type column
      * @param saving true if the method is used in the context of saving the final product, false otherwise
-     * @return
+     * @return 1 if the convolution occured, and -1 if the given vectors are not the same dimension
      */
+    @SuppressWarnings("unused")
     int separableConvolution(Kernel row, Kernel column,boolean saving) {
         if (row.getH() > 1 || column.getW() > 1) return -1;
 

@@ -48,9 +48,9 @@ public class Kernel {
 
     /**
      * Getter for one of the values of the {@link com.example.editionimage.DefaultPackage.imagehandling.tools.Kernel#values kernel's inner values}
-     * @param i
-     * @param j
-     * @return
+     * @param i the column index
+     * @param j the row index
+     * @return the value of the (i,j) position
      */
     public int getValue(int i, int j){
         return values[i][j];

@@ -1,5 +1,6 @@
 package com.example.editionimage.DefaultPackage.imagehandling;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.widget.Toast;
 
@@ -8,18 +9,16 @@ import android.widget.Toast;
  */
 public class ToasterNoImage {
 
-    Toast toast;
-    Context context ;
-    CharSequence text = "Please load an image before modifying it!";
+    private Toast toast;
 
 
     /**
      * Constructor for ToasterNoImage
      * @param context The application context.
      */
+    @SuppressLint("ShowToast")
     public ToasterNoImage(Context context){
-        this.context = context;
-        toast = Toast.makeText(context, text, Toast.LENGTH_SHORT);
+        toast = Toast.makeText(context, "Please load an image before modifying it!", Toast.LENGTH_SHORT);
     }
 
 
