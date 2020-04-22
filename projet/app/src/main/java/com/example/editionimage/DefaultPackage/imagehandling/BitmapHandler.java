@@ -492,9 +492,9 @@ public class BitmapHandler {
         for(int i=this.width; i<(saving?size_final:size)-this.width; i++){
 
             pixels[i] = Color.argb(255,
-                    round((Color.red(pixels[i]))/30.0)*30,
-                    round((Color.green(pixels[i]))/30.0)*30,
-                    round((Color.blue(pixels[i]))/30.0)*30);
+                    round((Color.red(pixels[i]))/30)*30,
+                    round((Color.green(pixels[i]))/30)*30,
+                    round((Color.blue(pixels[i]))/30)*30);
         }
         this.setPixels(pixels,saving);
     }
