@@ -9,6 +9,12 @@
 \usepackage{amsmath}
 \usepackage[a4paper]{geometry}
 
+\documentclass{article}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+
+
+
 \font\myfont=cmr12 at 40pt
 
 \title{
@@ -193,5 +199,209 @@
     \item Les images sont sauvegardées sur le téléphone dans un dossier dédié dans le dossier de base des photos, mais ce dossier n'est pas visible depuis la gallerie.\\
     \item Les fonctions de conversion hsv renderscript ne fonctionnent pas (l'image n'est pas celle attendue). Tous les fichiers renderscript sont dans le dossier ./projet/src/rs/ mais seuls gray.rs et histEq.rs sont appellés.\\
 \end{itemize}
+
+
+
+
+\section{profilage}
+    Le profilage  a été réalisé sur trois dimensions d’images : une image « petite » 259*194 pixels,  une image « camera » provenant de l’appareil photo du téléphone 960*1280 pixels et l’image « centrale » qui est l’image redimensionnée au centre de l’application servant de prévisualisation des effets avant leurs sauvegarde.\\
+    Toutes les valeurs et images sont issues du profilage d’un émulateur d’un appareil PIXEL 2 XL, sous l’API 29.\\
+    Les valeurs sont issues de moyennes sur une dizaines de lancés. \\
+    Le temps que prend un effet est calculé a partir de la première trace d’activité du processeur après le déclenchement du bouton correspondant a l’effet et se termine lorsque l’activité du processeur se stabilise à zéro.\\
+    La mémoire utilisées est calculé en faisant la somme de chaque  croissance de la mémoire utilisée soustrait par l’utilisation de mémoire avant cette croissance. Le garbage collector s’enclenchant souvent au début d’un effet, ou lors des effets plus long à calculé, plusieurs fois de manières périodique (voir l’image du profileur de linear contrast). Le garbage collector (GB) influence l’utilisation de la mémoire mais aussi celle du processeur, deplus, le profileur affecte aussi grandement le temps que met un effet a se terminer. Le profilage ne montre pas réellement l’utilisation de la mémoire par un effet, mais l’utilisation dans un contexte. Ainsi on peut comparer, sur un contexte en tout point similaire sauf les dimensions de l’images sur laquelle est appliqué l’effet, les utilisations des ressources de l’appareil.\\
+    Tout d’abord nous allons faire le profilage des effets indépendamment des uns et des autres sur l’image « centrale ». \\
+    Ensuite nous ferons un profilage comparant l’utilisation de ressources sur l’image « petite » et de l’image provenant de l’appareil photo.\\
+
+
+    Profilage des effets individuellement :\\
+
+    Togray : mémoire moyenne utilisées 2,7mB, temps moyen 0,684s.\\
+
+
+
+\\
+    \includegraphics{1-togray}
+\\
+
+\\
+
+\\
+
+    Remarque :
+    Les effets togray, keep color et shift ont des allures très similaire, une seule image de profileur est donc présentée.\\
+
+
+    Colorize : mémoire  mémoire moyenne utilisées 11,3mB, temps moyen 0,537s.\\
+
+    Remarque :
+    Sur plusieurs lancés de colorize, le GB se lance deux fois d’affilés lors du même lancé. Ainsi en prenant en compte ces lancés fortement influencé par le GB l’utilisation moyen de la mémoire serait  de 7,8mB.\\
+
+    Keep Color : mémoire moyenne utilisées 10,2mB, temps moyen 0,528s.\\
+
+
+    Shift : mémoire moyenne utilisées 9,5mB, temps moyen 0,494s.\\
+
+
+
+
+
+
+\\
+
+    \includegraphics{1-shift}
+
+
+\\
+\\
+\\
+    Linear contrast : mémoire moyenne utilisées 39mB, temps moyen 40,4s.\\
+
+
+    \\
+
+    
+
+    \includegraphics{linelong1}
+    \includegraphics{linelong2}
+
+
+\\
+\\
+\\
+
+    Remarque : 
+    Les effets utilisant des histogrammes (sauf equalizer contrast) ainsi que les fonction utilisant la convolution ont une allure similaire a Linear contrast, très longue et des utilisations de la mémoires en « dents de scie » entrecoupés par le GB qui arrive souvent après avoir atteint une certaine valeur mémoires utilisées.\\
+    Ici le GB arrivait sur 5 des 6 dents de scie, chacune culminant à 5,5mB de plus que leurs bases.\\
+
+
+    Equalizer contrast : mémoire moyenne utilisées 2,7mB, temps moyen 0,760s.\\
+
+
+
+
+\\
+
+    \includegraphics{egalisateur}
+    \\
+\\
+\\
+
+
+    Remarque :
+    Comme dit précédemment elle diffère des autres fonctions utilisant des histogrammes, cela est peut-être du que c'est la seule à utiliser un histogramme cumulé.\\
+
+
+    Modify contrast : mémoire moyenne utilisées 1,4mB, temps moyen 0,576s.\\
+
+
+
+\\
+
+    \includegraphics{modifycontrast}
+    \\
+
+\\
+\\
+
+
+
+    Modify lightlevel : mémoire moyenne utilisées 1,4mB, temps moyen 0,512s.\\
+
+
+
+
+\\
+
+    \includegraphics{modifylight}
+
+
+
+\\
+\\
+\\
+
+
+
+    Gaussian blur  : mémoire moyenne utilisées 42mB, temps moyen 40,674s.\\
+
+
+    Laplacian edge detection : mémoire moyenne utilisées 44,8mB, temps moyen 39,949s.\\
+
+
+    Sobel edge detection : mémoire moyenne utilisées 39,6mB, temps moyen 40,637s.\\
+
+
+    Crayon effect : mémoire moyenne utilisées 48,5mB, temps moyen 40,312s.\\
+
+
+    Cartoon effect : mémoire moyenne utilisées 43,4mB, temps moyen 39,353s.\\
+
+
+
+    profilage comparatif :
+
+    Les comparaisons se basent sur 2 protocoles : les premiers est l’appel à l’effet linear contrast  puis le bouton save. L’autre protocole est l’appel consécutif des effets togray, colorize, keep color et shift puis save. \\
+
+
+    Protocole 1 : linear contrast.\\
+
+    Image « camera » : mémoire moyenne utilisées 168mB, temps moyen 1min39,114s.\\
+
+    Remarque :
+    L’allure est similaire a celle de linear contrast mais est beaucoup plus longue. \\
+
+
+    Image «petite» : mémoire moyenne utilisées 8mB, temps moyen 6,2s.\\
+
+
+
+\\
+    \includegraphics{petite-linear}
+
+
+\\
+\\
+
+
+    Remarque :
+    On voit une petite partie, à droite, de l’effet linear contrast sur l’image « centrale » et à gauche le même effet lorsqu il est vraiment appliqué sur l’image plus petite.\\
+
+
+    Protocole 2 : togray + colorize + keep color + shift.\\
+
+    Image « camera » : mémoire moyenne utilisées 30mB, temps moyen 1,590s.\\
+
+
+\\
+
+    \includegraphics{camera-serie}
+
+\\
+
+\\
+
+    Remarque :
+    On voit d’abord la suite des effets sur la partie de gauche, au centre la première sauvegarde (les moyennes ont été calculées sur la première sauvegarde puis le protocole est relancé) et a droite d’autres appel du bouton save. On remarque que la première save est plus longue et plus gourmande  que les suivantes. Ce phénomène arrivait aussi sur d’autres effets mais plus rarement et beaucoup moins signifiant.\\
+
+
+    Image «petite» : mémoire moyenne utilisées 4,5mB, temps moyen 0,586s.\\
+
+
+
+\\
+    \includegraphics{petite-serie}
+
+
+\\
+\\
+
+
+    Remarque :
+    On voit à gauche la suite d’effet du protocole 2 et à droite une suite de save. On remarque à nouveau que le premier save est plus long que les autres.\\
+
+
+
+
+
 
 \end{document}
