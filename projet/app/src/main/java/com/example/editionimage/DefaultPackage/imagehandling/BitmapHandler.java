@@ -6,14 +6,13 @@ import android.graphics.Color;
 import android.os.Environment;
 import android.util.Log;
 
+import com.example.editionimage.DefaultPackage.imagehandling.tools.Effect;
 import com.example.editionimage.DefaultPackage.imagehandling.tools.Kernel;
 import com.github.chrisbanes.photoview.PhotoView;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Random;
 import java.util.function.Function;
 
@@ -21,18 +20,16 @@ import static java.lang.Math.round;
 
 /**
  * Bitmap Handler is the class used to stock base image and current image (modified), and to apply to the current image the effects given by the user.
- *
- * TODO
- *
- *
- * @author theod
+ * It's this class that takes care of the interaction between the user and the backend methods from BasicFilter, and takes care of some mid level methods
+ * such as saving the image, reset it, or just displaying it on the app.
  */
+
 public class BitmapHandler {
     private Bitmap bit_origin, bit_current, bit_final;
     private BasicFilter filters;
     private int height, width, size, height_final, width_final, size_final;
     private PhotoView view;
-    private ArrayList<Effect> effectQueue;
+    private ArrayList<Effect> effectArray;
 
     private final int IMAGE_SIZE = 700;
 
@@ -47,7 +44,7 @@ public class BitmapHandler {
         bit_origin = bit.copy(bit.getConfig(),false);
         bit_current = Bitmap.createScaledBitmap(bit_origin.copy(bit_origin.getConfig(),true),(bit_origin.getWidth()*IMAGE_SIZE)/bit_origin.getHeight(),IMAGE_SIZE,false);
         bit_final = bit_origin.copy(bit_origin.getConfig(),true);
-        effectQueue = new ArrayList<>();
+        effectArray = new ArrayList<>();
         filters = new BasicFilter(this);
         height = bit_current.getHeight();
         width = bit_current.getWidth();
@@ -59,31 +56,33 @@ public class BitmapHandler {
     }
 
     /**
-     * setAsImageView displays bit_current on the view given by parameters
+     * Displays the {@link com.example.editionimage.DefaultPackage.imagehandling.BitmapHandler#bit_current current image} on the view given by parameters
      */
     public void setAsImageView(){
         view.setImageBitmap(bit_current);
     }
 
     /**
-     * TODO
+     * Display the {@link com.example.editionimage.DefaultPackage.imagehandling.BitmapHandler#bit_final saved image} at the end of the saving process
      */
     private void giveFinalPreview(){
         view.setImageBitmap(bit_final);
     }
 
     /**
-     * TODO
-     * @return
+     * Use the {@link com.example.editionimage.DefaultPackage.imagehandling.BitmapHandler#effectArray effect's array} to create the final image to be saving by applying each filter on a copy of the original image "bit_final", then creates the image
+     * file itself to finally give the preview of the saved image using "giveFinalPreview".
+     *
+     * @return the image file created
      */
     public File saveImage() {
         /* Applying effects to the original image */
         bit_final = bit_origin.copy(bit_origin.getConfig(),true);
         Effect current_effect;
-        while(!effectQueue.isEmpty()) {
+        while(!effectArray.isEmpty()) {
             Log.i("Effect","Effect was applied");
-            current_effect = effectQueue.get(0);
-            effectQueue.remove(0);
+            current_effect = effectArray.get(0);
+            effectArray.remove(0);
             current_effect.applyFinalModifier();
         }
 
@@ -113,31 +112,31 @@ public class BitmapHandler {
     }
 
     /**
-     * reset clears all effects applied on bit_current by resetting it to bit_origin.
+     * Clears all effects applied on bit_current by resetting it to bit_origin.
      */
     public void reset(){
         bit_current = Bitmap.createScaledBitmap(bit_origin.copy(bit_origin.getConfig(),true),(bit_origin.getWidth()*IMAGE_SIZE)/bit_origin.getHeight(),IMAGE_SIZE,false);
-        effectQueue.clear();
+        effectArray.clear();
         setAsImageView();
     }
 
     /**
-     * undo undoes the last effect applied, if there is one.
+     * Undoes the last effect applied, if there is one.
      */
     public void undo(){
-        if(!effectQueue.isEmpty()){
-            effectQueue.remove(effectQueue.size()-1);
+        if(!effectArray.isEmpty()){
+            effectArray.remove(effectArray.size()-1);
             bit_current = Bitmap.createScaledBitmap(bit_origin.copy(bit_origin.getConfig(),true),(bit_origin.getWidth()*IMAGE_SIZE)/bit_origin.getHeight(),IMAGE_SIZE,false);
-            for(Effect e : effectQueue)
+            for(Effect e : effectArray)
                 e.applyModifier();
             setAsImageView();
         }
     }
 
     /**
-     * TODO
-     * @param saving
-     * @return
+     * Get an array of pixels in the HSV format
+     * @param saving true if the method is used in the context of saving the final product, false otherwise
+     * @return the pixel array
      */
     double[][] getHSVPixels(boolean saving){
         double[][] result = new double[3][saving?size_final:size];
@@ -153,9 +152,9 @@ public class BitmapHandler {
     }
 
     /**
-     * TODO
-     * @param pixels
-     * @param saving
+     * Set the image pixels from a given array of pixels in the HSV format
+     * @param pixels the given array of pixels
+     * @param saving true if the method is used in the context of saving the final product, false otherwise
      */
     void setHSVPixels(double[][] pixels, boolean saving){
         int[] result = new int[saving?size_final:size];
@@ -167,9 +166,9 @@ public class BitmapHandler {
     }
 
     /**
-     * TODO
-     * @param saving
-     * @return
+     * Get an array of the pixels' V value in the HSV format (used to reduce memory usage where V is the only value used)
+     * @param saving true if the method is used in the context of saving the final product, false otherwise
+     * @return the array of pixels' V value
      */
     double[] getVPixels(boolean saving){
         double[] result = new double[saving?size_final:size];
@@ -185,6 +184,11 @@ public class BitmapHandler {
 
     }
 
+    /**
+     * Set the image pixel values given an array of new V pixel values in the HSV format
+     * @param pixels the given V pixel array
+     * @param saving true if the method is used in the context of saving the final product, false otherwise
+     */
     void setVPixels(double[] pixels, boolean saving){
         int[] result = new int[saving?size_final:size];
 
@@ -199,6 +203,11 @@ public class BitmapHandler {
 
     }
 
+    /**
+     * Get the image's pixels in the classic RGB format
+     * @param pixels the pixel array to be filled with the obtained values
+     * @param saving true if the method is used in the context of saving the final product, false otherwise
+     */
     void getPixels(int[] pixels, boolean saving){
         if(saving)
             this.bit_final.getPixels(pixels,0,width_final,0,0,width_final,height_final);
@@ -206,6 +215,11 @@ public class BitmapHandler {
             this.bit_current.getPixels(pixels,0,width,0,0,width,height);
     }
 
+    /**
+     * Set the image's pixels given an array of pixels in the RGB format
+     * @param pixels the given array of RGB pixels
+     * @param saving true if the method is used in the context of saving the final product, false otherwise
+     */
     void setPixels(int[] pixels, boolean saving){
         if(saving)
             bit_final.setPixels(pixels,0,width_final,0,0,width_final,height_final);
@@ -213,6 +227,12 @@ public class BitmapHandler {
             bit_current.setPixels(pixels,0,width,0,0,width,height);
     }
 
+    /**
+     * Calculate the histogram of the given array
+     * @param tabs array of V pixel values
+     * @param saving true if the method is used in the context of saving the final product, false otherwise
+     * @return the calculated histogram
+     */
     int[] getHSVHist(double[] tabs,boolean saving){
         int[] hist = new int[101];
         for(int i=0; i<(saving?size_final:size); i++)
@@ -220,6 +240,12 @@ public class BitmapHandler {
         return hist;
     }
 
+    /**
+     * Calculate the cumulative histogram of the given array
+     * @param tabs array of V pixel values
+     * @param saving true if the method is used in the context of saving the final product, false otherwise
+     * @return the calculated cumulated histogram
+     */
     int[] getHSVCumul(double[] tabs,boolean saving){
         int[] cumul = new int[101];
         int[] hist = getHSVHist(tabs,saving);
@@ -229,6 +255,12 @@ public class BitmapHandler {
         return cumul;
     }
 
+    /**
+     * Conversion function from RGB to HSV values
+     * @param pixel the pixel RGB value
+     * @param hsv_pixels the HSV pixels array to be modified
+     * @param index the index of the pixel to be modified in hsv_pixels
+     */
     private void rgb_to_hsv(int pixel, double[][] hsv_pixels, int index){
         double red_ = (double) Color.red(pixel)/(double)255;
         double blue_ = (double)Color.green(pixel)/(double)255;
@@ -269,6 +301,12 @@ public class BitmapHandler {
         hsv_pixels[2][index] = cmax;
     }
 
+    /**
+     * Conversion function from HSV to RGB values
+     * @param hsv the HSV array of pixels
+     * @param index the index of the hsv pixel to convert
+     * @return the RGB pixel value obtained
+     */
     private int hsv_to_rgb(double[][] hsv, int index){
         double t = (int) (hsv[0][index]/60)%6;
         double f = (hsv[0][index]/60)- t;
@@ -310,6 +348,11 @@ public class BitmapHandler {
 
     }
 
+    /**
+     * Conversion function from RGB to the V value in the HSV format
+     * @param pixel the RGB pixel to convert
+     * @return the calculated V value
+     */
     private double rgb_to_v(int pixel){
         double red_ = (double) Color.red(pixel)/(double)255;
         double blue_ = (double)Color.green(pixel)/(double)255;
@@ -321,6 +364,12 @@ public class BitmapHandler {
         return V;
     }
 
+    /**
+     * Conversion function from the V value in the HSV format to RGB values
+     * @param v_pixel the V value of the pixel
+     * @param old_pixel the old RGB value of the pixel
+     * @return the calculated RGB pixel
+     */
     private int v_to_rgb(double v_pixel, int old_pixel){
         double[][] old = new double[3][1];
         rgb_to_hsv(old_pixel,old,0);
@@ -328,34 +377,70 @@ public class BitmapHandler {
         return hsv_to_rgb(old,0);
     }
 
+    /**
+     * Getter for the image size
+     * @param saving true if the method is used in the context of saving the final product, false otherwise
+     * @return the image size (either current or final)
+     */
     int getSize(boolean saving){
         return saving?size_final:size;
     }
 
+    /**
+     * Getter for the image height
+     * @param saving true if the method is used in the context of saving the final product, false otherwise
+     * @return the image height (either current of final)
+     */
     int getHeight(boolean saving){
         return saving?height_final:height;
     }
 
+    /**
+     * Getter for the image width
+     * @param saving true if the method is used in the context of saving the final product, false otherwise
+     * @return the image width (either current of final)
+     */
     int getWidth(boolean saving){
         return saving?width_final:width;
     }
 
+    /**
+     * Getter for the {@link com.example.editionimage.DefaultPackage.imagehandling.BitmapHandler#bit_current current image}
+     * @return {@link com.example.editionimage.DefaultPackage.imagehandling.BitmapHandler#bit_current bit_current}
+     */
     Bitmap getBit_current() {
         return bit_current;
     }
 
+    /**
+     * Setter for the {@link com.example.editionimage.DefaultPackage.imagehandling.BitmapHandler#bit_current current image}
+     * @param arg the new Bitmap value for {@link com.example.editionimage.DefaultPackage.imagehandling.BitmapHandler#bit_current bit_current}
+     */
     void setBit_current( Bitmap arg ) {
         this.bit_current=arg;
     }
 
+    /**
+     * Getter for the {@link com.example.editionimage.DefaultPackage.imagehandling.BitmapHandler#bit_final final image}
+     * @return {@link com.example.editionimage.DefaultPackage.imagehandling.BitmapHandler#bit_final bit_final}
+     */
     Bitmap getBit_final(){
         return bit_final;
     }
 
+    /**
+     * Setter for the {@link com.example.editionimage.DefaultPackage.imagehandling.BitmapHandler#bit_final final image}
+     * @param arg the new Bitmap value for {@link com.example.editionimage.DefaultPackage.imagehandling.BitmapHandler#bit_final bit_final}
+     */
     void setBit_final( Bitmap arg ) {
         this.bit_final=arg;
     }
 
+    /**
+     * Used to insert another Bitmap image into itself
+     * @param bmp the other Bitmap
+     * @param saving true if the method is used in the context of saving the final product, false otherwise
+     */
     private void incrustation(BitmapHandler bmp, boolean saving){
         int [] pixelsBackground = new int[saving?size_final:size];
         int [] pixelsTopLayer = new int[saving?size_final:size];
@@ -371,7 +456,11 @@ public class BitmapHandler {
         this.setPixels(pixelsBackground,saving);
     }
 
-    //épaissit les contours noirs d'une image en noir et blanc
+    /**
+     * Thicken the black edges of a black and white image
+     * @param intensity numeric value given to determine the edges' thickness
+     * @param saving true if the method is used in the context of saving the final product, false otherwise
+     */
     private void thicken(int intensity,boolean saving){
         int [] pixels = new int[(saving?size_final:size)];
         int [] result = new int[(saving?size_final:size)];
@@ -392,7 +481,11 @@ public class BitmapHandler {
         this.setPixels(result,saving);
     }
 
-    private void discretiseColor(boolean saving){
+    /**
+     * Takes pseudo continuous color values of the image and discretize them
+     * @param saving true if the method is used in the context of saving the final product, false otherwise
+     */
+    private void discretizeColor(boolean saving){
         int [] pixels = new int[(saving?size_final:size)];
         this.getPixels(pixels,saving);
 
@@ -408,9 +501,12 @@ public class BitmapHandler {
 
     /* Button Effects */
 
+    /**
+     * Apply the {@link com.example.editionimage.DefaultPackage.imagehandling.BasicFilter#toGray(boolean) toGray} filter to the image and add the effect to {@link com.example.editionimage.DefaultPackage.imagehandling.BitmapHandler#effectArray effectArray}
+     */
     public void toGray(){
         filters.toGray(false);
-        effectQueue.add(new Effect(
+        effectArray.add(new Effect(
                 new Function<Void, Void>() {
                     @Override
                     public Void apply(Void aVoid) {
@@ -428,9 +524,13 @@ public class BitmapHandler {
         setAsImageView();
     }
 
+    /**
+     * Apply the {@link com.example.editionimage.DefaultPackage.imagehandling.BasicFilter#toGrayRS(Context, boolean) toGrayRS} filter to the image and add the effect to {@link com.example.editionimage.DefaultPackage.imagehandling.BitmapHandler#effectArray effectArray}
+     * @param context the application context
+     */
     public void toGrayRS(final Context context){
         filters.toGrayRS(context,false);
-        effectQueue.add(new Effect(
+        effectArray.add(new Effect(
                 new Function<Void, Void>() {
                     @Override
                     public Void apply(Void aVoid) {
@@ -448,9 +548,13 @@ public class BitmapHandler {
         setAsImageView();
     }
 
+    /**
+     * Apply the {@link com.example.editionimage.DefaultPackage.imagehandling.BasicFilter#invertRS(Context, boolean) invertRS} filter to the image and add the effect to {@link com.example.editionimage.DefaultPackage.imagehandling.BitmapHandler#effectArray effectArray}
+     * @param context the application context
+     */
     private void invertRS(final Context context){
         filters.invertRS(context,false);
-        effectQueue.add(new Effect(
+        effectArray.add(new Effect(
                 new Function<Void, Void>() {
                     @Override
                     public Void apply(Void aVoid) {
@@ -468,9 +572,13 @@ public class BitmapHandler {
         setAsImageView();
     }
 
+    /**
+     * Apply the {@link com.example.editionimage.DefaultPackage.imagehandling.BasicFilter#colorize(int, boolean) colorize} filter to the image and add the effect to {@link com.example.editionimage.DefaultPackage.imagehandling.BitmapHandler#effectArray effectArray}
+     * @param color the color argument to pass to {@link com.example.editionimage.DefaultPackage.imagehandling.BasicFilter#colorize(int, boolean) colorize}
+     */
     public void colorize(final int color){
         filters.colorize(color,false);
-        effectQueue.add(new Effect(
+        effectArray.add(new Effect(
                 new Function<Void, Void>() {
                     @Override
                     public Void apply(Void aVoid) {
@@ -488,10 +596,14 @@ public class BitmapHandler {
         setAsImageView();
     }
 
+    /**
+     * Apply the {@link com.example.editionimage.DefaultPackage.imagehandling.BasicFilter#keepColor(int, int, boolean) keepColor} filter to the image and add the effect to {@link com.example.editionimage.DefaultPackage.imagehandling.BitmapHandler#effectArray effectArray}
+     * @param color the color argument to pass to {@link com.example.editionimage.DefaultPackage.imagehandling.BasicFilter#keepColor(int, int, boolean) keepColor}
+     */
     public void keepColor(final int color){
         final int range = 30;
         filters.keepColor(color,range,false);
-        effectQueue.add(new Effect(
+        effectArray.add(new Effect(
                 new Function<Void, Void>() {
                     @Override
                     public Void apply(Void aVoid) {
@@ -509,9 +621,13 @@ public class BitmapHandler {
         setAsImageView();
     }
 
+    /**
+     * Apply the {@link com.example.editionimage.DefaultPackage.imagehandling.BasicFilter#shift(int, boolean) shift} filter to the image and add the effect to {@link com.example.editionimage.DefaultPackage.imagehandling.BitmapHandler#effectArray effectArray}
+     * @param shift the shift argument to pass to {@link com.example.editionimage.DefaultPackage.imagehandling.BasicFilter#shift(int, boolean) shift}
+     */
     public void shift(final int shift){
         filters.shift(shift,false);
-        effectQueue.add(new Effect(
+        effectArray.add(new Effect(
                 new Function<Void, Void>() {
                     @Override
                     public Void apply(Void aVoid) {
@@ -529,9 +645,12 @@ public class BitmapHandler {
         setAsImageView();
     }
 
+    /**
+     * Apply the {@link com.example.editionimage.DefaultPackage.imagehandling.BasicFilter#contrastLinear(boolean) contrastLinear} filter to the image and add the effect to {@link com.example.editionimage.DefaultPackage.imagehandling.BitmapHandler#effectArray effectArray}
+     */
     public void contrastLinear(){
         filters.contrastLinear(false);
-        effectQueue.add(new Effect(
+        effectArray.add(new Effect(
                 new Function<Void, Void>() {
                     @Override
                     public Void apply(Void aVoid) {
@@ -549,9 +668,12 @@ public class BitmapHandler {
         setAsImageView();
     }
 
+    /**
+     * Apply the {@link com.example.editionimage.DefaultPackage.imagehandling.BasicFilter#contrastEqual(boolean) contrastEqual} filter to the image and add the effect to {@link com.example.editionimage.DefaultPackage.imagehandling.BitmapHandler#effectArray effectArray}
+     */
     public void contrastEqual(){
         filters.contrastEqual(false);
-        effectQueue.add(new Effect(
+        effectArray.add(new Effect(
                 new Function<Void, Void>() {
                     @Override
                     public Void apply(Void aVoid) {
@@ -569,9 +691,13 @@ public class BitmapHandler {
         setAsImageView();
     }
 
+    /**
+     * Apply the {@link com.example.editionimage.DefaultPackage.imagehandling.BasicFilter#contrastEqualRS(Context, boolean) contrastEqualRS} filter to the image and add the effect to {@link com.example.editionimage.DefaultPackage.imagehandling.BitmapHandler#effectArray effectArray}
+     * @param context the application context argument to pass to {@link com.example.editionimage.DefaultPackage.imagehandling.BasicFilter#contrastEqualRS(Context, boolean) contrastEqualRS}
+     */
     public void contrastEqualRS(final Context context){
         filters.contrastEqualRS(context,false);
-        effectQueue.add(new Effect(
+        effectArray.add(new Effect(
                 new Function<Void, Void>() {
                     @Override
                     public Void apply(Void aVoid) {
@@ -589,9 +715,13 @@ public class BitmapHandler {
         setAsImageView();
     }
 
+    /**
+     * Apply the {@link com.example.editionimage.DefaultPackage.imagehandling.BasicFilter#modifContrast(int, boolean) modifContrast} filter to the image and add the effect to {@link com.example.editionimage.DefaultPackage.imagehandling.BitmapHandler#effectArray effectArray}
+     * @param contrast the contrast argument to pass to {@link com.example.editionimage.DefaultPackage.imagehandling.BasicFilter#modifContrast(int, boolean) modifContrast}
+     */
     public void modifContrast(final int contrast){
         filters.modifContrast(contrast,false);
-        effectQueue.add(new Effect(
+        effectArray.add(new Effect(
                 new Function<Void, Void>() {
                     @Override
                     public Void apply(Void aVoid) {
@@ -609,9 +739,13 @@ public class BitmapHandler {
         setAsImageView();
     }
 
+    /**
+     * Apply the {@link com.example.editionimage.DefaultPackage.imagehandling.BasicFilter#modifLight(int, boolean) modifLight} filter to the image and add the effect to {@link com.example.editionimage.DefaultPackage.imagehandling.BitmapHandler#effectArray effectArray}
+     * @param lightvalue the lightlevel argument to pass to {@link com.example.editionimage.DefaultPackage.imagehandling.BasicFilter#modifLight(int, boolean) modifLight}
+     */
     public void modifLight(final int lightvalue){
         filters.modifLight(lightvalue,false);
-        effectQueue.add(new Effect(
+        effectArray.add(new Effect(
                 new Function<Void, Void>() {
                     @Override
                     public Void apply(Void aVoid) {
@@ -629,6 +763,9 @@ public class BitmapHandler {
         setAsImageView();
     }
 
+    /**
+     * Apply a {@link com.example.editionimage.DefaultPackage.imagehandling.BasicFilter#convolution(Kernel, boolean) convolution} to the image with a gaussian mask and add the effect to {@link com.example.editionimage.DefaultPackage.imagehandling.BitmapHandler#effectArray effectArray}
+     */
     public void gaussianBlur(){
         int[] tmp = {
                 1, 4, 6, 4, 1,
@@ -640,7 +777,7 @@ public class BitmapHandler {
         final Kernel gauss = new Kernel(5 , 5,tmp);
 
         filters.convolution(gauss,false);
-        effectQueue.add(new Effect(
+        effectArray.add(new Effect(
                 new Function<Void, Void>() {
                     @Override
                     public Void apply(Void aVoid) {
@@ -659,6 +796,9 @@ public class BitmapHandler {
         setAsImageView();
     }
 
+    /**
+     * Apply a {@link com.example.editionimage.DefaultPackage.imagehandling.BasicFilter#convolution(Kernel, boolean) convolution} to the image with a laplacian mask and add the effect to {@link com.example.editionimage.DefaultPackage.imagehandling.BitmapHandler#effectArray effectArray}
+     */
     public void laplaceEdgeDetection(){
         int[] mask = {
                 0, 0,-1, 0, 0,
@@ -671,7 +811,7 @@ public class BitmapHandler {
 
         filters.convolution(laplace,false);
 
-        effectQueue.add(new Effect(
+        effectArray.add(new Effect(
                 new Function<Void, Void>() {
                     @Override
                     public Void apply(Void aVoid) {
@@ -690,6 +830,9 @@ public class BitmapHandler {
         setAsImageView();
     }
 
+    /**
+     * Apply an {@link com.example.editionimage.DefaultPackage.imagehandling.BasicFilter#convolutionEdgeDetection(Kernel, Kernel, boolean) edge detection convolution} to the image with the Sobel's Kernels and add the effect to {@link com.example.editionimage.DefaultPackage.imagehandling.BitmapHandler#effectArray effectArray}
+     */
     public void sobelEdgeDetection(){
         int[] mask1 = {
                 1, 0, -1,
@@ -705,7 +848,7 @@ public class BitmapHandler {
         final Kernel mB = new Kernel(3,3,mask2);
 
         filters.convolutionEdgeDetection(mA,mB,false);
-        effectQueue.add(new Effect(
+        effectArray.add(new Effect(
                 new Function<Void, Void>() {
                     @Override
                     public Void apply(Void aVoid) {
@@ -723,6 +866,9 @@ public class BitmapHandler {
         setAsImageView();
     }
 
+    /**
+     * Apply a crayon effect to the image using several different filters
+     */
     public void crayonEffect(Context context){
         laplaceEdgeDetection();
         invertRS(context);
@@ -730,12 +876,16 @@ public class BitmapHandler {
         setAsImageView();
     }
 
+    /**
+     * Apply a cartoon effect to the image using several different filters
+     * @param context
+     */
     public void cartoonEffect(Context context){
         BitmapHandler border = new BitmapHandler(this.bit_current,this.view);
         border.toGrayRS(context);
         border.crayonEffect(context);
         border.thicken(1,false);
-        this.discretiseColor(false);
+        this.discretizeColor(false);
         incrustation(border,false);
 
         setAsImageView();

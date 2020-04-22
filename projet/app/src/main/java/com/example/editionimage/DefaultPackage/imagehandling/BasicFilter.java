@@ -24,11 +24,10 @@ class BasicFilter {
     /** Color **/
 
     /**
-     * toGray transforms a colored bitmap to a grey channel.
-     * @param saving
+     * Transforms a colored bitmap to a grey channel.
+     * @param saving true if the method is used in the context of saving the final product, false otherwise
      */
     void toGray(boolean saving){
-        //vérifier si passage en hsv serait pas plus rapide (temps de conversion vs temps de cast int/float)
         int size = bmp.getSize(saving);
         int[] pixels = new int[size];
         bmp.getPixels(pixels,saving);
@@ -42,9 +41,9 @@ class BasicFilter {
     }
 
     /**
-     * toGrayRS uses renderscript to do the same thing as toGray
-     * @param context
-     * @param saving
+     * Renderscript version of {@link com.example.editionimage.DefaultPackage.imagehandling.BasicFilter#toGray(boolean) toGray}
+     * @param context the application context
+     * @param saving true if the method is used in the context of saving the final product, false otherwise
      */
     void toGrayRS (Context context, boolean saving) {
 
@@ -82,9 +81,9 @@ class BasicFilter {
 
 
     /**
-     * TODO
-     * @param context
-     * @param saving
+     * Invert the image color according to a chromatic wheel
+     * @param context the application context
+     * @param saving true if the method is used in the context of saving the final product, false otherwise
      */
     void invertRS (Context context, boolean saving) {
 
@@ -121,9 +120,9 @@ class BasicFilter {
     }
 
     /**
-     * colorize changes the hue of every pixel and is replaced by color.
+     * Changes the hue of every pixel and is replaced by color.
      * @param color the new hue to apply.
-     * @param saving
+     * @param saving true if the method is used in the context of saving the final product, false otherwise
      */
     void colorize(int color, boolean saving) {
         int size = bmp.getSize(saving);
@@ -136,13 +135,13 @@ class BasicFilter {
     }
 
     /**
-     * keepColor, transforms every pixel not in the range of the hue color into a grey channel.
-     * @param color the base hue to keep
-     * @param range the distance accepted to keep elements
-     * @param saving
-     *
+     * Transforms every pixel not in the range of the hue color into a grey channel.
      * For the hue to be preserved, a pixel needs to have a hue at a distance of range maximum from color modulo 360.
      * Example: color = 30, range = 40. 359 and 45 are kept intact, but 250 and 71 are turned into grey.
+     *
+     * @param color the base hue to keep
+     * @param range the distance accepted to keep elements
+     * @param saving true if the method is used in the context of saving the final product, false otherwise
      */
     void keepColor(int color, int range, boolean saving) {
         color = (color % 360);
@@ -161,12 +160,11 @@ class BasicFilter {
     }
 
     /**
-     * shift modifies every pixel's hues by shift modulo 360.
-     * @param shift the hue to add for modifications
-     * @param saving
-     *
+     * Modifies every pixel's hues by shift modulo 360.
      * Formula gives newhue = oldhue + shift
      *
+     * @param shift the hue to add for modifications
+     * @param saving true if the method is used in the context of saving the final product, false otherwise
      */
     void shift(int shift, boolean saving){
         int size = bmp.getSize(saving);
@@ -182,9 +180,10 @@ class BasicFilter {
     /** Contrast and Lightlevel */
 
     /**
-     * TODO
+     * Linear transformation of the image's histogram using the formula "new_pixel = ((100/delta_hist)*old_pixel-min_hist)"
+     * where delta_hist is the difference between min and max value of the histogram
      *
-     * @param saving
+     * @param saving true if the method is used in the context of saving the final product, false otherwise
      */
     void contrastLinear(boolean saving){
         int size = bmp.getSize(saving);
@@ -213,8 +212,9 @@ class BasicFilter {
 
 
     /**
-     * TODO
-     * @param saving
+     * Flatten the color histogram of the picture to give better contrast to the image
+     *
+     * @param saving true if the method is used in the context of saving the final product, false otherwise
      */
     void contrastEqual(boolean saving){
         int size = bmp.getSize(saving);
@@ -230,9 +230,10 @@ class BasicFilter {
     }
 
     /**
-     * contrastEqualRS does the same principle as contrastEqual, with a renderscript version.
-     * @param context
-     * @param saving
+     * Renderscript version of {@link com.example.editionimage.DefaultPackage.imagehandling.BasicFilter#contrastEqual(boolean) contrastEqual}
+     *
+     * @param context the application context
+     * @param saving true if the method is used in the context of saving the final product, false otherwise
      */
     void contrastEqualRS(Context context, boolean saving) {
         //Create new bitmap;
@@ -293,10 +294,11 @@ class BasicFilter {
     }
 
     /**
-     * modifContrast allows to modify the contrast of the image.
-     * @param contrast the variation to apply
-     * @param saving
+     * Modify the contrast of the image with a certain value using the formula "new_pixel =  [[factor * (old_pixel - 128) + 128]]"
+     * where factor is determined from the given value "contrast" by the formula "factor = (259* (contrast + 255)) / (255 * (259 - contrast))"
      *
+     * @param contrast the variation value to apply
+     * @param saving true if the method is used in the context of saving the final product, false otherwise
      */
     void modifContrast(int contrast,boolean saving){
         int size = bmp.getSize(saving);
@@ -320,9 +322,10 @@ class BasicFilter {
     }
 
     /**
-     * modifLight function allows to modify the lightness of an image by lightLevel.
-     * @param lightlevel the level of light to add to each pixel.
-     * @param saving
+     * Function that allows you to modify the lightness of an image by a given value lightLevel by simply adding it to the pixel
+     *
+     * @param lightlevel the level of light to add to each pixel
+     * @param saving true if the method is used in the context of saving the final product, false otherwise
      */
     void modifLight(int lightlevel,boolean saving){
         int size = bmp.getSize(saving);
@@ -346,9 +349,9 @@ class BasicFilter {
     /** Convolution **/
 
     /**
-     * convolution modifies an image with the mask.
+     * Apply a mask using the convolution algorithm
      * @param mask the kernel given, used to modify the image.
-     * @param saving
+     * @param saving true if the method is used in the context of saving the final product, false otherwise
      *
      * The convolution method uses a mask, that we will use on every pixel to modify this one. Every pixel will be modified differently with it's neighbours.
      */
@@ -365,10 +368,10 @@ class BasicFilter {
     }
 
     /**
-     * TODO
-     * @param mA
-     * @param mB
-     * @param saving
+     * Slightly modified convolution to use 2 edge detection kernel and fusing the results
+     * @param mA one of the kernels to be applied
+     * @param mB one of the kernels to be applied
+     * @param saving true if the method is used in the context of saving the final product, false otherwise
      */
     void convolutionEdgeDetection(Kernel mA, Kernel mB, boolean saving){
         if(mA.getInverse()!=0 || mB.getInverse()!=0 || mA.getH()!=mB.getH() || mA.getW()!=mB.getW())
@@ -384,10 +387,12 @@ class BasicFilter {
     }
 
     /**
-     * TODO
-     * @param row
-     * @param column
-     * @param saving
+     * Slightly modified convolution where instead of using one big kernel of dimension n*n, we use 2 vector kernel (one row and one column) of
+     * dimension n to apply the same effect as a big kernel but with the square root of the complexity
+     *
+     * @param row the vector kernel of type row
+     * @param column the vector kernel of type column
+     * @param saving true if the method is used in the context of saving the final product, false otherwise
      * @return
      */
     int separableConvolution(Kernel row, Kernel column,boolean saving) {
@@ -411,20 +416,15 @@ class BasicFilter {
     }
 
     /**
+     * Apply the given mask on a the image
      *
-     * applyMask deals with the use of the mask in the convolution method.
-     *
-     * @param mask used to modify the pixel
-     * @param pixels an array of pixels
-     * @param x_min
-     * @param x_max
-     * @param y_min
-     * @param y_max
-     * @param saving
-     *
-     * applyMask will modify every pixel by picking the neighbours of each pixel and apply the value of the mask for each neighbour.
-     * TODO?
-     *
+     * @param mask the given kernel
+     * @param pixels the array of pixels to be modified
+     * @param x_min the min x value on the image where the kernel must be applied
+     * @param x_max the max x value on the image where the kernel must be applied
+     * @param y_min the min y value on the image where the kernel must be applied
+     * @param y_max the max y value on the image where the kernel must be applied
+     * @param saving true if the method is used in the context of saving the final product, false otherwise
      */
     private void applyMask(Kernel mask, double[] pixels, int x_min, int x_max, int y_min, int y_max,boolean saving){
         int w = bmp.getWidth(saving);
@@ -438,15 +438,15 @@ class BasicFilter {
     }
 
     /**
-     * TODO
-     * @param mA
-     * @param mB
-     * @param pixels
-     * @param x_min
-     * @param x_max
-     * @param y_min
-     * @param y_max
-     * @param saving
+     * Version of {@link com.example.editionimage.DefaultPackage.imagehandling.BasicFilter#applyMask(Kernel, double[], int, int, int, int, boolean) applyMask}  specific to edge detection (using 2 kernels instead of one)
+     * @param mA one of the given kernel
+     * @param mB one of the given kernel
+     * @param pixels the array of pixels to be modified
+     * @param x_min the min x value on the image where the kernel must be applied
+     * @param x_max the max x value on the image where the kernel must be applied
+     * @param y_min the min y value on the image where the kernel must be applied
+     * @param y_max the max y value on the image where the kernel must be applied
+     * @param saving true if the method is used in the context of saving the final product, false otherwise
      */
     private void applyMaskEdgeDetection(Kernel mA, Kernel mB, double[] pixels, int x_min, int x_max, int y_min, int y_max,boolean saving){
         int w = bmp.getWidth(saving);
@@ -460,13 +460,13 @@ class BasicFilter {
     }
 
     /**
-     * TODO
-     * @param mask
-     * @param pixels
-     * @param x
-     * @param y
-     * @param saving
-     * @return
+     * Calculate the weighted sum by multiplying the mask to the sub kernel around the pixel
+     * @param mask the given mask to be applied
+     * @param pixels the pixel array to be modified
+     * @param x the x coordinate of the pixel
+     * @param y the y coordinate of the pixel
+     * @param saving true if the method is used in the context of saving the final product, false otherwise
+     * @return the weighted sum calculated
      */
     private double applyMaskAux(Kernel mask, double[] pixels, int x, int y,boolean saving){
         int w = bmp.getWidth(saving);
@@ -488,14 +488,14 @@ class BasicFilter {
     }
 
     /**
-     * TODO
-     * @param mA
-     * @param mB
-     * @param pixels
-     * @param x
-     * @param y
-     * @param saving
-     * @return
+     * Version of {@link com.example.editionimage.DefaultPackage.imagehandling.BasicFilter#applyMaskAux(Kernel, double[], int, int, boolean) applyMaskAux} specific to edge detection (using 2 kernels)
+     * @param mA one of the given mask to be applied
+     * @param mB one of the given mask to be applied
+     * @param pixels the pixel array to be modified
+     * @param x the x coordinate of the pixel
+     * @param y the y coordinate of the pixel
+     * @param saving true if the method is used in the context of saving the final product, false otherwise
+     * @return the weighted sum calculated
      */
     private double applyMaskEdgeDetectionAux(Kernel mA, Kernel mB, double[] pixels, int x, int y,boolean saving){
         int w = bmp.getWidth(saving);

@@ -5,8 +5,6 @@ import android.widget.Toast;
 
 /**
  * toastNoImage is used to test if there is an image loaded in the app, to prevent errors from happening, and to print this error to the user.
- *
- * @author theod
  */
 public class ToasterNoImage {
 
@@ -26,10 +24,9 @@ public class ToasterNoImage {
 
 
     /**
-     *
      * isToastShowed allows to return a value to the application and a message to the user if no image is being displayed.
      *
-     * @param usedImage to test if this bitmap is being used or not.
+     * @param usedImage BitmapHandler used in the application
      * @return true if there is no image loaded from the application, false otherwise.
      */
     public boolean isToastShowed(BitmapHandler usedImage){
