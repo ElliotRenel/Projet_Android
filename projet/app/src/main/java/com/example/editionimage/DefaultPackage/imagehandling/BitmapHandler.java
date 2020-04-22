@@ -459,10 +459,9 @@ public class BitmapHandler {
 
     /**
      * Thicken the black edges of a black and white image
-     * @param intensity numeric value given to determine the edges' thickness
      * @param saving true if the method is used in the context of saving the final product, false otherwise
      */
-    private void thicken(int intensity,boolean saving){
+    private void thicken(boolean saving){
         int [] pixels = new int[(saving?size_final:size)];
         int [] result = new int[(saving?size_final:size)];
         this.getPixels(pixels,saving);
@@ -871,6 +870,7 @@ public class BitmapHandler {
 
     /**
      * Apply a crayon effect to the image using several different filters
+     * @param context the application context
      */
     public void crayonEffect(Context context){
         laplaceEdgeDetection();
