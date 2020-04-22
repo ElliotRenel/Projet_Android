@@ -203,7 +203,7 @@
 Pour montrer l'utilité de nos fonctions précédentes nous avons créé des effets plus complexes qui les utilisent .
 \begin{itemize}
     \item crayonEffect():
-    A partir d'une image, ce filtre donne un effet crayon
+    A partir d'une image, ce filtre donne un effet crayon.
 
     \includegraphics{dog_original}
 
@@ -288,14 +288,14 @@ Le bouton undo utilise également cette pile en récupérant la dernière action
 
 
     Remarque :
-    Les effets togray, keep color et shift ont des allures très similaire, une seule image de profileur est donc présentée.\\
+    Les effets togray, keep color et shift ont des allures très similaires, une seule image de profileur est donc présentée.\\
 
  \bigskip
 
 
 
 
-    Colorize : mémoire  mémoire moyenne utilisées 11,3mB, temps moyen 0,537s.\\
+    Colorize : mémoire  mémoire moyenne utilisée 11,3mB, temps moyen 0,537s.\\
 
     Remarque :
     Sur plusieurs lancés de colorize, le GB se lance deux fois d’affilés lors du même lancé. Ainsi en prenant en compte ces lancés fortement influencé par le GB l’utilisation moyen de la mémoire serait  de 7,8mB.\\
@@ -304,14 +304,14 @@ Le bouton undo utilise également cette pile en récupérant la dernière action
 
 
 
-    Keep Color : mémoire moyenne utilisées 10,2mB, temps moyen 0,528s.\\
+    Keep Color : mémoire moyenne utilisée 10,2mB, temps moyen 0,528s.\\
 
  \bigskip
 
 
 
 
-    Shift : mémoire moyenne utilisées 9,5mB, temps moyen 0,494s.\\
+    Shift : mémoire moyenne utilisée 9,5mB, temps moyen 0,494s.\\
 
 
 
@@ -322,7 +322,7 @@ Le bouton undo utilise également cette pile en récupérant la dernière action
 
 
 
-Linear contrast : mémoire moyenne utilisées 39mB, temps moyen 40,4s.\\
+Linear contrast : mémoire moyenne utilisée 39mB, temps moyen 40,4s.\\
 
  \bigskip
 Première partie :\\
@@ -340,12 +340,12 @@ Seconde partie :\\
     \includegraphics[width=\textwidth, height = 7cm]{linelong2}
 
     Remarque : 
-    Les effets utilisant des histogrammes (sauf equalizer contrast) ainsi que les fonction utilisant la convolution ont une allure similaire a Linear contrast, très longue et des utilisations de la mémoires en « dents de scie » entrecoupés par le GB qui arrive souvent après avoir atteint une certaine valeur mémoires utilisées.\\
+    Les effets utilisant des histogrammes (sauf equalizer contrast) ainsi que les fonctions utilisant la convolution ont une allure similaire a Linear contrast, très longue et des utilisations de la mémoires en « dents de scie » entrecoupés par le GB qui arrive souvent après avoir atteint une certaine valeur mémoire utilisée.\\
     Ici le GB arrivait sur 5 des 6 dents de scie, chacune culminant à 5,5mB de plus que leurs bases.\\
 
  
 
-    Equalizer contrast : mémoire moyenne utilisées 2,7mB, temps moyen 0,760s.\\
+    Equalizer contrast : mémoire moyenne utilisée 2,7mB, temps moyen 0,760s.\\
 
 
 
@@ -356,14 +356,14 @@ Seconde partie :\\
 
 
     Remarque :
-    Comme dit précédemment elle diffère des autres fonctions utilisant des histogrammes, cela est peut-être du que c'est la seule à utiliser un histogramme cumulé.\\
+    Comme dit précédemment elle diffère des autres fonctions utilisant des histogrammes, cela est peut-être du au fait que c'est la seule à utiliser un histogramme cumulé.\\
 
  \bigskip
 
 
 
 
-    Modify contrast : mémoire moyenne utilisées 1,4mB, temps moyen 0,576s.\\
+    Modify contrast : mémoire moyenne utilisée 1,4mB, temps moyen 0,576s.\\
 
 
 
@@ -375,7 +375,7 @@ Seconde partie :\\
 
 
 
-    Modify lightlevel : mémoire moyenne utilisées 1,4mB, temps moyen 0,512s.\\
+    Modify lightlevel : mémoire moyenne utilisée 1,4mB, temps moyen 0,512s.\\
 
 
 
@@ -388,35 +388,35 @@ Seconde partie :\\
 
 
 
-    Gaussian blur  : mémoire moyenne utilisées 42mB, temps moyen 40,674s.\\
+    Gaussian blur  : mémoire moyenne utilisée 42mB, temps moyen 40,674s.\\
 
  \bigskip
 
 
 
 
-    Laplacian edge detection : mémoire moyenne utilisées 44,8mB, temps moyen 39,949s.\\
+    Laplacian edge detection : mémoire moyenne utilisée 44,8mB, temps moyen 39,949s.\\
 
  \bigskip
 
 
 
 
-    Sobel edge detection : mémoire moyenne utilisées 39,6mB, temps moyen 40,637s.\\
+    Sobel edge detection : mémoire moyenne utilisée 39,6mB, temps moyen 40,637s.\\
 
  \bigskip
 
 
 
 
-    Crayon effect : mémoire moyenne utilisées 48,5mB, temps moyen 40,312s.\\
+    Crayon effect : mémoire moyenne utilisée 48,5mB, temps moyen 40,312s.\\
 
  \bigskip
 
 
 
 
-    Cartoon effect : mémoire moyenne utilisées 43,4mB, temps moyen 39,353s.\\
+    Cartoon effect : mémoire moyenne utilisée 43,4mB, temps moyen 39,353s.\\
 
  \bigskip
 
@@ -429,18 +429,18 @@ Seconde partie :\\
 
 
 
-    Les comparaisons se basent sur 2 protocoles : les premiers est l’appel à l’effet linear contrast  puis le bouton save. L’autre protocole est l’appel consécutif des effets togray, colorize, keep color et shift puis save. \\
+    Les comparaisons se basent sur 2 protocoles : le premier est l’appel à l’effet linear contrast  puis le bouton save. L’autre protocole est l’appel consécutif des effets togray, colorize, keep color et shift puis save. \\
 
 
     Protocole 1 : linear contrast.\\
 
-    Image « camera » : mémoire moyenne utilisées 168mB, temps moyen 1min39,114s.\\
+    Image « camera » : mémoire moyenne utilisée 168mB, temps moyen 1min39,114s.\\
 
     Remarque :
     L’allure est similaire a celle de linear contrast mais est beaucoup plus longue. \\
 
 
-    Image «petite» : mémoire moyenne utilisées 8mB, temps moyen 6,2s.\\
+    Image «petite» : mémoire moyenne utilisée 8mB, temps moyen 6,2s.\\
 
     \includegraphics[width=\textwidth]{petite-linear}
  \bigskip
@@ -453,7 +453,7 @@ Seconde partie :\\
 
     Protocole 2 : togray + colorize + keep color + shift.\\
 
-    Image « camera » : mémoire moyenne utilisées 30mB, temps moyen 1,590s.\\
+    Image « camera » : mémoire moyenne utilisée 30mB, temps moyen 1,590s.\\
 
 
     \includegraphics[width=\textwidth]{camera-serie}
@@ -465,7 +465,7 @@ Seconde partie :\\
     On voit d’abord la suite des effets sur la partie de gauche, au centre la première sauvegarde (les moyennes ont été calculées sur la première sauvegarde puis le protocole est relancé) et a droite d’autres appel du bouton save. On remarque que la première save est plus longue et plus gourmande  que les suivantes. Ce phénomène arrivait aussi sur d’autres effets mais plus rarement et beaucoup moins signifiant.\\
 
 
-    Image «petite» : mémoire moyenne utilisées 4,5mB, temps moyen 0,586s.\\
+    Image «petite» : mémoire moyenne utilisée 4,5mB, temps moyen 0,586s.\\
 
 
     \includegraphics[width=\textwidth]{petite-serie}
