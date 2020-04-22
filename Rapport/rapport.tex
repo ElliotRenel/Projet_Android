@@ -83,12 +83,19 @@
     L'application charge correctement une image depuis la galerie, et permet également la prise de photo pour les importer dans l'application,
      avec les boutons situés en haut de l'application.\\
     L'application peut également sauvegarder, à condition d'autoriser manuellement l'application à enregistrer des photos.\\
-    \\
+    
 
     \subsection{Image et manipulation}
     L'image chargée est donc maintenant visible à l'écran, prête à être modifiée, et on peut la zoomer avec l'action des deux doigts, 
     et scroller si elle est trop grosse par rapport à la taille définie dans l'application.\\
-    \\
+    L'image peut également être reset avec le bouton aproprié.
+    
+
+    \subsection{Fonctions d'usage}
+    Les fonctions décrites ici sont disponibles dans l'application avec les boutons dans l'ensemble de l'application, et disponibles dans la classe bitmapHandler.\\
+
+    \begin{itemize}
+        \item reset
 
     \subsection{Filtres}
     Les fonctions ci-dessous sont retrouvées dans la fonction BasicFilter, et testables via les boutons dans le bas de l'application.\\
@@ -193,7 +200,7 @@
 
 \subsection{Nouveaux Effets}
 
-Pour montrer l'utilitée de nos fonctions précédentes nous avons créer des effets plus complexe qui les utilisent .
+Pour montrer l'utilité de nos fonctions précédentes nous avons créé des effets plus complexes qui les utilisent .
 \begin{itemize}
     \item crayonEffect():
     A partir d'une image, ce filtre donne un effet crayon
@@ -211,9 +218,25 @@ Pour montrer l'utilitée de nos fonctions précédentes nous avons créer des ef
 
 \subsection{Pile d'effets}
 
+\begin{itemize}
 Nous avons ajouté la possiblité de défaire des modifcations en enregistrant les effets successifs afin de pouvoir récréer un état anterieur de l'image.
-*insert explication *
 
+Ces états sont empilés au fur et a mesure de leur utilisation dans l'application, et sont dépilé après l'utilisation d'un des effets suivants.\\
+
+\item Save:
+Le bouton save utilise cette pile d'effets avec une troisième bitmap, bit_final, qui est de taille d’origine par rapport à l’image effectuée, et utilise une pile d’effets pour les appliquer a cette bitmap, puis l’enregistrer et retrourner le ficher crée.
+\\
+
+\item Undo:
+Le bouton undo utilise également cette pile en récupérant la dernière action et en l'annulant. Il retire également l'effet de la pile.
+\\
+
+\item Reset:
+    Le bouton reset réinitialise l’image affichée a l’image importée au départ.
+    On utilise pour cela deux bitmaps différentes, une courante, affichée sur l’application, et une originale qui sera utilisée pour remettre l’image courante comme celle de base.\\
+    \\
+
+\end{itemize}
 
 \section{Problèmes connus}
 
