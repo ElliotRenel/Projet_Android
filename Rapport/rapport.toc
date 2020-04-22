@@ -4,9 +4,11 @@
 \contentsline {section}{\numberline {3}Besoins fonctionnels}{3}% 
 \contentsline {subsection}{\numberline {3.1}Chargement et sauvegarde d'image}{3}% 
 \contentsline {subsection}{\numberline {3.2}Image et manipulation}{3}% 
-\contentsline {subsection}{\numberline {3.3}Filtres}{4}% 
+\contentsline {subsection}{\numberline {3.3}Filtres}{3}% 
 \contentsline {subsection}{\numberline {3.4}Convolutions}{5}% 
 \contentsline {subsection}{\numberline {3.5}Nouveaux Effets}{6}% 
-\contentsline {subsection}{\numberline {3.6}Pile d'effets}{8}% 
-\contentsline {section}{\numberline {4}Probl\IeC {\`e}mes connus}{8}% 
-\contentsline {section}{\numberline {5}profilage}{9}% 
+\contentsline {subsection}{\numberline {3.6}Fonctions d'usage et pile d'effet}{8}% 
+\contentsline {section}{\numberline {4}Probl\IeC {\`e}mes connus}{9}% 
+\contentsline {section}{\numberline {5}Profilage}{9}% 
+\contentsline {subsection}{\numberline {5.1}Profilage des effets individuels}{10}% 
+\contentsline {subsection}{\numberline {5.2}profilage comparatif }{14}% 

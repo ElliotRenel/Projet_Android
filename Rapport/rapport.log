@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.10.10)  22 APR 2020 22:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2019/dev/Debian) (preloaded format=pdflatex 2019.10.10)  23 APR 2020 00:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -372,27 +372,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 65--75
  []
 
 [2]
-Overfull \hbox (15.96945pt too wide) in paragraph at lines 83--87
+Overfull \hbox (15.96945pt too wide) in paragraph at lines 83--86
 []\T1/cmr/m/n/12 L'application charge correctement une image depuis la galerie, et permet également
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 83--87
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 83--87
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 89--92
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 89--92
+Underfull \hbox (badness 10000) in paragraph at lines 83--86
 
  []
 
@@ -496,362 +481,321 @@ Underfull \hbox (badness 10000) in paragraph at lines 134--138
 
  []
 
-[5]
+
 Underfull \hbox (badness 10000) in paragraph at lines 158--160
 
  []
 
-
+[5]
 Underfull \hbox (badness 10000) in paragraph at lines 170--172
 
  []
 
-<./images/dog_original.png, id=25, 205.76875pt x 276.03125pt>
-File: ./images/dog_original.png Graphic file (type png)
-<use ./images/dog_original.png>
-Package pdftex.def Info: ./images/dog_original.png  used on input line 201.
+<./images/dogoriginal.png, id=26, 205.76875pt x 276.03125pt>
+File: ./images/dogoriginal.png Graphic file (type png)
+<use ./images/dogoriginal.png>
+Package pdftex.def Info: ./images/dogoriginal.png  used on input line 201.
 (pdftex.def)             Requested size: 205.76823pt x 276.03056pt.
 [6]
-<./images/dog_crayon.png, id=32, 205.76875pt x 275.0275pt>
-File: ./images/dog_crayon.png Graphic file (type png)
-<use ./images/dog_crayon.png>
-Package pdftex.def Info: ./images/dog_crayon.png  used on input line 203.
+<./images/dogcrayon.png, id=32, 205.76875pt x 275.0275pt>
+File: ./images/dogcrayon.png Graphic file (type png)
+<use ./images/dogcrayon.png>
+Package pdftex.def Info: ./images/dogcrayon.png  used on input line 203.
 (pdftex.def)             Requested size: 205.76823pt x 275.02682pt.
-<./images/dog_cartoon.png, id=33, 205.76875pt x 275.0275pt>
-File: ./images/dog_cartoon.png Graphic file (type png)
-<use ./images/dog_cartoon.png>
-Package pdftex.def Info: ./images/dog_cartoon.png  used on input line 208.
+<./images/dogcartoon.png, id=33, 205.76875pt x 275.0275pt>
+File: ./images/dogcartoon.png Graphic file (type png)
+<use ./images/dogcartoon.png>
+Package pdftex.def Info: ./images/dogcartoon.png  used on input line 208.
 (pdftex.def)             Requested size: 205.76823pt x 275.02682pt.
- [7 <./images/dog_original.png> <./images/dog_crayon.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 221--222
+ [7 <./images/dogoriginal.png> <./images/dogcrayon.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 215--216
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 222--223
+Overfull \hbox (1.15627pt too wide) in paragraph at lines 218--220
+\T1/cmr/m/n/12 Le bouton save utilise cette pile d'effets avec une troisième bitmap, bit_final,
+ []
+
+
+Overfull \hbox (1.84358pt too wide) in paragraph at lines 222--225
+\T1/cmr/m/n/12 l'application, et une originale qui sera utilisée pour remettre l'image courante
+ []
+
+[8 <./images/dogcartoon.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 236--238
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 229--236
-
- []
-
-[8 <./images/dog_cartoon.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 238--239
+Underfull \hbox (badness 10000) in paragraph at lines 239--242
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 240--241
-
- []
-
-<./images/1-togray.png, id=44, 1277.52281pt x 648.17157pt>
-File: ./images/1-togray.png Graphic file (type png)
-<use ./images/1-togray.png>
-Package pdftex.def Info: ./images/1-togray.png  used on input line 245.
-(pdftex.def)             Requested size: 1277.5197pt x 648.16998pt.
-
-Overfull \hbox (876.89084pt too wide) in paragraph at lines 245--248
-[][]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 245--248
+Underfull \hbox (badness 10000) in paragraph at lines 243--245
 
  []
 
 [9]
-Overfull \vbox (56.63979pt too high) has occurred while \output is active []
+Underfull \hbox (badness 10000) in paragraph at lines 265--266
 
- [10 <./images/1-togray.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 250--251
+ []
+
+<./images/1-togray.png, id=47, 1277.52281pt x 648.17157pt>
+File: ./images/1-togray.png Graphic file (type png)
+<use ./images/1-togray.png>
+Package pdftex.def Info: ./images/1-togray.png  used on input line 270.
+(pdftex.def)             Requested size: 418.25368pt x 212.20604pt.
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 270--271
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 270--271
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 252--254
+Underfull \hbox (badness 10000) in paragraph at lines 273--275
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 255--256
+Underfull \hbox (badness 10000) in paragraph at lines 281--282
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 258--259
+Underfull \hbox (badness 10000) in paragraph at lines 283--285
 
  []
 
-<./images/1-shift.png, id=51, 1266.98344pt x 675.27281pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 290--291
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 297--298
+
+ []
+
+<./images/1-shift.png, id=48, 1266.98344pt x 675.27281pt>
 File: ./images/1-shift.png Graphic file (type png)
 <use ./images/1-shift.png>
-Package pdftex.def Info: ./images/1-shift.png  used on input line 263.
-(pdftex.def)             Requested size: 1266.98036pt x 675.27116pt.
+Package pdftex.def Info: ./images/1-shift.png  used on input line 302.
+(pdftex.def)             Requested size: 418.25368pt x 222.91284pt.
 
-Overfull \hbox (866.3515pt too wide) in paragraph at lines 263--265
-[][]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 302--303
+[][] 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 263--265
+[10 <./images/1-togray.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 308--309
 
  []
 
-[11]
-Overfull \vbox (83.74097pt too high) has occurred while \output is active []
-
- [12 <./images/1-shift.png>]
-<./images/linelong1.png, id=58, 1265.47781pt x 673.76718pt>
+<./images/linelong1.png, id=52, 1265.47781pt x 673.76718pt>
 File: ./images/linelong1.png Graphic file (type png)
 <use ./images/linelong1.png>
-Package pdftex.def Info: ./images/linelong1.png  used on input line 268.
-(pdftex.def)             Requested size: 1265.47473pt x 673.76553pt.
-<./images/linelong2.png, id=59, 608.2725pt x 666.99188pt>
-File: ./images/linelong2.png Graphic file (type png)
-<use ./images/linelong2.png>
-Package pdftex.def Info: ./images/linelong2.png  used on input line 269.
-(pdftex.def)             Requested size: 608.27103pt x 666.99025pt.
+Package pdftex.def Info: ./images/linelong1.png  used on input line 314.
+(pdftex.def)             Requested size: 418.25368pt x 222.68312pt.
 
-Overfull \hbox (864.84587pt too wide) in paragraph at lines 268--270
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 314--319
 [][]
  []
 
-
-Overfull \hbox (190.01735pt too wide) in paragraph at lines 268--270
-[] 
- []
-
-[13]
-Overfull \vbox (82.23534pt too high) has occurred while \output is active []
-
- [14 <./images/linelong1.png>]
-Overfull \vbox (75.46005pt too high) has occurred while \output is active []
-
- [15 <./images/linelong2.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 271--274
+<./images/linelong2.png, id=53, 608.2725pt x 666.99188pt>
+File: ./images/linelong2.png Graphic file (type png)
+<use ./images/linelong2.png>
+Package pdftex.def Info: ./images/linelong2.png  used on input line 323.
+(pdftex.def)             Requested size: 418.26057pt x 199.16278pt.
+[11 <./images/1-shift.png> <./images/linelong1.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 325--328
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 276--277
+Underfull \hbox (badness 10000) in paragraph at lines 331--332
 
  []
 
-<./images/egalisateur.png, id=70, 654.19406pt x 685.05937pt>
+<./images/egalisateur.png, id=57, 654.19406pt x 685.05937pt>
 File: ./images/egalisateur.png Graphic file (type png)
 <use ./images/egalisateur.png>
-Package pdftex.def Info: ./images/egalisateur.png  used on input line 282.
-(pdftex.def)             Requested size: 654.19246pt x 685.0577pt.
+Package pdftex.def Info: ./images/egalisateur.png  used on input line 337.
+(pdftex.def)             Requested size: 418.25354pt x 199.16388pt.
 
-Overfull \hbox (253.5636pt too wide) in paragraph at lines 282--286
+Overfull \hbox (17.62468pt too wide) in paragraph at lines 337--338
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 282--286
+Underfull \hbox (badness 10000) in paragraph at lines 341--343
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 282--286
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 282--286
-
- []
-
-[16]
-Overfull \vbox (93.5275pt too high) has occurred while \output is active []
-
- [17 <./images/egalisateur.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 288--290
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 292--293
-
- []
-
-<./images/modifycontrast.png, id=77, 1266.23062pt x 673.76718pt>
-File: ./images/modifycontrast.png Graphic file (type png)
-<use ./images/modifycontrast.png>
-Package pdftex.def Info: ./images/modifycontrast.png  used on input line 296.
-(pdftex.def)             Requested size: 1266.22754pt x 673.76553pt.
-
-Overfull \hbox (865.59868pt too wide) in paragraph at lines 296--297
-[][] 
- []
-
-[18]
-Overfull \vbox (82.23534pt too high) has occurred while \output is active []
-
- [19 <./images/modifycontrast.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 300--301
-
- []
-
-<./images/modifylight.png, id=85, 1259.4553pt x 673.01437pt>
-File: ./images/modifylight.png Graphic file (type png)
-<use ./images/modifylight.png>
-Package pdftex.def Info: ./images/modifylight.png  used on input line 304.
-(pdftex.def)             Requested size: 1259.45224pt x 673.01273pt.
-
-Overfull \hbox (858.82338pt too wide) in paragraph at lines 304--305
-[][] 
- []
-
-[20]
-Overfull \vbox (81.48253pt too high) has occurred while \output is active []
-
- [21 <./images/modifylight.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 309--310
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 312--313
-
- []
-
-
-Overfull \hbox (1.81017pt too wide) in paragraph at lines 315--316
-[]\T1/cmr/m/n/12 Sobel edge detection : mémoire moyenne utilisées 39,6mB, temps moyen 40,637s. 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 315--316
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 318--319
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 321--322
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 327--328
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 330--331
-
- []
-
-
-Overfull \hbox (9.63742pt too wide) in paragraph at lines 332--333
-[]\T1/cmr/m/n/12 Image ^^S camera ^^T : mémoire moyenne utilisées 168mB, temps moyen 1min39,114s. 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 332--333
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 334--336
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 338--339
-
- []
-
-<./images/petite-linear.png, id=92, 1257.94969pt x 670.75594pt>
-File: ./images/petite-linear.png Graphic file (type png)
-<use ./images/petite-linear.png>
-Package pdftex.def Info: ./images/petite-linear.png  used on input line 340.
-(pdftex.def)             Requested size: 1257.94662pt x 670.75429pt.
-
-Overfull \hbox (857.31776pt too wide) in paragraph at lines 340--341
-[][] 
- []
-
-[22]
-Overfull \vbox (79.22409pt too high) has occurred while \output is active []
-
- [23 <./images/petite-linear.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 343--345
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 347--348
-
- []
-
-
+[12 <./images/linelong2.png> <./images/egalisateur.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 349--350
 
  []
 
-<./images/camera-serie.png, id=99, 1070.49937pt x 671.50874pt>
+<./images/modifycontrast.png, id=61, 1266.23062pt x 673.76718pt>
+File: ./images/modifycontrast.png Graphic file (type png)
+<use ./images/modifycontrast.png>
+Package pdftex.def Info: ./images/modifycontrast.png  used on input line 353.
+(pdftex.def)             Requested size: 418.25368pt x 222.54947pt.
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 353--354
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 361--362
+
+ []
+
+<./images/modifylight.png, id=62, 1259.4553pt x 673.01437pt>
+File: ./images/modifylight.png Graphic file (type png)
+<use ./images/modifylight.png>
+Package pdftex.def Info: ./images/modifylight.png  used on input line 365.
+(pdftex.def)             Requested size: 418.25368pt x 223.50232pt.
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 365--366
+[][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 374--375
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 381--382
+
+ []
+
+[13 <./images/modifycontrast.png> <./images/modifylight.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 388--389
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 395--396
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 402--403
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 415--416
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 418--419
+
+ []
+
+
+Overfull \hbox (5.00385pt too wide) in paragraph at lines 420--421
+[]\T1/cmr/m/n/12 Image ^^S camera ^^T : mémoire moyenne utilisée 168mB, temps moyen 1min39,114s. 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 420--421
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 422--424
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 426--427
+
+ []
+
+<./images/petite-linear.png, id=67, 1257.94969pt x 670.75594pt>
+File: ./images/petite-linear.png Graphic file (type png)
+<use ./images/petite-linear.png>
+Package pdftex.def Info: ./images/petite-linear.png  used on input line 428.
+(pdftex.def)             Requested size: 418.25368pt x 223.01842pt.
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 428--430
+[][]
+ []
+
+[14]
+Underfull \hbox (badness 10000) in paragraph at lines 433--435
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 437--438
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 439--440
+
+ []
+
+<./images/camera-serie.png, id=71, 1070.49937pt x 671.50874pt>
 File: ./images/camera-serie.png Graphic file (type png)
 <use ./images/camera-serie.png>
-Package pdftex.def Info: ./images/camera-serie.png  used on input line 352.
-(pdftex.def)             Requested size: 1070.49677pt x 671.50711pt.
+Package pdftex.def Info: ./images/camera-serie.png  used on input line 442.
+(pdftex.def)             Requested size: 418.25368pt x 262.36894pt.
 
-Overfull \hbox (669.8679pt too wide) in paragraph at lines 352--353
-[][] 
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 442--444
+[][]
  []
 
-[24]
-Overfull \vbox (79.97691pt too high) has occurred while \output is active []
-
- [25 <./images/camera-serie.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 354--356
+[15 <./images/petite-linear.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 447--449
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 358--359
+Underfull \hbox (badness 10000) in paragraph at lines 451--452
 
  []
 
-<./images/petite-serie.png, id=107, 1054.6903pt x 673.01437pt>
+<./images/petite-serie.png, id=75, 1054.6903pt x 673.01437pt>
 File: ./images/petite-serie.png Graphic file (type png)
 <use ./images/petite-serie.png>
-Package pdftex.def Info: ./images/petite-serie.png  used on input line 361.
-(pdftex.def)             Requested size: 1054.68773pt x 673.01273pt.
+Package pdftex.def Info: ./images/petite-serie.png  used on input line 454.
+(pdftex.def)             Requested size: 418.25368pt x 266.89037pt.
 
-Overfull \hbox (654.05887pt too wide) in paragraph at lines 361--362
-[][] 
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 454--456
+[][]
  []
 
-[26]
-Overfull \vbox (81.48253pt too high) has occurred while \output is active []
-
- [27 <./images/petite-serie.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 363--365
+[16 <./images/camera-serie.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 458--460
 
  []
 
-[28] (/home/elliotrenel/Documents/University/Android/Projet_Android/Rapport/rapport.aux) ) 
+[17 <./images/petite-serie.png (PNG copy)>] (/home/elliotrenel/Documents/University/Android/Projet_Android/Rapport/rapport.aux) ) 
 Here is how much of TeX's memory you used:
  4306 strings out of 494561
- 60289 string characters out of 6177387
+ 60274 string characters out of 6177387
  139425 words of memory out of 5000000
  7875 multiletter control sequences out of 15000+600000
  16582 words of font info for 51 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  41i,7n,31p,961b,423s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm2074.pfb>
-Output written on /home/elliotrenel/Documents/University/Android/Projet_Android/Rapport/rapport.pdf (28 pages, 836249 bytes).
+Output written on /home/elliotrenel/Documents/University/Android/Projet_Android/Rapport/rapport.pdf (17 pages, 835128 bytes).
 PDF statistics:
- 148 PDF objects out of 1000 (max. 8388607)
- 92 compressed objects within 1 object stream
+ 113 PDF objects out of 1000 (max. 8388607)
+ 68 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  66 words of extra memory for PDF output out of 10000 (max. 10000000)
 

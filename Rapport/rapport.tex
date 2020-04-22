@@ -89,13 +89,6 @@
     L'image chargée est donc maintenant visible à l'écran, prête à être modifiée, et on peut la zoomer avec l'action des deux doigts, 
     et scroller si elle est trop grosse par rapport à la taille définie dans l'application.\\
     L'image peut également être reset avec le bouton aproprié.
-    
-
-    \subsection{Fonctions d'usage}
-    Les fonctions décrites ici sont disponibles dans l'application avec les boutons dans l'ensemble de l'application, et disponibles dans la classe bitmapHandler.\\
-
-    \begin{itemize}
-        \item reset
 
     \subsection{Filtres}
     Les fonctions ci-dessous sont retrouvées dans la fonction BasicFilter, et testables via les boutons dans le bas de l'application.\\
@@ -205,50 +198,40 @@ Pour montrer l'utilité de nos fonctions précédentes nous avons créé des eff
     \item crayonEffect():
     A partir d'une image, ce filtre donne un effet crayon.
 
-    \includegraphics{dog_original}
+    \includegraphics{dogoriginal}
 
-    \includegraphics{dog_crayon}
+    \includegraphics{dogcrayon}
 
     \item cartoonEffect():
     Cet effet donne un effet bande dessiné à une image.
 
-    \includegraphics{dog_cartoon}
+    \includegraphics{dogcartoon}
 
 \end{itemize}
 
-\subsection{Pile d'effets}
-
-\begin{itemize}
+\subsection{Fonctions d'usage et pile d'effet}
 Nous avons ajouté la possiblité de défaire des modifcations en enregistrant les effets successifs afin de pouvoir récréer un état anterieur de l'image.
 
 Ces états sont empilés au fur et a mesure de leur utilisation dans l'application, et sont dépilé après l'utilisation d'un des effets suivants.\\
 
-\item Save:
-Le bouton save utilise cette pile d'effets avec une troisième bitmap, bit_final, qui est de taille d’origine par rapport à l’image effectuée, et utilise une pile d’effets pour les appliquer a cette bitmap, puis l’enregistrer et retrourner le ficher crée.
-\\
-
-\item Undo:
-Le bouton undo utilise également cette pile en récupérant la dernière action et en l'annulant. Il retire également l'effet de la pile.
-\\
-
-\item Reset:
+\begin{itemize}
+    \item Save:\\
+    Le bouton save utilise cette pile d'effets avec une troisième bitmap, bit\_final, qui est de taille d’origine par rapport à l’image effectuée, et utilise une pile d’effets pour les appliquer a cette bitmap, puis l’enregistrer et retrourner le ficher crée.    
+    \item Undo :\\
+    Le bouton undo utilise également cette pile en récupérant la dernière action et en l'annulant. Il retire également l'effet de la pile.
+    \item Reset :\\
     Le bouton reset réinitialise l’image affichée a l’image importée au départ.
-    On utilise pour cela deux bitmaps différentes, une courante, affichée sur l’application, et une originale qui sera utilisée pour remettre l’image courante comme celle de base.\\
-    \\
-
+    On utilise pour cela deux bitmaps différentes, une courante, affichée sur l’application, et une originale qui sera utilisée pour remettre l’image courante comme celle de base.
 \end{itemize}
 
 \section{Problèmes connus}
 
 \begin{itemize}
-    \item Les images sont sauvegardées sur le téléphone dans un dossier dédié dans le dossier de base des photos, mais ce dossier n'est pas visible depuis la gallerie.\\
-    \item Les fonctions de conversion hsv renderscript ne fonctionnent pas (l'image n'est pas celle attendue). Tous les fichiers renderscript sont dans le dossier ./projet/src/rs/ mais seuls gray.rs et histEq.rs sont appellés.\\
+    \item Les images sont sauvegardées sur le téléphone dans un dossier dédié dans le dossier de base des photos, mais ce dossier n'est pas visible depuis la gallerie.
+    \item Les fonctions de conversion hsv renderscript ne fonctionnent pas (l'image n'est pas celle attendue). Tous les fichiers renderscript sont dans le dossier .\/projet\/src\/rs\/ mais seuls gray.rs et histEq.rs sont appellés.
 \end{itemize}
 
-
-
-
-\section{profilage}
+\section{Profilage}
  \bigskip
     Le profilage  a été réalisé sur trois dimensions d’images : une image « petite » 259*194 pixels,  une image « camera » provenant de l’appareil photo du téléphone 960*1280 pixels et l’image « centrale » qui est l’image redimensionnée au centre de l’application servant de prévisualisation des effets avant leurs sauvegarde.\\
     Toutes les valeurs et images sont issues du profilage d’un émulateur d’un appareil PIXEL 2 XL, sous l’API 29.\\
@@ -258,7 +241,7 @@ Le bouton undo utilise également cette pile en récupérant la dernière action
     La mémoire utilisées est calculé en faisant la somme de chaque  croissance de la mémoire utilisée soustrait par l’utilisation de mémoire avant cette croissance. Le garbage collector s’enclenchant souvent au début d’un effet, ou lors des effets plus long à calculé, plusieurs fois de manières périodique (voir l’image du profileur de linear contrast). Le garbage collector (GB) influence l’utilisation de la mémoire mais aussi celle du processeur, deplus, le profileur affecte aussi grandement le temps que met un effet a se terminer. Le profilage ne montre pas réellement l’utilisation de la mémoire par un effet, mais l’utilisation dans un contexte. Ainsi on peut comparer, sur un contexte en tout point similaire sauf les dimensions de l’images sur laquelle est appliqué l’effet, les utilisations des ressources de l’appareil.\\
    
  Tout d’abord nous allons faire le profilage des effets indépendamment des uns et des autres sur l’image « centrale ». \\
-    Ensuite nous ferons un profilage comparant l’utilisation de ressources sur l’image « petite » et de l’image provenant de l’appareil photo.\\
+Ensuite nous ferons un profilage comparant l’utilisation de ressources sur l’image « petite » et de l’image provenant de l’appareil photo.\\
 
  \bigskip
  \bigskip
@@ -474,10 +457,5 @@ Seconde partie :\\
 
     Remarque :
     On voit à gauche la suite d’effet du protocole 2 et à droite une suite de save. On remarque à nouveau que le premier save est plus long que les autres.\\
-
-
-
-
-
 
 \end{document}
